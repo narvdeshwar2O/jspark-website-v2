@@ -1,0 +1,362 @@
+/* Section scaffolding for the Phase 2 scroll system. */
+
+.section {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.section--surface {
+  background: var(--surface);
+}
+
+.section--center {
+  display: flex;
+  align-items: center;
+}
+
+.section__inner {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-96) var(--gutter);
+}
+
+/* Dim mono note marking what the finished scene will render there */
+.scene-note {
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+/* ---- Hero (Scene 00) ---- */
+
+/* The section is the scroll spacer; the text lives in a fixed overlay so it
+   can fade over the pinned stage (Scene 00 to 01 transition). */
+.hero {
+  height: 100vh;
+}
+
+.hero__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--gutter);
+  pointer-events: none;
+}
+
+.hero__center {
+  width: 100%;
+  max-width: var(--content-max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-32);
+}
+
+/* Rule spans the headline width plus 64px each side, not the viewport */
+.hero__mast {
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-32);
+}
+
+.hero__rule {
+  align-self: stretch;
+  width: auto;
+  margin: 0 calc(-1 * var(--space-64));
+}
+
+.hero__tagline {
+  color: var(--text-muted);
+}
+
+.hero__corner {
+  position: absolute;
+  bottom: var(--space-32);
+}
+
+.hero__corner--left {
+  left: var(--gutter);
+}
+
+.hero__corner--right {
+  right: var(--gutter);
+}
+
+.hero__cue {
+  position: absolute;
+  bottom: var(--space-32);
+  left: 50%;
+  width: 1px;
+  height: 32px;
+  background: var(--text-muted);
+  animation: hero-cue-pulse 3s ease-in-out infinite;
+}
+
+@keyframes hero-cue-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__cue {
+    animation: none;
+  }
+}
+
+/* ---- Hydra stage (Scenes 01 to 08, pinned) ---- */
+
+.hydra {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Stage UI is scoped to the pinned stage: hidden at rest, progress-gated */
+.hydra .ds-rail {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hydra__label {
+  position: absolute;
+  left: calc(var(--rail-offset) + var(--space-64));
+  bottom: var(--space-32);
+  z-index: 6;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Outer beat wrappers own the CSS positioning; the inner divs are the
+   animated elements (gsap manages their transform, so no CSS transform). */
+.hydra__beat {
+  position: absolute;
+  left: calc(var(--gutter) + var(--space-96));
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 620px; /* text blocks span columns 2 to 7, left-weighted */
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hydra__beat > div {
+  opacity: 0;
+}
+
+.hydra__beat--center {
+  left: var(--gutter);
+  right: var(--gutter);
+  max-width: none;
+  align-items: center;
+  text-align: center;
+}
+
+.hydra__reveal {
+  pointer-events: auto;
+}
+
+.hydra__reveal-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+.hydra__reveal-rule {
+  width: min(480px, 100%);
+}
+
+.hydra__tagline {
+  color: var(--text-muted);
+}
+
+.hydra__panel {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--space-64);
+  z-index: 6;
+  opacity: 0;
+  overflow: hidden; /* the Scene 08 migration squeezes it to the 40px strip */
+}
+
+/* ---- Command Center (Scene 09, pinned horizontal scroll) ---- */
+
+.cc {
+  overflow: hidden;
+}
+
+.cc__track {
+  display: flex;
+  width: max-content;
+}
+
+.cc__panel {
+  width: 100vw;
+  height: 100vh;
+  flex: none;
+  display: flex;
+  align-items: center;
+}
+
+.cc__panel-inner {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-96) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+}
+
+.screen-frame {
+  aspect-ratio: 16 / 9;
+  width: min(720px, 100%);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-24);
+}
+
+.cc__statuses {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+/* Reduced motion: vertical stack, no pin */
+.cc--stack .cc__track {
+  display: block;
+  width: auto;
+}
+
+.cc--stack .cc__panel {
+  width: auto;
+  height: auto;
+  min-height: 100vh;
+}
+
+/* ---- Product sections (Scenes 10 to 12) ---- */
+
+.product__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-32);
+  align-items: center;
+}
+
+.product__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-24);
+}
+
+.product__media {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.opsvision .product__text { grid-column: 1 / 6; }
+.opsvision .product__media { grid-column: 7 / 13; }
+
+.opsmind .product__media { grid-column: 1 / 7; }
+.opsmind .product__text { grid-column: 8 / 13; }
+
+.product__render {
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diagram-ph {
+  width: 100%;
+  min-height: 160px;
+  border: 1px solid var(--line);
+  padding: var(--space-24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.opsunity__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-32);
+}
+
+.opsunity__diagram {
+  max-width: 720px;
+}
+
+/* ---- Closing (Scene 13) ---- */
+
+.closing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--gutter);
+}
+
+.closing__note {
+  position: absolute;
+  top: var(--space-24);
+  left: var(--gutter);
+}
+
+.closing__center {
+  width: 100%;
+  max-width: var(--content-max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-48);
+}
+
+.closing__statement {
+  max-width: 1100px;
+}
+
+.closing__footer {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: var(--space-24);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-24);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .product__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

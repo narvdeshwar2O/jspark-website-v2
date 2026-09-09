@@ -1,0 +1,210 @@
+/* Scene 08 console chrome. SCENES.md is authoritative. Tokens only, no
+   gradients, no glow, no shadows, 0px radius. */
+
+.console-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 4; /* above the stage, below the data panel (6) and rail */
+  pointer-events: none;
+}
+
+/* past the hold the layer becomes part of the flow at its release offset
+   (inline top) and scrolls away 1:1 with the page */
+.console-frame.is-released {
+  position: absolute;
+  bottom: auto;
+  height: 100vh;
+}
+
+.console-frame__slot {
+  position: absolute;
+  pointer-events: none;
+}
+
+.console-frame__chrome {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.console-frame__frame {
+  position: absolute;
+  border: 1px solid var(--line);
+  background: transparent;
+}
+
+.console-frame__titlebar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.console-frame__divider {
+  position: absolute;
+  width: 1px;
+  background: var(--line);
+}
+
+.console-frame__title {
+  color: var(--text);
+}
+
+.console-frame__live {
+  width: 6px;
+  height: 6px;
+  background: var(--alert);
+}
+
+.console-frame__strip {
+  position: absolute;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+
+.console-frame__striprow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--text);
+  opacity: 0;
+}
+
+/* SCENES.md: four readouts in a 2 by 2 grid, 16px gap; row 1 rainfall and
+   discharge, row 2 river level and confidence (source order) */
+.console-frame__figures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* hidden until the swap: the overlapped handoff (Hydra.jsx) toggles
+   visibility imperatively, in both directions, beneath the fixed canvas */
+.console-frame__still {
+  position: absolute;
+  object-fit: cover;
+  object-position: center;
+  visibility: hidden;
+}
+
+.console-frame__above {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.console-frame__display {
+  color: var(--text);
+}
+
+.console-frame__below {
+  position: absolute;
+}
+
+.console-frame__body {
+  margin-top: 8px;
+}
+
+.console-frame__button-row {
+  margin-top: 16px;
+  pointer-events: auto;
+}
+
+/* caption band on short viewports: h2 left, button right, one baseline */
+.console-frame__below.is-band .console-frame__band {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.console-frame__below.is-band .console-frame__button-row {
+  margin-top: 0;
+}
+
+.console-frame__rule {
+  margin-top: 32px;
+}
+
+/* ---- sidebar ---- */
+
+.console-frame__sidebar {
+  position: absolute;
+  background: var(--surface);
+  padding: 24px;
+  overflow: hidden;
+}
+
+.console-frame__sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* the sidebar sets its mono lines tight (unitless leading, no fixed px)
+   so the full content fits the console height at short viewports */
+.console-frame__sidebar-inner .type-data-lg,
+.console-frame__sidebar-inner .ds-readout__value {
+  line-height: 1.2;
+}
+
+.console-frame__sidebar-inner .type-data,
+.console-frame__sidebar-inner .ds-readout__label,
+.console-frame__sidebar-inner .ds-readout__unit {
+  line-height: 1.2;
+}
+
+.console-frame__alert-label {
+  color: var(--alert);
+}
+
+.console-frame__log {
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* entries: absent visual until the cascade (the 240ms delay before the
+   first entry is the cascade's hold); the standard text reveal is opacity
+   plus a 12px upward translate */
+.console-frame__entry {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.console-frame__entry.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+.console-frame__entry.is-animating {
+  animation: console-entry 240ms ease-out both;
+}
+
+@keyframes console-entry {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .console-frame__entry.is-animating {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

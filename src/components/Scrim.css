@@ -1,0 +1,5 @@
+.ds-scrim {
+  display: inline-block;
+  background: var(--scrim);
+  padding: var(--space-24);
+}

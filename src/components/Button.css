@@ -1,0 +1,21 @@
+.ds-button {
+  display: inline-block;
+  padding: 14px 24px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ds-button:hover,
+.ds-button:focus-visible {
+  border-color: var(--signal);
+  outline: none;
+}

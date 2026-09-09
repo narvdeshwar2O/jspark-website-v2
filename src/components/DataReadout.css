@@ -1,0 +1,32 @@
+.ds-readout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.ds-readout__label {
+  font-family: var(--font-mono);
+  font-size: var(--size-data);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.ds-readout__value {
+  font-family: var(--font-mono);
+  font-size: var(--size-data-lg);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.ds-readout__unit {
+  font-family: var(--font-mono);
+  font-size: var(--size-data);
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.ds-readout--md .ds-readout__value {
+  font-size: var(--size-data-md);
+}

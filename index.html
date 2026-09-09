@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#05070A" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2305070A'/%3E%3Crect x='6' y='6' width='4' height='4' fill='%2362C6FF'/%3E%3C/svg%3E" />
+    <title>JSPARK AI · Intelligence is the new infrastructure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- static boot gate: paints before React mounts; LoadGate removes it -->
+    <div id="boot-gate" style="position:fixed;inset:0;z-index:1000;background:#05070A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px">
+      <div style="font-family:'Space Grotesk',system-ui,sans-serif;font-size:40px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;color:#E6EAF0;line-height:0.95">JSPARK AI</div>
+      <div style="width:240px;height:1px;background:#1C232C"></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.12em;color:#7C8794">LOADING · 0%</div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

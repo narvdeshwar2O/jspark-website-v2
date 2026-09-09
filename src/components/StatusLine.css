@@ -1,0 +1,25 @@
+.ds-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.ds-status__square {
+  width: 6px;
+  height: 6px;
+  flex: none;
+}
+
+.ds-status--ok .ds-status__square { background: var(--ok); }
+.ds-status--caution .ds-status__square { background: var(--caution); }
+.ds-status--alert .ds-status__square { background: var(--alert); }
+.ds-status--signal .ds-status__square { background: var(--signal); }
+
+.ds-status__label {
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--text);
+}
