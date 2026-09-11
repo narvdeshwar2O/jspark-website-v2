@@ -10,6 +10,45 @@
 
 html {
   color-scheme: dark;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) var(--bg);
+}
+
+/* Technical, minimal instrument scrollbar matching project theme (vertical only) */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar:horizontal {
+  display: none;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+  border-left: 1px solid var(--line);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+  border-color: var(--signal);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--signal);
+  border-color: var(--signal);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg);
+  display: none;
 }
 
 body {
@@ -21,6 +60,10 @@ body {
   line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+main {
+  overflow-x: clip;
 }
 
 ::selection {

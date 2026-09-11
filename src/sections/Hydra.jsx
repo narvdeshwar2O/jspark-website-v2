@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import Label from '../components/Label'
 import ConsoleFrame, { getPortalNode } from '../components/ConsoleFrame'
 import DataPanel from '../components/DataPanel'
 import ProgressRail from '../components/ProgressRail'
@@ -26,11 +25,20 @@ function sceneIndexAt(p) {
   return 0
 }
 
-function labelIndexAt(p) {
-  for (let i = BEATS.labels.length - 1; i >= 0; i -= 1) {
-    if (p >= BEATS.labels[i].at) return i
+// Synchronizes the indicator tick with the physical positions of the scenes
+function railProgressAt(p) {
+  const n = SCENES.length
+  if (p <= SCENES[0].from) return 0
+  if (p >= SCENES[n - 1].from) return 100
+  for (let i = 0; i < n - 1; i += 1) {
+    const cur = SCENES[i]
+    const next = SCENES[i + 1]
+    if (p >= cur.from && p < next.from) {
+      const t = (p - cur.from) / (next.from - cur.from)
+      return ((i + t) / (n - 1)) * 100
+    }
   }
-  return -1
+  return 100
 }
 
 // One continuous shot: the section pins for STAGE_SCROLL px and everything
@@ -40,9 +48,7 @@ export default function Hydra() {
   const els = useRef({})
   const reduced = useReducedMotion()
   const [sceneIdx, setSceneIdx] = useState(0)
-  const [labelIdx, setLabelIdx] = useState(-1)
   const sceneIdxRef = useRef(0)
-  const labelIdxRef = useRef(-1)
   // Scene 08 console state
   const [consoleMounted, setConsoleMounted] = useState(false)
   const [cascadeFired, setCascadeFired] = useState(cascadeLatchedThisSession)
@@ -73,16 +79,11 @@ export default function Hydra() {
     hydraProgress.set(p)
     const e = els.current
 
-    // discrete state: rail highlight, panel content, stage label text
+    // discrete state: rail highlight, panel content
     const si = sceneIndexAt(p)
     if (si !== sceneIdxRef.current) {
       sceneIdxRef.current = si
       setSceneIdx(si)
-    }
-    const li = labelIndexAt(p)
-    if (li !== labelIdxRef.current) {
-      labelIdxRef.current = li
-      setLabelIdx(li)
     }
 
     // exposure: 15% at rest to 100% by 0.08 (Scene 00). The old Scene 08
@@ -218,16 +219,6 @@ export default function Hydra() {
       outEnd: BEATS.h1Fourteen.outEnd,
     })
 
-    // stage label bottom-left, gone by the Scene 08 clean frame
-    if (li >= 0) {
-      applyReveal(e.stageLabel, p, BEATS.labels[li].at, BEATS.reveal - 0.02, {
-        reduced,
-        outEnd: BEATS.reveal,
-      })
-    } else if (e.stageLabel) {
-      gsap.set(e.stageLabel, { opacity: 0, visibility: 'hidden' })
-    }
-
     // data panel: appears at Scene 04 (slides up 16px). It no longer fades
     // out at the reveal: it migrates into the console strip instead.
     applyReveal(e.panel, p, BEATS.panelIn, Infinity, { reduced, dy: 16 })
@@ -246,16 +237,21 @@ export default function Hydra() {
       }
     }
 
-    if (e.tick) gsap.set(e.tick, { top: `${p * 100}%` })
+    if (e.tick) gsap.set(e.tick, { top: `${railProgressAt(p)}%` })
 
-    // rail: visible only while the stage is pinned; in over the first 2%,
-    // out over the last 2%. p is exactly 0 before the pin and 1 after it,
-    // so both rest states resolve to hidden.
+    // rail: slides in from right to left (x: 40 -> 0) on arrival,
+    // and disappears sliding out to the right (x: 0 -> 40) before Scene 08 reveal.
     if (e.rail) {
       const tIn = easePower1Out(clamp01(p / BEATS.rail.fadeIn))
-      const tOut = clamp01((p - BEATS.rail.outStart) / (1 - BEATS.rail.outStart))
-      const opacity = reduced ? (p > 0 && p < 1 ? 1 : 0) : Math.min(tIn, 1 - tOut)
-      gsap.set(e.rail, { opacity, visibility: opacity > 0.001 ? 'visible' : 'hidden' })
+      const outSpan = BEATS.rail.outEnd - BEATS.rail.outStart
+      const tOut = clamp01((p - BEATS.rail.outStart) / outSpan)
+      const opacity = reduced ? (p > 0 && p < BEATS.rail.outEnd ? 1 : 0) : Math.min(tIn, 1 - tOut)
+      const x = reduced ? 0 : (1 - tIn) * 40 + tOut * 40
+      gsap.set(e.rail, {
+        opacity,
+        x,
+        visibility: opacity > 0.001 ? 'visible' : 'hidden',
+      })
     }
   }
 
@@ -494,12 +490,6 @@ export default function Hydra() {
       {consoleMounted && <ConsoleFrame cascadeFired={cascadeFired} still={still} hoursToPeak={hoursToPeak} onReleaseChange={onConsoleRelease} />}
 
       <ProgressRail activeIndex={sceneIdx} tickRef={registerEl('tick')} rootRef={registerEl('rail')} />
-
-      <div className="hydra__label" ref={registerEl('stageLabel')}>
-        <Scrim>
-          <Label>{labelIdx >= 0 ? BEATS.labels[labelIdx].text : BEATS.labels[0].text}</Label>
-        </Scrim>
-      </div>
 
       <div className="hydra__beat">
         <div ref={registerEl('h1Rainfall')} data-beat="h1-rainfall">

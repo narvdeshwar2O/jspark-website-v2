@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import Label from '../components/Label'
 import { hydraProgress } from '../animations/hydraProgress'
 import { gsap } from '../animations/scrollSetup'
 import { clamp01 } from '../animations/reveal'
@@ -33,15 +32,6 @@ export default function Hero() {
             <hr className="rule hero__rule" />
           </div>
           <p className="type-h2 hero__tagline">Intelligence is the new infrastructure.</p>
-        </div>
-
-        <div className="hero__corner hero__corner--left">
-          <Label>01 / OBSERVE</Label>
-        </div>
-        <div className="hero__cue" />
-        <div className="hero__corner hero__corner--right">
-          {/* [confirm] draft coordinates per SCENES.md */}
-          <span className="type-micro text-muted">28.5°N 77.4°E · NOIDA</span>
         </div>
       </div>
     </section>

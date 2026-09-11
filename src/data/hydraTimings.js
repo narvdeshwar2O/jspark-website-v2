@@ -21,7 +21,7 @@ export const SCENES = [
 ]
 
 export const BEATS = {
-  rail: { fadeIn: 0.02, outStart: 0.98 }, // visible only while the stage is pinned
+  rail: { fadeIn: 0.02, outStart: 0.93, outEnd: 0.95 }, // visible during scenes 01-07; slides/fades out before Scene 08 console reveal
   heroFadeEnd: 0.08, // Scene 01: hero fades by 0.08
   exposureRampEnd: 0.08, // Scene 00 transition: exposure 15% to 100%
   labels: [

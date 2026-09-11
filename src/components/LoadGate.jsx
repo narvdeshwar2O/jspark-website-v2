@@ -33,8 +33,15 @@ export default function LoadGate() {
     } else {
       loadProgress.report('fonts', 1)
     }
+
+    // Safety fallback: maximum 2.0s cap so the user is never stuck by external network delays
+    const safetyReleaseTimer = setTimeout(() => {
+      loadProgress.finishAll()
+    }, 2000)
+
     const unsubscribe = loadProgress.subscribe(setState)
     return () => {
+      clearTimeout(safetyReleaseTimer)
       unsubscribe()
       window.removeEventListener('scroll', snapBack)
       document.documentElement.classList.remove('is-gated')

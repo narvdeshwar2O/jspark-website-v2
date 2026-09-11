@@ -115,6 +115,14 @@ export async function createSatellite(viewer, terrainProvider, getExaggeration, 
   const entryAnchor = anchorFor(ENTRY_SCREEN.x, ENTRY_SCREEN.y)
   const positionAt = (enterT) => Cesium.Cartesian3.lerp(entryAnchor, restAnchor, enterT, new Cesium.Cartesian3())
 
+  // Start downloading the satellite model immediately in parallel with terrain
+  const modelPromise = Cesium.Model.fromGltfAsync({
+    url: SATELLITE_MODEL,
+    show: false,
+    enableVerticalExaggeration: false, // it is not on the terrain; keep its true altitude
+    allowPicking: false,
+  })
+
   // sweep path across the catchment, mouth to head, with true ground
   // heights sampled once along it (exaggeration applied per frame)
   const path = []
@@ -122,8 +130,19 @@ export async function createSatellite(viewer, terrainProvider, getExaggeration, 
     const t = i / (PATH_SAMPLES - 1)
     path.push(Cesium.Cartographic.fromDegrees(lerp(CATCHMENT.mouth.lon, CATCHMENT.head.lon, t), lerp(CATCHMENT.mouth.lat, CATCHMENT.head.lat, t)))
   }
-  await Cesium.sampleTerrainMostDetailed(terrainProvider, path)
+
+  try {
+    if (terrainProvider) {
+      await Promise.race([
+        Cesium.sampleTerrainMostDetailed(terrainProvider, path),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('terrain timeout')), 3000)),
+      ])
+    }
+  } catch (err) {
+    console.warn('Satellite path terrain sampling fallback used', err)
+  }
   if (viewer.isDestroyed()) return null
+
   const footprintAt = (s) => {
     const f = s * (PATH_SAMPLES - 1)
     const i = Math.min(PATH_SAMPLES - 2, Math.floor(f))
@@ -135,16 +154,13 @@ export async function createSatellite(viewer, terrainProvider, getExaggeration, 
     }
   }
 
-  // model
-  const model = await Cesium.Model.fromGltfAsync({
-    url: SATELLITE_MODEL,
-    show: false,
-    enableVerticalExaggeration: false, // it is not on the terrain; keep its true altitude
-    allowPicking: false,
-  })
+  // Await model and add to scene primitives immediately
+  const model = await modelPromise
   if (viewer.isDestroyed()) return null
   scene.primitives.add(model)
+  scene.requestRender()
   await modelReady(model)
+  scene.requestRender()
   if (viewer.isDestroyed()) return null
   const hasAnimations = playAnimations(model)
 
@@ -336,12 +352,17 @@ export async function createSatellite(viewer, terrainProvider, getExaggeration, 
     setConeAlpha(alpha)
   }
 
-  // idle loop: the glTF's own animations advance with the clock; a mesh
-  // without animations gets a slow yaw instead
+  // idle loop: slow yaw rotation without heavy SVG re-projections on idle frames
   const tick = (dtSeconds) => {
     if (hasAnimations || !model.show) return
     idleYaw += (2 * Math.PI * dtSeconds) / SATELLITE_IDLE_YAW_SECONDS
-    if (lastP >= 0) update(lastP)
+    const heading = Cesium.Math.toRadians(SATELLITE_HEADING) + idleYaw
+    const position = positionAt(1)
+    const matrix = Cesium.Transforms.headingPitchRollToFixedFrame(
+      position,
+      new Cesium.HeadingPitchRoll(heading, 0, 0),
+    )
+    model.modelMatrix = Cesium.Matrix4.multiplyByUniformScale(matrix, scale, matrix)
   }
 
   // visual width estimate at the current camera (sphere diameter / 1.4)

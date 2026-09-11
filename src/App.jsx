@@ -1,4 +1,5 @@
 import LoadGate from './components/LoadGate'
+import Header from './components/Header'
 import { CONSOLE_HOLD } from './data/hydraTimings'
 import Hero from './sections/Hero'
 import Hydra from './sections/Hydra'
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <main>
       <LoadGate />
+      <Header />
       <Hero />
       <Hydra />
       {/* flow spacer covering the console layer's fixed hold past the

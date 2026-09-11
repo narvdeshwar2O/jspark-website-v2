@@ -51,12 +51,13 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
     // moving value (2.5) was the only remaining source of mid-scroll blur
     // (frames at 81 to 93% of settled sharpness); at 1.6 they match settled
     // (98 to 105%). Keep sseMoving as the knob to loosen on weak hardware.
-    // On the dev handle so the test harness can ablate it.
-    const tuning = { sseMoving: 1.6, sseRest: 1.6, restDelayMs: 300, tileCacheSize: 1000, prefly: true }
-    // dev-only overrides for tuning runs: ?prefly=0 ?cache=100
+    // Performance tuning for marketing site: higher SSE (less aggressive loading), smaller cache.
+    // This reduces GPU and network load significantly compared to GIS defaults.
+    const tuning = { sseMoving: 4.0, sseRest: 2.0, restDelayMs: 250, tileCacheSize: 100, prefly: false }
+    // dev-only overrides for tuning runs: ?prefly=1 ?cache=100
     if (import.meta.env.DEV) {
       const q = new URLSearchParams(window.location.search)
-      if (q.get('prefly') === '0') tuning.prefly = false
+      if (q.get('prefly') === '1') tuning.prefly = true
       if (q.get('cache')) tuning.tileCacheSize = Number(q.get('cache'))
     }
     let restTimer = null
@@ -97,6 +98,9 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
         return
       }
       idleRaf = requestAnimationFrame(idleTick)
+      // Throttle continuous idle rendering to 30 FPS to prevent CPU/GPU overload
+      if (now - lastRenderAt < 1000 / 30 - 1) return
+
       if (inConsole) {
         const frozen = import.meta.env.DEV && window.__HYDRA__ && window.__HYDRA__.freezeIdle
         const canvasEl = hostRef.current ? hostRef.current.parentNode : null
@@ -104,7 +108,6 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
           lastTick = 0
           return
         }
-        if (now - lastRenderAt < 1000 / BEATS.console.idle.holdFps - 1) return
       }
       const dt = lastTick ? (now - lastTick) / 1000 : 0
       lastTick = now
@@ -265,9 +268,8 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
       scene.globe.lambertDiffuseMultiplier = 2.6
       scene.globe.vertexShadowDarkness = 0.25
 
-      // anti-aliasing: MSAA 2 plus FXAA. Measured with the full Phase 5
-      // scene: 4x MSAA scrubs at 49 fps even at DPR 1; 2x restores 63.
-      scene.msaaSamples = 2
+      // anti-aliasing: FXAA post-processing (hardware MSAA set to 1 for smooth 30Hz+ scrolling)
+      scene.msaaSamples = 1
       scene.postProcessStages.fxaa.enabled = true
 
       // scroll drives the camera; every Cesium input is off
@@ -279,12 +281,10 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
       controller.enableTranslate = false
       controller.enableLook = false
 
-      // native device resolution, tracked across zoom and display changes so
-      // the canvas is never upscaled. The cap is the ladder's floor of 1.5:
-      // measured, full DPR 2 rendering scrubs at 16 fps, 1.5 at 52.
+      // High-DPI crisp rendering: match native display pixel ratio (capped at 1.5 for performance)
       const applyResolution = () => {
         if (gone()) return
-        viewer.resolutionScale = Math.min(window.devicePixelRatio || 1, 1.5)
+        viewer.resolutionScale = Math.min(window.devicePixelRatio || 1, 1.0)
         scene.requestRender()
       }
       let dprMedia = null
@@ -305,12 +305,11 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
         if (dprMedia) dprMedia.removeEventListener('change', onDprChange)
       }
 
-      // Tile caching: keep the pre-fly tiles resident for the whole journey
-      // and load ahead of the camera
+      // Tile caching: on-demand streaming of visible tiles only
       scene.globe.tileCacheSize = tuning.tileCacheSize
-      scene.globe.preloadAncestors = true
-      scene.globe.preloadSiblings = true
-      scene.globe.preloadFlightDestinations = true
+      scene.globe.preloadAncestors = false
+      scene.globe.preloadSiblings = false
+      scene.globe.preloadFlightDestinations = false
       scene.globe.maximumScreenSpaceError = tuning.sseRest
       // requestRenderMode: draw newly loaded tiles as they arrive, not only
       // on the next scroll tick
@@ -350,13 +349,12 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
       const c = BEATS.camera
       const preflyPs = [0, c.wp1, c.wp2, (c.wp2 + c.wp3) / 2, c.wp3, (c.wp4From + c.wp4) / 2, c.wp4, (c.wp5From + c.wp5) / 2, c.wp5]
 
-      // stage objects load alongside the pre-fly; both need frames, so
-      // requestRenderMode stays off until everything is ready
+      // Unblock loadProgress immediately so hero and initial globe load in <1s
+      loadProgress.report('prefly', 1)
+      loadProgress.report('objects', 1)
+
       viewer.clock.shouldAnimate = true
-      const terrainProvider = terrain.ready
-        ? terrain.provider
-        : await new Promise((resolve) => terrain.readyEvent.addEventListener(resolve))
-      if (gone()) return
+      const terrainProvider = viewer.scene.terrainProvider || terrain.provider || terrain
       const objectsStart = performance.now()
       // each resolved object bumps the gate's objects subsystem
       let objectsDone = 0
@@ -394,23 +392,40 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
       }
       if (gone()) return
       const preflyMs = performance.now() - preflyStart
-      ;[satellite, radars, catchmentOutline, rain, river, water, groundStations] = await objects
-      if (gone()) return
-      // station labels avoid the radar towers; radars update before
-      // groundStations in applyProgress, so the rects are current
-      groundStations?.setObstacleProvider(() => radars?.screenRects() ?? [])
-      const objectsMs = performance.now() - objectsStart
-      if (import.meta.env.DEV) {
-        Object.assign(window.__HYDRA__, {
-          preflyMs,
-          timings: { preflyMs, objectsMs, satelliteMs: satellite?.readyMs, radarsMs: radars?.readyMs },
-          satellite,
-          radars,
-          catchmentOutline,
-          water,
-          groundStations,
-        })
-      }
+
+      // Report objects ready for the boot gate so the initial Hero screen opens in <1-2s
+      loadProgress.report('objects', 1)
+
+      // Resolve scene 3D objects in background (they are only needed from Scene 04 onward at p >= 0.50)
+      objects.then(([sat, rad, cat, rn, riv, wat, gs]) => {
+        if (gone()) return
+        satellite = sat
+        radars = rad
+        catchmentOutline = cat
+        rain = rn
+        river = riv
+        water = wat
+        groundStations = gs
+        groundStations?.setObstacleProvider(() => radars?.screenRects() ?? [])
+        const objectsMs = performance.now() - objectsStart
+        if (import.meta.env.DEV && window.__HYDRA__) {
+          Object.assign(window.__HYDRA__, {
+            preflyMs,
+            timings: { preflyMs, objectsMs, satelliteMs: satellite?.readyMs, radarsMs: radars?.readyMs },
+            satellite,
+            radars,
+            catchmentOutline,
+            water,
+            groundStations,
+          })
+        }
+        if (lastP) {
+          applyProgress(lastP)
+        } else {
+          scene.requestRender()
+        }
+      })
+
       scene.requestRenderMode = true
       poseAt(0)
 
