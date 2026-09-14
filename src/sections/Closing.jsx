@@ -1,5 +1,5 @@
-import Button from '../components/Button'
-import './sections.css'
+import Button from '../shared/ui/Button'
+import '..\shared\design\sections.css'
 
 export default function Closing() {
   return (

@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './design/tokens.css'
-import './design/base.css'
+import './shared/design/tokens.css'
+import './shared/design/base.css'
+import './shared/design/tailwind.css'
 import App from './App.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

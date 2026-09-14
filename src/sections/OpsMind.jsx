@@ -1,9 +1,9 @@
 import { useRef } from 'react'
-import Label from '../components/Label'
-import Button from '../components/Button'
-import useReducedMotion from '../animations/useReducedMotion'
-import useRevealOnEnter from '../animations/useRevealOnEnter'
-import './sections.css'
+import Label from '../shared/ui/Label'
+import Button from '../shared/ui/Button'
+import useReducedMotion from '../shared/hooks/useReducedMotion'
+import useRevealOnEnter from '../shared/hooks/useRevealOnEnter'
+import '..\shared\design\sections.css'
 
 export default function OpsMind() {
   const sectionRef = useRef(null)
