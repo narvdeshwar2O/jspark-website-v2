@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
-    <footer id="site-footer" className="relative w-full min-h-screen bg-[#000000] border-t border-zinc-900 font-sans flex flex-col overflow-hidden">
+    <footer id="site-footer" className="relative w-full min-h-[100dvh] md:h-[100dvh] bg-[#000000] border-t border-zinc-900 font-sans flex flex-col overflow-hidden">
 
       {/* Top content */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 pt-20 pb-12 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -102,12 +102,11 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Massive brand name — fills width */}
-      <div className="flex-1 flex flex-col justify-end overflow-hidden select-none">
+      {/* Massive brand name - fills width securely without cropping */}
+      <div className="flex-1 flex flex-col justify-end overflow-hidden select-none pb-4 sm:pb-8">
         <p
-          className="font-black uppercase leading-none= hover:text-white transition-colors duration-700 w-full px-2 whitespace-nowrap cursor-default text-center"
-          style={{ fontSize: "clamp(4rem, 18vw, 22rem)" }}>
-
+          className="font-black uppercase leading-none hover:text-white transition-colors duration-700 w-full px-2 whitespace-nowrap cursor-default text-center"
+          style={{ fontSize: "clamp(4rem, min(18vw, 28dvh), 22rem)" }}>
           JSPARK AI
         </p>
       </div>
