@@ -1,6 +1,6 @@
-import { ProductsHero } from '../features/marketing/components/ProductsHero'
-import { ProductsCTA } from '../features/marketing/components/ProductsCTA'
-import { ProductPanels } from '../features/marketing/components/ProductPanels'
+import { ProductsHero } from '../features/marketing/components/Products/ProductsHero'
+import { ProductsCTA } from '../features/marketing/components/Products/ProductsCTA'
+import { ProductPanels } from '../features/marketing/components/Products/ProductPanels'
 
 export default function Products() {
   return (

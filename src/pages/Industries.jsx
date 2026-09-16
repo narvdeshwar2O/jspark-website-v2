@@ -1,6 +1,6 @@
-import { IndustriesHero } from '../features/marketing/components/IndustriesHero'
-import { IndustriesCTA } from '../features/marketing/components/IndustriesCTA'
-import { IndustryBlock } from '../features/marketing/components/IndustryBlock'
+import { IndustriesHero } from '../features/marketing/components/Industries/IndustriesHero'
+import { IndustriesCTA } from '../features/marketing/components/Industries/IndustriesCTA'
+import { IndustryBlock } from '../features/marketing/components/Industries/IndustryBlock'
 
 const industryData = [
   {
