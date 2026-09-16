@@ -95,7 +95,7 @@ export function NumbersSection() {
     <section className="relative w-full bg-[#000000] py-32 border-t border-zinc-900 overflow-hidden">
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+      <div className="max-w-[1500px] mx-auto px-6 md:px-12 lg:px-24 relative z-10">
 
         <div className="mb-20 flex flex-col items-center text-center">
           <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center justify-center gap-3">
@@ -103,7 +103,7 @@ export function NumbersSection() {
             PROVEN AT SCALE
             <span className="w-8 h-[1px] bg-[#FF5722]"></span>
           </p>
-          <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase">
+          <h3 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase leading-[1.1]">
             Numbers That Run on <span className="text-zinc-600">JSPARK AI</span>
           </h3>
         </div>

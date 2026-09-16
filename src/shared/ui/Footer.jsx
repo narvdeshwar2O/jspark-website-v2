@@ -105,7 +105,7 @@ export function Footer() {
       {/* Massive brand name — fills width */}
       <div className="flex-1 flex flex-col justify-end overflow-hidden select-none">
         <p
-          className="font-black uppercase leading-none= hover:text-white transition-colors duration-700 w-full px-2 whitespace-nowrap cursor-default"
+          className="font-black uppercase leading-none= hover:text-white transition-colors duration-700 w-full px-2 whitespace-nowrap cursor-default text-center"
           style={{ fontSize: "clamp(4rem, 18vw, 22rem)" }}>
 
           JSPARK AI

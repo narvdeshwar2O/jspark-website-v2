@@ -64,32 +64,52 @@ export function consoleRect(vw, vh, typeVw = vw) {
   const frameY = m.top + aboveH + m.gapAbove
   const innerW = rowW - 2
   const innerH = frameH - 2
-  const statusW = Math.round(innerW * 0.28)
-  const mapW = innerW - statusW - 1
-  const mapH = innerH - titleH - stripH
+  
+  const isStacked = vw < 900
+  let mapW, mapH, statusW, statusH, statusX, statusY, stripW
+
+  if (isStacked) {
+    statusW = innerW
+    statusX = rowX + 1
+    mapW = innerW
+    mapH = Math.round((innerH - titleH - stripH) * 0.55) // Map gets 55% of visual area
+    stripW = innerW
+    statusY = frameY + 1 + titleH + mapH + stripH + 1
+    statusH = innerH - titleH - mapH - stripH - 1
+  } else {
+    const minStatusW = 200
+    statusW = Math.max(Math.round(innerW * 0.28), Math.min(minStatusW, innerW * 0.45))
+    statusX = rowX + 1 + innerW - statusW
+    mapW = innerW - statusW - 1
+    mapH = innerH - titleH - stripH
+    stripW = mapW
+    statusY = frameY + 1 + titleH
+    statusH = innerH - titleH
+  }
 
   return {
     vw,
     vh,
     short,
+    isStacked,
     rowX,
     rowW,
     frameX: rowX,
     frameY,
     frameW: rowW,
     frameH,
-    // map slot in page coordinates; the shrink target (Hydra reads x, y +
-    // titleH, w, h)
     x: rowX + 1,
     y: frameY + 1,
     w: mapW,
     h: mapH,
     titleH,
     stripH,
+    stripW,
     blockH: frameH,
-    statusX: rowX + 1 + mapW + 1,
+    statusX,
+    statusY,
     statusW,
-    statusH: innerH - titleH,
+    statusH,
     top: m.top,
     gapAbove: m.gapAbove,
     gapBelow: m.gapBelow,

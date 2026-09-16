@@ -33,7 +33,7 @@ export function IntelligenceInfrastructure() {
 
   return (
     <section className="relative w-full bg-[#050505] py-32 border-t border-zinc-900 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+      <div className="max-w-[1500px] mx-auto px-6 md:px-12 lg:px-24">
         
         <motion.div
           className="max-w-4xl mb-24"
@@ -42,7 +42,7 @@ export function IntelligenceInfrastructure() {
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
           
-          <motion.h2 variants={fadeUpItem} className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-8">
+          <motion.h2 variants={fadeUpItem} className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-8 leading-[1.1]">
             Intelligence Is the New Infrastructure
           </motion.h2>
           <motion.p variants={fadeUpItem} className="text-zinc-400 text-base md:text-lg leading-relaxed md:leading-loose">

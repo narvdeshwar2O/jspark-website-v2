@@ -31,7 +31,7 @@ export function ClosingCTA() {
             <span className="w-8 h-[1px] bg-[#FF5722]"></span>
           </motion.p>
 
-          <motion.h2 variants={item} className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-8 leading-tight">
+          <motion.h2 variants={item} className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-8 leading-[1.1]">
             Your Data. Your Walls.<br />
             <span className="text-[#FF5722]">Your Intelligence.</span>
           </motion.h2>

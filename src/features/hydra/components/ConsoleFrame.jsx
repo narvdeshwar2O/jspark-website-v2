@@ -185,10 +185,28 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
           <span className="type-label console-frame__title">HYDRA · ALAKNANDA BASIN · LIVE</span>
           <span className="console-frame__live" />
         </div>
-        <div className="console-frame__divider" style={{ left: rect.statusX - 1, top: slotY, height: rect.statusH }} />
-        <div className="console-frame__strip" style={{ left: rect.x, top: stripY, width: rect.w, height: rect.stripH }}>
-          <div className="type-data console-frame__striprow" ref={registerEl('stripRow')}>
-            RIVER LEVEL 4.2 m · HOURS TO PEAK {hoursToPeak} · FLASH FLOOD WARNING
+        
+        {rect.isStacked ? (
+          <div className="console-frame__divider" style={{ left: rect.x, top: rect.statusY - 1, width: rect.frameW - 2, height: 1 }} />
+        ) : (
+          <div className="console-frame__divider" style={{ left: rect.statusX - 1, top: slotY, width: 1, height: rect.statusH }} />
+        )}
+
+        <div className="console-frame__strip" style={{ left: rect.x, top: stripY, width: rect.stripW, height: rect.stripH }}>
+          <div className="type-data console-frame__striprow flex items-center justify-between w-full h-full gap-4" ref={registerEl('stripRow')}>
+            <div className="flex items-center gap-3 overflow-hidden">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722] shadow-[0_0_8px_#FF5722] animate-pulse shrink-0"></span>
+              <span className="text-zinc-400 font-mono tracking-widest text-[10px] sm:text-xs truncate">
+                RIVER LEVEL <span className="text-white font-bold">4.2 m</span>
+              </span>
+              <span className="text-zinc-600 shrink-0">/</span>
+              <span className="text-zinc-400 font-mono tracking-widest text-[10px] sm:text-xs truncate">
+                HOURS TO PEAK <span className="text-white font-bold">{hoursToPeak}</span>
+              </span>
+            </div>
+            <div className="hidden sm:block text-[#FF5722] font-bold text-[10px] tracking-[0.2em] shrink-0">
+               FLASH FLOOD WARNING
+            </div>
           </div>
         </div>
 
@@ -223,16 +241,23 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
       {sidebarMounted && (
         <aside
           className={`console-frame__sidebar${animate ? ' is-animating' : ''}`}
-          style={{ left: rect.statusX, top: slotY, width: rect.statusW, height: rect.statusH }}
+          style={{ left: rect.statusX, top: rect.statusY, width: rect.statusW, height: rect.statusH }}
         >
           <div className="console-frame__sidebar-inner" style={{ height: '100%' }}>
-            <div className={entryClass(0)} style={entryStyle(0)}>
-              <span className="type-label console-frame__alert-label">FLASH FLOOD WARNING</span>
-              <div className="type-data-lg">OpsUnity Hydra</div>
-              <div className="type-data text-muted">PEAK IN 12 h · 04:20 IST</div>
+            <div className={`${entryClass(0)} relative p-4 mb-2 bg-gradient-to-br from-[#FF5722]/10 to-transparent border border-[#FF5722]/20 rounded-lg`} style={entryStyle(0)}>
+              {/* Tactical Corners */}
+              <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#FF5722]"></div>
+              <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#FF5722]"></div>
+              
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-1.5 h-1.5 bg-[#FF5722] rounded-full shadow-[0_0_8px_#FF5722] animate-pulse shrink-0"></div>
+                <span className="text-[#FF5722] font-mono text-[10px] tracking-widest font-bold">FLASH FLOOD WARNING</span>
+              </div>
+              <div className="text-2xl lg:text-3xl font-black tracking-tighter text-white mb-1 leading-none">OpsUnity Hydra</div>
+              <div className="text-zinc-400 font-mono text-[11px] tracking-widest uppercase mt-2">PEAK IN 12 h · 04:20 IST</div>
             </div>
-            <hr className="rule" />
-            <div className="console-frame__figures">
+            <hr className="rule" style={{ borderColor: 'rgba(255,87,34,0.1)' }} />
+            <div className="console-frame__figures mt-2 mb-2">
               {FIGURES.map((figure, i) => (
                 <div key={figure.label} className={entryClass(1 + i)} style={entryStyle(1 + i)}>
                   <DataReadout size="md" label={figure.label} value={figure.value} unit={figure.unit} />

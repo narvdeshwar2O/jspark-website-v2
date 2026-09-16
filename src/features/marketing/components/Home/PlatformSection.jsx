@@ -41,9 +41,9 @@ export function PlatformSection() {
     <section className="relative w-full bg-[#000000] py-32 border-t border-zinc-900 overflow-hidden">
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+      <div className="max-w-[1500px] mx-auto px-6 md:px-12 lg:px-24 relative z-10">
         <div className="mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-6 uppercase">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-6 uppercase leading-[1.1]">
             One Platform. <br className="hidden md:block" />
             <span className="text-[#FF5722]">Every Mission.</span>
           </h2>
@@ -66,7 +66,7 @@ export function PlatformSection() {
               <span className="w-8 h-[1px] bg-[#FF5722]"></span>
               FOUNDATION AI model
             </p>
-            <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6">OpsUnity AI</h3>
+            <h3 className="text-3xl md:text-6xl font-black tracking-tighter text-white mb-6">OpsUnity AI</h3>
             <p className="text-zinc-300 text-sm md:text-xl leading-relaxed max-w-3xl mb-4">
               The sovereign foundation. Agent swarms, quant engines, mathematical models, and language models with no token limits and no external calls. Every JSPARK product runs on it.
             </p>

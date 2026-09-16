@@ -45,14 +45,14 @@ export function DeployedSection() {
 
   return (
     <section className="relative w-full bg-[#050505] py-32 border-t border-zinc-900 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+      <div className="max-w-[1500px] mx-auto px-6 md:px-12 lg:px-24">
 
         <div className="mb-20">
           <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3">
             <span className="w-8 h-[1px] bg-[#FF5722]"></span>
             DEPLOYED WHERE FAILURE IS NOT AN OPTION
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase leading-[1.1]">
             Two of the World&apos;s <br className="hidden md:block" />
             Largest Systems.
           </h2>
@@ -69,7 +69,7 @@ export function DeployedSection() {
           <motion.div
             key={c.id}
             variants={item}
-            className="flex-1 relative bg-gradient-to-br from-zinc-900/50 to-zinc-950/50 rounded-2xl md:rounded-3xl p-10 md:p-14 flex flex-col justify-between group overflow-hidden min-w-0 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-700 shadow-2xl backdrop-blur-md">
+            className="flex-1 relative bg-gradient-to-br from-zinc-900/50 to-zinc-950/50 rounded-2xl md:rounded-3xl p-6 md:p-14 flex flex-col justify-between group overflow-hidden min-w-0 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-700 shadow-2xl backdrop-blur-md">
 
               {/* Sophisticated Hover Glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#FF5722]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
@@ -97,7 +97,7 @@ export function DeployedSection() {
                 </p>
 
                 {/* Modern Stats Grid */}
-                <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                   {c.stats.map((s, i) =>
                     <div key={i} className="rounded-xl bg-[#050505]/40 border border-zinc-800/60 hover:border-zinc-700 p-5 transition-colors group/stat relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-t from-[#FF5722]/5 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300"></div>

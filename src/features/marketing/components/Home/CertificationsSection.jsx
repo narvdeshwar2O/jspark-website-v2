@@ -23,7 +23,7 @@ export function CertificationsSection() {
 
   return (
     <section className="relative w-full bg-[#000000] py-32 border-t border-zinc-900 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+      <div className="max-w-[1500px] mx-auto px-6 md:px-12 lg:px-24">
 
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
           <div>
@@ -31,7 +31,7 @@ export function CertificationsSection() {
               <span className="w-8 h-[1px] bg-[#FF5722]"></span>
               CERTIFIED FOR THE WORLD
             </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase leading-[1.1]">
               Built in India.
             </h2>
           </div>
