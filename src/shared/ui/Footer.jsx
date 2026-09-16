@@ -58,8 +58,7 @@ export function Footer() {
         {/* Contact */}
         <div className="flex flex-col gap-4">
           <p className="text-zinc-600 text-[9px] font-mono tracking-[0.3em] uppercase mb-2">Contact</p>
-          <Link to="tel:+919036126301" className="text-zinc-400 hover:text-white text-sm transition-colors font-mono">+91 9036126301</Link>
-          <Link to="mailto:harish@jspark.in" className="text-zinc-400 hover:text-white text-sm transition-colors font-mono">harish@jspark.in</Link>
+          <Link to="mailto:sales@jspark.in" className="text-zinc-400 hover:text-white text-sm transition-colors font-mono">sales@jspark.in</Link>
           <Link to="https://jspark.ai" className="text-zinc-400 hover:text-white text-sm transition-colors font-mono">jspark.ai</Link>
           <p className="text-zinc-600 text-xs leading-relaxed pt-2">
             A1, F-102, Sector 59<br />
@@ -87,7 +86,7 @@ export function Footer() {
         <p
           className="font-black uppercase leading-none text-zinc-900 hover:text-white transition-colors duration-700 w-full px-2 whitespace-nowrap cursor-default"
           style={{ fontSize: "clamp(4rem, 18vw, 22rem)" }}>
-          
+
           JSPARK AI
         </p>
       </div>

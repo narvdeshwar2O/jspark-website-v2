@@ -23,13 +23,13 @@ export function ContactLayout() {
     <section className="relative w-full bg-[#050505] py-24">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
         <motion.div className="grid grid-cols-1 lg:grid-cols-12 gap-16" variants={container} initial="hidden" whileInView="show" viewport={{ once: true }}>
-          
+
           {/* Left Col: Form */}
           <div className="lg:col-span-7">
             <motion.div variants={item} className="bg-[#000000] border border-zinc-800 p-8 md:p-12 relative">
               <div className="absolute top-0 left-0 w-full h-[2px] bg-[#FF5722]"></div>
               <h2 className="text-3xl font-black text-white mb-8">Request a Demonstration</h2>
-              
+
               <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
@@ -85,8 +85,7 @@ export function ContactLayout() {
             <motion.div variants={item}>
               <h3 className="text-white font-black text-xl mb-6">Contact Us</h3>
               <div className="flex flex-col gap-4 font-mono text-sm">
-                <a href="tel:+919036126301" className="text-zinc-400 hover:text-[#FF5722] transition-colors">+91 9036126301</a>
-                <a href="mailto:harish@jspark.in" className="text-zinc-400 hover:text-[#FF5722] transition-colors">harish@jspark.in</a>
+                <a href="mailto:sales@jspark.in" className="text-zinc-400 hover:text-[#FF5722] transition-colors">sales@jspark.in</a>
                 <a href="https://jspark.ai" className="text-zinc-400 hover:text-[#FF5722] transition-colors">jspark.ai</a>
                 <div className="text-zinc-500 text-xs mt-2 leading-relaxed">
                   JSPARK AI Private Limited<br />

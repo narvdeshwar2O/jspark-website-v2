@@ -39,7 +39,7 @@ export function Navbar() {
         </div>
 
         {/* Center: Links */}
-        <nav className="hidden md:flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400">
+        <nav className="hidden md:flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-200">
           {[
           { href: "/about", label: "ABOUT" },
           { href: "/products", label: "PRODUCTS" },
@@ -53,8 +53,8 @@ export function Navbar() {
                 to={link.href}
                 className={`px-3 py-1.5 transition-colors border ${
                 isActive ?
-                "text-white bg-zinc-900 border-zinc-800" :
-                "text-zinc-400 border-transparent hover:text-white hover:bg-zinc-900 hover:border-zinc-800"}`
+                "text-white bg-zinc-800 border-zinc-700" :
+                "text-zinc-200 border-transparent hover:text-white hover:bg-zinc-800 hover:border-zinc-700"}`
                 }>
 
                 {link.label}
@@ -67,13 +67,7 @@ export function Navbar() {
         <div className="flex items-center gap-6">
           <Link
             to="/contact"
-            className="hidden md:block text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-400 hover:text-white transition-colors">
-
-            CONTACT
-          </Link>
-          <Link
-            to="/contact"
-            className="relative group flex items-center justify-center px-5 py-2.5 bg-[#FF5722]/10 text-white hover:bg-[#FF5722]/20 transition-colors duration-300">
+            className="relative group flex items-center justify-center px-8 py-2.5 bg-[#FF5722]/10 text-white hover:bg-[#FF5722]/20 transition-colors duration-300">
 
             {/* Horizontal Borders */}
             <div className="absolute top-0 left-0 right-0 h-[1px] bg-[#FF5722]/60"></div>
@@ -86,7 +80,7 @@ export function Navbar() {
             <div className="absolute bottom-0 right-0 w-[1px] h-1.5 bg-[#FF5722]/60"></div>
 
             <span className="relative z-10 text-[10px] font-bold tracking-[0.15em] uppercase">
-              SCHEDULE A DEMONSTRATION
+              CONTACT
             </span>
           </Link>
         </div>

@@ -6,6 +6,7 @@ const cases = [
 {
   id: "01",
   client: "Uttar Pradesh 112",
+  logo: "/assets/up112-logo.png",
   headline: "Emergency Response That Predicts, Not Reacts",
   tag: "HOMELAND SECURITY",
   stats: [
@@ -15,11 +16,11 @@ const cases = [
   { value: "75%", label: "Ops overhead down" }],
 
   body: "UP 112 is the world's largest emergency response system: 75 districts, 24 crore citizens, thousands of Police Response Vehicles. OpsVision placed response vehicles before the call came in and corrected every misrouted call at intake.",
-  link: "#up-112"
 },
 {
   id: "02",
   client: "National Crime Records Bureau",
+  logo: "/assets/ncrb-logo.png",
   headline: "From 10 Hours to 5 Seconds",
   tag: "CRIME INTELLIGENCE",
   stats: [
@@ -29,7 +30,6 @@ const cases = [
   { value: "3,850", label: "Operators self-served" }],
 
   body: "The world's largest crime database. A status report took 8–10 hours to generate. OpsVision sits inside NAFIS as the single national dashboard — every fingerprint transaction, filterable to any state, district, and date range. Answered on demand.",
-  link: "#ncrb"
 }];
 
 
@@ -59,61 +59,56 @@ export function DeployedSection() {
         </div>
 
         <motion.div
-          className="flex flex-col lg:flex-row gap-[1px] bg-zinc-800/30"
+          className="flex flex-col lg:flex-row gap-8 lg:gap-12"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           {cases.map((c) =>
           <motion.div
             key={c.id}
             variants={item}
-            className="flex-1 relative bg-[#050505] p-10 md:p-14 flex flex-col justify-between group overflow-hidden min-w-0 border border-zinc-800/50 hover:border-[#FF5722]/20 transition-colors duration-500">
-            
-              {/* Scanline */}
-              <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[600px] transition-all duration-[1.2s] ease-out z-0"></div>
+            className="flex-1 relative bg-gradient-to-br from-zinc-900/50 to-zinc-950/50 rounded-2xl md:rounded-3xl p-10 md:p-14 flex flex-col justify-between group overflow-hidden min-w-0 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-700 shadow-2xl backdrop-blur-md">
 
-              {/* Corner brackets */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-zinc-800 group-hover:border-[#FF5722] transition-colors duration-500"></div>
-              <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-zinc-800 group-hover:border-[#FF5722] transition-colors duration-500"></div>
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-zinc-800 group-hover:border-[#FF5722] transition-colors duration-500"></div>
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-zinc-800 group-hover:border-[#FF5722] transition-colors duration-500"></div>
+              {/* Sophisticated Hover Glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FF5722]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+              {/* Decorative Tech Accents */}
+              <div className="absolute top-0 right-10 w-20 h-[1px] bg-gradient-to-r from-transparent via-[#FF5722]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
               <div className="relative z-10">
-                <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center justify-between mb-10 border-b border-zinc-800/50 pb-4">
                   <span className="text-[#FF5722] font-mono text-xs tracking-widest">{c.id} &#47;&#47;</span>
-                  <span className="text-zinc-600 font-mono text-[9px] tracking-widest uppercase">{c.tag}</span>
+                  <span className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase bg-zinc-900/50 px-3 py-1 rounded-full border border-zinc-800/50">{c.tag}</span>
                 </div>
 
-                <p className="text-zinc-500 text-xs font-mono tracking-widest uppercase mb-3">{c.client}</p>
-                <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-white mb-6 leading-tight group-hover:text-[#FF5722] transition-colors duration-300">
+                {c.logo && (
+                  <div className="mb-8 inline-flex items-center justify-center p-3 md:p-4 rounded-xl border border-white/10 bg-white shadow-lg group-hover:shadow-[#FF5722]/20 transition-shadow duration-500">
+                    <img src={c.logo} alt={`${c.client} logo`} className="h-12 md:h-16 w-auto object-contain" />
+                  </div>
+                )}
+                
+                <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-6 leading-tight group-hover:text-zinc-200 transition-colors duration-300">
                   {c.headline}
                 </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-10 max-w-lg">
+                <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-12 max-w-lg">
                   {c.body}
                 </p>
 
-                {/* Stats Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-10">
+                {/* Modern Stats Grid */}
+                <div className="grid grid-cols-2 gap-3 mb-4">
                   {c.stats.map((s, i) =>
-                <div key={i} className="border border-zinc-800 group-hover:border-zinc-700 p-4 transition-colors">
-                      <div className="text-xl md:text-2xl font-black tracking-tighter text-white group-hover:text-[#FF5722] transition-colors duration-300">{s.value}</div>
-                      <div className="text-zinc-500 text-[9px] font-mono uppercase tracking-widest mt-1">{s.label}</div>
+                    <div key={i} className="rounded-xl bg-[#050505]/40 border border-zinc-800/60 hover:border-zinc-700 p-5 transition-colors group/stat relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#FF5722]/5 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300"></div>
+                      <div className="relative z-10">
+                        <div className="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover/stat:text-[#FF5722] transition-colors duration-300">{s.value}</div>
+                        <div className="text-zinc-500 text-[10px] font-mono uppercase tracking-widest mt-2">{s.label}</div>
+                      </div>
                     </div>
-                )}
+                  )}
                 </div>
               </div>
-
-              <a href={c.link} className="relative inline-flex self-start items-center justify-center px-6 py-3 bg-zinc-900/50 hover:bg-[#FF5722]/10 text-zinc-300 hover:text-white transition-all duration-300 z-10 group/link">
-                <div className="absolute top-0 left-0 w-full h-[1px] bg-zinc-600/60 group-hover/link:bg-[#FF5722]/60 transition-colors"></div>
-                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-zinc-600/60 group-hover/link:bg-[#FF5722]/60 transition-colors"></div>
-                <div className="absolute top-0 left-0 w-[1px] h-2 bg-zinc-600/60 group-hover/link:bg-[#FF5722]/60 transition-colors"></div>
-                <div className="absolute top-0 right-0 w-[1px] h-2 bg-zinc-600/60 group-hover/link:bg-[#FF5722]/60 transition-colors"></div>
-                <div className="absolute bottom-0 left-0 w-[1px] h-2 bg-zinc-600/60 group-hover/link:bg-[#FF5722]/60 transition-colors"></div>
-                <div className="absolute bottom-0 right-0 w-[1px] h-2 bg-zinc-600/60 group-hover/link:bg-[#FF5722]/60 transition-colors"></div>
-                <span className="text-[10px] font-bold tracking-[0.15em] uppercase">Read the Case Study</span>
-              </a>
             </motion.div>
           )}
         </motion.div>

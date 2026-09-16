@@ -41,7 +41,7 @@ export default function useSectionProgress(sectionRef, { pin = true, distance, o
           start: 'top top',
           end: `+=${distance}`,
           pin,
-          scrub: 1,
+          scrub: true,
           anticipatePin: 1,
           // release callbacks fire synchronously inside the scroll update,
           // before paint: the still swap hooks these so it cannot lag the
