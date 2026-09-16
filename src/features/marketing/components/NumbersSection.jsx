@@ -54,7 +54,7 @@ function StatCard({ stat, itemVariants }) {
       <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-zinc-800 group-hover:border-[#FF5722] transition-colors duration-500"></div>
 
       {/* Top Tag */}
-      <div className="absolute top-4 right-4 text-[8px] font-mono tracking-widest text-zinc-700 group-hover:text-[#FF5722]/50 transition-colors">
+      <div className="absolute top-4 right-4 text-[8px] font-mono tracking-widest text-zinc-400 group-hover:text-[#FF5722]/50 transition-colors">
         {stat.tag}
       </div>
 

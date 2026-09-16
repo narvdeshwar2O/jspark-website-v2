@@ -40,17 +40,17 @@ export function AboutCerts() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           {certs.map((cert, i) =>
           <motion.div
             key={i}
             variants={item}
             className="group grid grid-cols-1 md:grid-cols-2 gap-4 items-center py-5 border-b border-zinc-900 hover:bg-[#0A0A0A] px-4 -mx-4 transition-colors duration-200 cursor-default">
-            
+
               <span className="text-white font-black text-sm group-hover:text-[#FF5722] transition-colors duration-300 tracking-tight">
                 {cert.code}
               </span>
-              <span className="text-zinc-500 text-sm font-mono group-hover:text-zinc-300 transition-colors duration-300">
+              <span className="text-zinc-400 text-sm font-mono group-hover:text-zinc-300 transition-colors duration-300">
                 {cert.detail}
               </span>
             </motion.div>

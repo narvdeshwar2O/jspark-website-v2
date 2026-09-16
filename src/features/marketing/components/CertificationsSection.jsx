@@ -35,7 +35,7 @@ export function CertificationsSection() {
               Built in India.
             </h2>
           </div>
-          <p className="text-zinc-500 text-sm font-mono max-w-xs leading-relaxed">
+          <p className="text-zinc-400 text-sm font-mono max-w-xs leading-relaxed">
             Every certification earned on sovereign infrastructure. No exceptions, no asterisks.
           </p>
         </div>
@@ -47,13 +47,13 @@ export function CertificationsSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           {certs.map((cert, i) =>
           <motion.div
             key={i}
             variants={item}
             className="group bg-[#050505] hover:bg-[#0A0A0A] transition-colors p-8 flex flex-col gap-3 relative overflow-hidden">
-            
+
               {/* Top-left accent line on hover */}
               <div className="absolute top-0 left-0 w-0 h-[2px] bg-[#FF5722] group-hover:w-full transition-all duration-500 ease-out"></div>
 
@@ -63,7 +63,7 @@ export function CertificationsSection() {
                   {cert.code}
                 </span>
               </div>
-              <p className="text-zinc-500 text-xs font-mono uppercase tracking-widest pl-[18px] group-hover:text-zinc-300 transition-colors">
+              <p className="text-zinc-400 text-xs font-mono uppercase tracking-widest pl-[18px] group-hover:text-zinc-300 transition-colors">
                 {cert.label}
               </p>
             </motion.div>

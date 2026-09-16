@@ -24,7 +24,7 @@ export function ClosingCTA() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           <motion.p variants={item} className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-6 flex items-center justify-center gap-3">
             <span className="w-8 h-[1px] bg-[#FF5722]"></span>
             READY TO DEPLOY
@@ -41,7 +41,7 @@ export function ClosingCTA() {
           </motion.p>
 
           {/* Stat pills */}
-          <motion.div variants={item} className="flex flex-wrap justify-center gap-6 mb-16 text-[10px] font-mono tracking-widest text-zinc-500 uppercase">
+          <motion.div variants={item} className="flex flex-wrap justify-center gap-6 mb-16 text-[10px] font-mono tracking-widest text-zinc-400 uppercase">
             {["Mission-ready in 72 hours", "NDA-first", "On-site or air-gapped lab", "Zero cloud dependency"].map((pill, i) =>
             <div key={i} className="flex items-center gap-2">
                 <span className="w-1 h-1 rounded-full bg-[#FF5722]"></span>

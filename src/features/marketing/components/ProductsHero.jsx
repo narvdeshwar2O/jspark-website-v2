@@ -30,7 +30,7 @@ export function ProductsHero() {
         variants={container}
         initial="hidden"
         animate="show">
-        
+
         <motion.p variants={item} className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-6 flex items-center gap-3 font-mono">
           <span className="w-8 h-[1px] bg-[#FF5722]"></span>
           SOVEREIGN PRODUCTS
@@ -50,8 +50,8 @@ export function ProductsHero() {
           <a
             key={link.href}
             href={link.href}
-            className="text-zinc-500 hover:text-white border border-zinc-800 hover:border-[#FF5722]/50 bg-[#050505] hover:bg-[#0A0A0A] px-6 py-3 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300">
-            
+            className="text-zinc-400 hover:text-white border border-zinc-800 hover:border-[#FF5722]/50 bg-[#050505] hover:bg-[#0A0A0A] px-6 py-3 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300">
+
               {link.label}
             </a>
           )}

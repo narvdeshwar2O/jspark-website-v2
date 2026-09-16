@@ -84,7 +84,7 @@ export function PlatformSection() {
                 variants={item}
                 className="relative p-10 border border-zinc-800 bg-[#050505] hover:bg-[#0A0A0A] transition-colors group flex flex-col rounded-2xl overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[400px] transition-all duration-1000 ease-out z-0"></div>
-                <p className="text-zinc-500 text-[9px] font-bold tracking-[0.3em] uppercase mb-4 relative z-10">SUPPORTING PRODUCT</p>
+                <p className="text-zinc-400 text-[9px] font-bold tracking-[0.3em] uppercase mb-4 relative z-10">SUPPORTING PRODUCT</p>
                 <h3 className="text-3xl font-black tracking-tighter text-white mb-2 relative z-10">{product.name}</h3>
                 <p className="text-[#FF5722] font-mono text-[9px] tracking-widest uppercase mb-6 relative z-10">{product.tag}</p>
                 <p className="text-zinc-400 text-sm leading-relaxed mb-12 relative z-10 flex-grow">

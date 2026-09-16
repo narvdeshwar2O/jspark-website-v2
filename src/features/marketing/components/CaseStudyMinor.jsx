@@ -31,7 +31,7 @@ export function CaseStudyMinor({ data }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           {/* Left Col: Info */}
           <div className="flex flex-col justify-center">
             <motion.p variants={item} className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3 font-mono">
@@ -54,12 +54,12 @@ export function CaseStudyMinor({ data }) {
           <div className="flex lg:justify-end">
             <motion.div variants={item} className="bg-[#0A0A0A] border border-zinc-800 p-8 w-full lg:w-4/5 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[200px] transition-all duration-700 ease-out"></div>
-              
+
               <p className="text-[#FF5722] font-mono text-[10px] tracking-widest uppercase mb-4">Measured Impact</p>
               <div className="space-y-4">
                 {data.numbers.split(" · ").map((stat, i) =>
                 <div key={i} className="flex items-start gap-3">
-                    <span className="text-zinc-700 font-black text-lg leading-none mt-1">/</span>
+                    <span className="text-zinc-400 font-black text-lg leading-none mt-1">/</span>
                     <span className="text-white font-mono text-sm leading-relaxed">{stat}</span>
                   </div>
                 )}

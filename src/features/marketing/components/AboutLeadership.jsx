@@ -47,13 +47,13 @@ export function AboutLeadership() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           {leaders.map((l) =>
           <motion.div
             key={l.name}
             variants={item}
             className="group relative border border-zinc-800 hover:border-[#FF5722]/30 bg-[#050505] p-10 overflow-hidden transition-colors duration-300 flex flex-col">
-            
+
               <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[500px] transition-all duration-1000 ease-out"></div>
 
               <h3 className="text-white font-black text-2xl tracking-tight mb-2">{l.name}</h3>
@@ -62,7 +62,7 @@ export function AboutLeadership() {
 
               <div className="flex flex-wrap gap-2">
                 {l.tags.map((tag) =>
-              <span key={tag} className="border border-zinc-800 group-hover:border-zinc-700 text-zinc-500 group-hover:text-zinc-300 font-mono text-[9px] tracking-widest px-3 py-1.5 uppercase transition-colors">
+              <span key={tag} className="border border-zinc-800 group-hover:border-zinc-700 text-zinc-400 group-hover:text-zinc-300 font-mono text-[9px] tracking-widest px-3 py-1.5 uppercase transition-colors">
                     {tag}
                   </span>
               )}

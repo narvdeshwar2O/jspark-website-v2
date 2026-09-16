@@ -28,7 +28,7 @@ export function AboutHero() {
         variants={container}
         initial="hidden"
         animate="show">
-        
+
         <motion.p variants={item} className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-6 flex items-center gap-3 font-mono">
           <span className="w-8 h-[1px] bg-[#FF5722]"></span>
           WHO WE ARE
@@ -44,10 +44,10 @@ export function AboutHero() {
       </motion.div>
 
       {/* Bottom status bar */}
-      <div className="absolute bottom-8 left-6 md:left-12 lg:left-24 text-zinc-700 text-[9px] font-mono tracking-widest uppercase">
+      <div className="absolute bottom-8 left-6 md:left-12 lg:left-24 text-zinc-400 text-[9px] font-mono tracking-widest uppercase">
         EST. DEC 2024 &middot; NOIDA, INDIA
       </div>
-      <div className="absolute bottom-8 right-6 md:right-12 lg:right-24 text-zinc-700 text-[9px] font-mono tracking-widest uppercase">
+      <div className="absolute bottom-8 right-6 md:right-12 lg:right-24 text-zinc-400 text-[9px] font-mono tracking-widest uppercase">
         INDIA &middot; GCC &middot; EUROPE
       </div>
     </section>);

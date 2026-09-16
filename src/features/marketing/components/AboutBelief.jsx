@@ -56,7 +56,7 @@ export function AboutBelief() {
             </div>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-3 mt-12">
               {["INDIA", "GCC", "EUROPE"].map((loc) =>
-              <span key={loc} className="border border-zinc-800 text-zinc-500 font-mono text-[10px] tracking-widest px-4 py-2 uppercase">{loc}</span>
+              <span key={loc} className="border border-zinc-800 text-zinc-400 font-mono text-[10px] tracking-widest px-4 py-2 uppercase">{loc}</span>
               )}
             </motion.div>
           </motion.div>

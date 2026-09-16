@@ -15,7 +15,7 @@ export function ContactTrustStrip() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-8 flex flex-wrap justify-center gap-4 md:gap-8 items-center">
         {certs.map((cert, i) =>
         <div key={i} className="flex items-center gap-4 md:gap-8">
-            <span className="text-zinc-500 font-mono text-[10px] tracking-widest uppercase">
+            <span className="text-zinc-400 font-mono text-[10px] tracking-widest uppercase">
               {cert}
             </span>
             {i !== certs.length - 1 &&

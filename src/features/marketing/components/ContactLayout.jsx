@@ -33,28 +33,28 @@ export function ContactLayout() {
               <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
-                    <label className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase">Name</label>
+                    <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Name</label>
                     <input type="text" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase">Organisation</label>
+                    <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Organisation</label>
                     <input type="text" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
-                    <label className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase">Official Email</label>
+                    <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Official Email</label>
                     <input type="email" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase">Phone</label>
+                    <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Phone</label>
                     <input type="tel" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase">Which operation do you want to see understood?</label>
+                  <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Which operation do you want to see understood?</label>
                   <select className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm appearance-none">
                     <option>Homeland Security</option>
                     <option>Disaster Management</option>
@@ -66,7 +66,7 @@ export function ContactLayout() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase">Message</label>
+                  <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Message</label>
                   <textarea rows={4} className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm resize-none"></textarea>
                 </div>
 
@@ -87,7 +87,7 @@ export function ContactLayout() {
               <div className="flex flex-col gap-4 font-mono text-sm">
                 <a href="mailto:sales@jspark.in" className="text-zinc-400 hover:text-[#FF5722] transition-colors">sales@jspark.in</a>
                 <a href="https://jspark.ai" className="text-zinc-400 hover:text-[#FF5722] transition-colors">jspark.ai</a>
-                <div className="text-zinc-500 text-xs mt-2 leading-relaxed">
+                <div className="text-zinc-400 text-xs mt-2 leading-relaxed">
                   JSPARK AI Private Limited<br />
                   A1, F-102, Sector 59<br />
                   Noida, Uttar Pradesh 201301, India

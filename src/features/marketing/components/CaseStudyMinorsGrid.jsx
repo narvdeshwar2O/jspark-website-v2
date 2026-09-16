@@ -25,7 +25,7 @@ export function CaseStudyMinorsGrid({ data }) {
   return (
     <section className="relative w-full bg-[#000000] border-t border-zinc-900 py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
-        
+
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 border-b border-zinc-800 pb-8">
           <div>
             <p className="text-[#FF5722] text-[10px] font-mono tracking-[0.4em] uppercase mb-4 flex items-center gap-3">
@@ -48,7 +48,7 @@ export function CaseStudyMinorsGrid({ data }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           {data.map((study) =>
           <motion.div key={study.id} variants={item} className="group relative bg-[#050505] border border-zinc-800 hover:border-[#FF5722]/40 p-8 flex flex-col transition-colors duration-500 overflow-hidden">
               {/* Corner brackets */}
@@ -61,7 +61,7 @@ export function CaseStudyMinorsGrid({ data }) {
               <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722]/30 -translate-y-[100px] group-hover:translate-y-[500px] transition-transform duration-1000 ease-in-out"></div>
 
               <div className="mb-6 flex-1">
-                <p className="text-zinc-500 font-mono text-[9px] tracking-[0.2em] uppercase mb-2">TARGET // {study.num}</p>
+                <p className="text-zinc-400 font-mono text-[9px] tracking-[0.2em] uppercase mb-2">TARGET // {study.num}</p>
                 <h3 className="text-white font-black text-xl leading-tight mb-2 uppercase">{study.client}</h3>
                 <p className="text-[#FF5722] font-mono text-[10px] tracking-widest uppercase mb-4">{study.product}</p>
                 <p className="text-zinc-400 text-xs leading-relaxed">{study.body}</p>

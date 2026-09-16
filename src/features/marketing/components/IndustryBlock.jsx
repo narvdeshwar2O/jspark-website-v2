@@ -32,13 +32,13 @@ export function IndustryBlock({ data }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           {/* Main Info */}
           <div className="flex-1 flex flex-col justify-center">
             <motion.h2 variants={item} className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-6 leading-tight">
               {data.title}
             </motion.h2>
-            
+
             <motion.div variants={item} className="mb-8">
               <span className="inline-block bg-[#FF5722]/10 border border-[#FF5722]/30 text-[#FF5722] text-[10px] font-mono tracking-widest uppercase px-3 py-1.5">
                 Powered by: {data.products}
@@ -48,18 +48,18 @@ export function IndustryBlock({ data }) {
             <motion.p variants={item} className="text-zinc-400 text-base md:text-lg leading-relaxed mb-12">
               {data.body}
             </motion.p>
-            
+
             {(data.proof || data.configurations) &&
             <motion.div variants={item} className="p-6 border border-zinc-800 bg-[#000000]">
                 {data.proof &&
               <>
-                    <p className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase mb-2">Deployed Proof</p>
+                    <p className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase mb-2">Deployed Proof</p>
                     <p className="text-white font-mono text-xs leading-relaxed">{data.proof}</p>
                   </>
               }
                 {data.configurations &&
               <>
-                    <p className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase mb-2 mt-4">Configurations</p>
+                    <p className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase mb-2 mt-4">Configurations</p>
                     <p className="text-white font-mono text-xs leading-relaxed">{data.configurations}</p>
                   </>
               }

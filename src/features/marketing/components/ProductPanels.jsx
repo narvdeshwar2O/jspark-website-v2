@@ -44,7 +44,7 @@ export function ProductPanels() {
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
           className={`flex flex-col ${product.imageFirst ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-24 items-center`}>
-          
+
             {/* Copy Side */}
             <motion.div variants={item} className="flex-1 flex flex-col justify-center relative z-10">
               <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3">
@@ -57,7 +57,7 @@ export function ProductPanels() {
               <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-8">
                 {product.body}
               </p>
-              
+
               <div className="flex flex-wrap gap-x-8 gap-y-4 mb-10 text-[10px] md:text-[11px] font-mono tracking-widest uppercase text-zinc-300">
                 {product.numbers.map((num, i) =>
               <div key={i} className="flex items-center gap-3">
@@ -83,19 +83,19 @@ export function ProductPanels() {
             {/* Image Placeholder Side */}
             <motion.div variants={item} className="flex-1 w-full relative aspect-video lg:aspect-square max-h-[500px] border border-zinc-800 bg-[#0B0C10] overflow-hidden group">
               <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
-              
+
               {/* Corner tactical brackets for the image */}
               <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-[#FF5722]/50"></div>
               <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-[#FF5722]/50"></div>
               <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-[#FF5722]/50"></div>
               <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-[#FF5722]/50"></div>
-              
+
               <div className="absolute inset-0 flex items-center justify-center flex-col gap-4">
                 <div className="w-16 h-[1px] bg-[#FF5722]/50 relative">
                   <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] animate-ping"></div>
                   <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722]"></div>
                 </div>
-                <p className="font-mono text-[10px] text-zinc-500 tracking-[0.2em] uppercase">Visual Feed Standby</p>
+                <p className="font-mono text-[10px] text-zinc-400 tracking-[0.2em] uppercase">Visual Feed Standby</p>
               </div>
 
               {/* Scanline overlay */}

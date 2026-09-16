@@ -30,13 +30,13 @@ export function CaseStudyMajor({ data }) {
   return (
     <section id={data.id} className="relative w-full bg-[#050505] even:bg-[#000000] border-t border-zinc-900 py-0">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
-        
+
         <div className="flex flex-col lg:flex-row items-stretch">
-          
+
           {/* Left Column: Sticky HUD */}
           <div className="w-full lg:w-5/12 lg:border-r border-zinc-900 lg:pr-16 py-24 lg:sticky top-0 lg:h-screen flex flex-col justify-center">
             <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
-              
+
               <div className="flex items-center justify-between border-b border-zinc-800 pb-4 mb-8">
                 <span className="text-zinc-600 font-mono text-[10px] tracking-[0.2em] uppercase">TARGET // {data.num}</span>
                 <div className="flex items-center gap-2">
@@ -55,7 +55,7 @@ export function CaseStudyMajor({ data }) {
 
               <motion.div variants={item} className="bg-[#000000] border border-zinc-800 p-6 relative group overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722]/50 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                <p className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase mb-4 border-b border-zinc-900 pb-2">Verified Metrics</p>
+                <p className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase mb-4 border-b border-zinc-900 pb-2">Verified Metrics</p>
                 <div className="flex flex-col gap-4">
                   {data.numbers.split(" · ").map((stat, i) =>
                   <div key={i} className="flex items-start gap-3">
@@ -108,7 +108,7 @@ export function CaseStudyMajor({ data }) {
                 <p className="text-zinc-600 font-mono text-[9px] tracking-widest uppercase mb-4">ACTIVE MODULES</p>
                 <div className="flex flex-wrap gap-2">
                   {data.modules.split(" · ").map((mod, i) =>
-                <span key={i} className="border border-zinc-800 text-zinc-500 font-mono text-[9px] tracking-widest px-3 py-1.5 uppercase bg-[#000000]">
+                <span key={i} className="border border-zinc-800 text-zinc-400 font-mono text-[9px] tracking-widest px-3 py-1.5 uppercase bg-[#000000]">
                       {mod}
                     </span>
                 )}

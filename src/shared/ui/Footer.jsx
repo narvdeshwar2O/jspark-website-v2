@@ -30,7 +30,7 @@ export function Footer() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722]"></span>
             <span className="text-white font-black text-xl tracking-tighter uppercase">JSPARK AI</span>
           </div>
-          <p className="text-zinc-500 text-sm leading-relaxed max-w-sm">
+          <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
             The Sovereign AI Operating System for missions that cannot fail. Built in India. Deployed at national scale.
           </p>
           <Link to="/contact" className="relative inline-flex self-start items-center justify-center px-6 py-3 bg-[#FF5722]/10 hover:bg-[#FF5722]/20 text-white transition-colors duration-300">
@@ -71,11 +71,11 @@ export function Footer() {
       {/* Certifications strip */}
       <div className="border-t border-zinc-900 w-full">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-5 flex flex-wrap gap-6 items-center">
-          <span className="text-zinc-700 text-[9px] font-mono tracking-[0.3em] uppercase">Certified</span>
+          <span className="text-zinc-400 text-[9px] font-mono tracking-[0.3em] uppercase">Certified</span>
           {certifications.map((cert) =>
           <div key={cert} className="flex items-center gap-2">
               <span className="w-1 h-1 rounded-full bg-[#FF5722]/60"></span>
-              <span className="text-zinc-500 text-[10px] font-mono tracking-widest">{cert}</span>
+              <span className="text-zinc-400 text-[10px] font-mono tracking-widest">{cert}</span>
             </div>
           )}
         </div>
@@ -94,10 +94,10 @@ export function Footer() {
       {/* Legal bottom bar — sits above the letters */}
       <div className="border-t border-zinc-900/60 w-full">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <p className="text-zinc-700 text-[10px] font-mono tracking-widest">
+          <p className="text-zinc-400 text-[10px] font-mono tracking-widest">
             © {new Date().getFullYear()} JSPARK AI Private Limited · CIN U62099UP2024PTC214091
           </p>
-          <p className="text-zinc-700 text-[10px] font-mono tracking-widest">India · GCC · Europe</p>
+          <p className="text-zinc-400 text-[10px] font-mono tracking-widest">India · GCC · Europe</p>
         </div>
       </div>
 

@@ -34,7 +34,7 @@ export function ProductBlock({ product }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           {/* Left / Text Content */}
           <div className="flex-1 flex flex-col justify-center">
             <motion.p variants={item} className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3 font-mono">
@@ -47,10 +47,10 @@ export function ProductBlock({ product }) {
             <motion.p variants={item} className="text-zinc-400 text-base md:text-lg leading-relaxed mb-12">
               {product.body}
             </motion.p>
-            
+
             {product.numbers &&
             <motion.div variants={item} className="mb-12 p-6 border border-zinc-800 bg-[#000000]">
-                <p className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase mb-3">Scale & Impact</p>
+                <p className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase mb-3">Scale & Impact</p>
                 <p className="text-white font-mono text-xs md:text-sm leading-relaxed">{product.numbers}</p>
               </motion.div>
             }
@@ -83,12 +83,12 @@ export function ProductBlock({ product }) {
             {(product.configurations || product.deployedAt) &&
             <motion.div variants={item} className="flex flex-col gap-4 mt-4 pt-8 border-t border-zinc-900">
                 {product.configurations &&
-              <p className="text-zinc-500 font-mono text-xs leading-relaxed">
+              <p className="text-zinc-400 font-mono text-xs leading-relaxed">
                     <strong className="text-[#FF5722] uppercase tracking-widest">Configurations:</strong> {product.configurations}
                   </p>
               }
                 {product.deployedAt &&
-              <p className="text-zinc-500 font-mono text-xs leading-relaxed">
+              <p className="text-zinc-400 font-mono text-xs leading-relaxed">
                     <strong className="text-[#FF5722] uppercase tracking-widest">Deployed At:</strong> {product.deployedAt}
                   </p>
               }

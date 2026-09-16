@@ -80,7 +80,7 @@ export function DeployedSection() {
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-10 border-b border-zinc-800/50 pb-4">
                   <span className="text-[#FF5722] font-mono text-xs tracking-widest">{c.id} &#47;&#47;</span>
-                  <span className="text-zinc-500 font-mono text-[9px] tracking-widest uppercase bg-zinc-900/50 px-3 py-1 rounded-full border border-zinc-800/50">{c.tag}</span>
+                  <span className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase bg-zinc-900/50 px-3 py-1 rounded-full border border-zinc-800/50">{c.tag}</span>
                 </div>
 
                 {c.logo && (
@@ -88,7 +88,7 @@ export function DeployedSection() {
                     <img src={c.logo} alt={`${c.client} logo`} className="h-12 md:h-16 w-auto object-contain" />
                   </div>
                 )}
-                
+
                 <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-6 leading-tight group-hover:text-zinc-200 transition-colors duration-300">
                   {c.headline}
                 </h3>
@@ -103,7 +103,7 @@ export function DeployedSection() {
                       <div className="absolute inset-0 bg-gradient-to-t from-[#FF5722]/5 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300"></div>
                       <div className="relative z-10">
                         <div className="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover/stat:text-[#FF5722] transition-colors duration-300">{s.value}</div>
-                        <div className="text-zinc-500 text-[10px] font-mono uppercase tracking-widest mt-2">{s.label}</div>
+                        <div className="text-zinc-400 text-[10px] font-mono uppercase tracking-widest mt-2">{s.label}</div>
                       </div>
                     </div>
                   )}
