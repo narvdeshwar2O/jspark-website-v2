@@ -8,6 +8,7 @@ import { Footer } from './shared/ui/Footer'
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const Products = lazy(() => import('./pages/Products'))
+const ProductDetail = lazy(() => import('./pages/ProductDetail'))
 const Industries = lazy(() => import('./pages/Industries'))
 const CaseStudies = lazy(() => import('./pages/CaseStudies'))
 const Contact = lazy(() => import('./pages/Contact'))
@@ -43,6 +44,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/about" element={<PageTransition><About /></PageTransition>} />
         <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
+        <Route path="/products/:id" element={<PageTransition><ProductDetail /></PageTransition>} />
         <Route path="/industries" element={<PageTransition><Industries /></PageTransition>} />
         <Route path="/case-studies" element={<PageTransition><CaseStudies /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />

@@ -1,0 +1,27 @@
+# JSPARK AI
+The Sovereign AI Operating System for missions that cannot fail. Built in India. Deployed at national scale.
+
+## Core Platform
+JSPARK AI builds the intelligence infrastructure for nation-scale operations. Our platform handles missions in Homeland Security, Disaster Management, Critical Infrastructure, Energy, and Defence.
+
+## Products
+1. **OpsUnity AI (Foundation Platform)**: The sovereign foundation. Agent swarms, quant engines, mathematical models, and language models with no token limits and no external calls. Every JSPARK product runs on it.
+2. **OpsMind**: Sovereign Document Intelligence. Reads engineering drawings, schematics, and archives at the level of a domain engineer. Queried like a conversation. Every answer traced to its source.
+3. **OpsVision**: Sovereign Operational Intelligence. One living model of your entire operation, every asset, event, signal, and record fused into a single intelligence picture.
+4. **OpsUnity Hydra**: AI Hydrology Model. Forecasts rainfall, floods, flash floods, and rainfall-induced landslides at basin level, hours before impact. Mapped over 3 million rivers and streams. Verified by the India Meteorological Department.
+
+## Real-World Deployments
+- **Uttar Pradesh 112**: The world's largest emergency response system. 75 districts, 24 crore citizens. OpsVision placed response vehicles before the call came in and corrected every misrouted call at intake (dropped from 23% to 4%). 46% faster response.
+- **National Crime Records Bureau (NCRB)**: The world's largest crime database. A status report took 8-10 hours to generate; it now takes 5 seconds. OpsVision sits inside NAFIS as the single national dashboard for over 1.34 Cr offender records.
+
+## Certifications & Compliance
+- ISO/IEC 42001:2023
+- ISO 27001:2022
+- ISO 9001:2015
+- CMMI Level 3
+- DPIIT DIPP194871
+
+## Contact Information
+- Email: sales@jspark.in
+- Website: https://jspark.ai
+- HQ: A1, F-102, Sector 59, Noida, Uttar Pradesh 201301, India (India · GCC · Europe)

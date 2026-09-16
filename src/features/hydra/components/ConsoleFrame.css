@@ -173,6 +173,28 @@
   line-height: 1.4;
 }
 
+.console-frame__log-carousel-container {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.console-frame__log-carousel {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-vertical 20s linear infinite;
+}
+
+@keyframes scroll-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
 /* entries: absent visual until the cascade (the 240ms delay before the
    first entry is the cascade's hold); the standard text reveal is opacity
    plus a 12px upward translate */

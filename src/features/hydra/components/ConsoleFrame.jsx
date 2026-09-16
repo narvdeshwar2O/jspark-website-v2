@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import { createPortal } from 'react-dom'
-import Button from '../../../shared/ui/Button'
 import DataReadout from '../../../shared/ui/DataReadout'
-import Label from '../../../shared/ui/Label'
 import { hydraProgress } from '../animations/hydraProgress'
 import { gsap } from '../animations/scrollSetup'
 import { applyReveal, clamp01, easePower1InOut } from '../animations/reveal'
@@ -32,6 +30,13 @@ const LOG_LINES = [
   { time: '14:20', entry: 'SDMA UTTARAKHAND NOTIFIED' },
   { time: '14:23', entry: 'SDMA ACKNOWLEDGED' },
   { time: '14:31', entry: 'CHAMOLI DM OFFICE NOTIFIED' },
+  { time: '14:35', entry: 'NDRF BATTALION 15 MOBILIZED' },
+  { time: '14:42', entry: 'EVACUATION PROTOCOL INITIATED' },
+  { time: '14:45', entry: 'EARLY WARNING SIRENS ACTIVATED' },
+  { time: '14:52', entry: 'DRONE SURVEILLANCE DEPLOYED' },
+  { time: '14:58', entry: 'LOCAL BROADCAST WARNINGS ISSUED' },
+  { time: '15:05', entry: 'HOSPITALS ON HIGH ALERT' },
+  { time: '15:12', entry: 'TRAFFIC DIVERSION ENFORCED' },
 ]
 
 // the console layer lives at body level, a sibling of the pinned sections:
@@ -52,19 +57,23 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
   const [rect, setRect] = useState(() => consoleRect(...layoutSize()))
   const [sidebarMounted, setSidebarMounted] = useState(hydraProgress.value >= BEATS.console.cascadeAt)
   const [released, setReleased] = useState(false)
+  const [releaseTop, setReleaseTop] = useState(0)
   const releaseTopRef = useRef(0)
   const onReleaseChangeRef = useRef(onReleaseChange)
-  onReleaseChangeRef.current = onReleaseChange
+  useEffect(() => {
+    onReleaseChangeRef.current = onReleaseChange
+  }, [onReleaseChange])
   const reportedReleaseRef = useRef(null)
   const rootRef = useRef(null)
-  const els = useRef({})
+  const els = useMemo(() => ({}), [])
   const reduced = useReducedMotion()
   // a cascade that already fired before this mount renders static: the
   // one-shot never replays in the session (SCENES.md)
-  const staticCascadeRef = useRef(cascadeFired)
+  const [staticCascade] = useState(cascadeFired)
 
   const registerEl = (key) => (node) => {
-    els.current[key] = node
+    if (node) els[key] = node
+    else delete els[key]
   }
 
   useEffect(() => {
@@ -84,7 +93,12 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
       const past = -topV
       const hold = CONSOLE_HOLD * document.documentElement.clientHeight
       const shouldRelease = past >= hold
-      if (shouldRelease) releaseTopRef.current = Math.round(window.scrollY + topV + hold)
+      let newTop = releaseTopRef.current
+      if (shouldRelease) {
+        newTop = Math.round(window.scrollY + topV + hold)
+        releaseTopRef.current = newTop
+        setReleaseTop(newTop)
+      }
       // the release evaluation is the swap trigger (2a-live): report the
       // flip synchronously in the same scroll tick, before React commits
       // the layer's own position change, so the canvas handoff and the
@@ -100,13 +114,13 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
         if (root) {
           if (shouldRelease) {
             root.classList.add('is-released')
-            root.style.top = `${releaseTopRef.current}px`
+            root.style.top = `${newTop}px`
           } else {
             root.classList.remove('is-released')
             root.style.top = ''
           }
         }
-        onReleaseChangeRef.current?.(shouldRelease, releaseTopRef.current)
+        onReleaseChangeRef.current?.(shouldRelease, newTop)
       }
       setReleased((prev) => (prev === shouldRelease ? prev : shouldRelease))
     }
@@ -122,7 +136,7 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
   useEffect(() => {
     const cb = BEATS.console
     const apply = (p) => {
-      const e = els.current
+      const e = els
       // chrome materialises just after the shrink begins
       if (e.chrome) gsap.set(e.chrome, { opacity: clamp01((p - cb.shrinkFrom) / 0.01) })
       // the strip row fades in on the same easing the panel content fades
@@ -143,9 +157,9 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
     }
     apply(hydraProgress.value)
     return hydraProgress.subscribe(apply)
-  }, [reduced])
+  }, [reduced, els])
 
-  const animate = cascadeFired && !staticCascadeRef.current
+  const animate = cascadeFired && !staticCascade
   const entryClass = () => `console-frame__entry${cascadeFired ? (animate ? ' is-animating' : ' is-shown') : ''}`
   const entryStyle = (i) =>
     animate ? { animationDelay: `${BEATS.console.borderMs + i * BEATS.console.staggerMs}ms` } : undefined
@@ -157,7 +171,7 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
     <div
       ref={rootRef}
       className={`console-frame${released ? ' is-released' : ''}`}
-      style={released ? { top: releaseTopRef.current } : undefined}
+      style={released ? { top: releaseTop } : undefined}
       aria-hidden="true"
     >
       <div className="console-frame__chrome" ref={registerEl('chrome')}>
@@ -174,7 +188,7 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
         <div className="console-frame__divider" style={{ left: rect.statusX - 1, top: slotY, height: rect.statusH }} />
         <div className="console-frame__strip" style={{ left: rect.x, top: stripY, width: rect.w, height: rect.stripH }}>
           <div className="type-data console-frame__striprow" ref={registerEl('stripRow')}>
-            RIVER LEVEL 4.2 m · HOURS TO PEAK {hoursToPeak} · FLOOD WARNING
+            RIVER LEVEL 4.2 m · HOURS TO PEAK {hoursToPeak} · FLASH FLOOD WARNING
           </div>
         </div>
 
@@ -196,18 +210,11 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
           className={`console-frame__below${rect.short ? ' is-band' : ''}`}
           style={{ left: rect.frameX, top: rect.frameY + rect.frameH + rect.gapBelow, width: rect.frameW }}
         >
-          <div className="console-frame__band">
+          <div className="console-frame__band" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
             <p className="type-h2 text-muted console-frame__h2" ref={registerEl('h2')}>
               The flood will come. The warning can come first.
             </p>
-            {!rect.short && (
-              <p className="type-body console-frame__body" ref={registerEl('body')}>
-                Flood intelligence for the higher and mid Himalayas.
-              </p>
-            )}
-            <div className="console-frame__button-row" ref={registerEl('buttonRow')}>
-              <Button>SEE HYDRA →</Button>
-            </div>
+
           </div>
           <hr className="rule console-frame__rule" ref={registerEl('ruleRow')} />
         </div>
@@ -218,10 +225,10 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
           className={`console-frame__sidebar${animate ? ' is-animating' : ''}`}
           style={{ left: rect.statusX, top: slotY, width: rect.statusW, height: rect.statusH }}
         >
-          <div className="console-frame__sidebar-inner">
+          <div className="console-frame__sidebar-inner" style={{ height: '100%' }}>
             <div className={entryClass(0)} style={entryStyle(0)}>
-              <span className="type-label console-frame__alert-label">FLOOD WARNING</span>
-              <div className="type-data-lg">CHAMOLI</div>
+              <span className="type-label console-frame__alert-label">FLASH FLOOD WARNING</span>
+              <div className="type-data-lg">OpsUnity Hydra</div>
               <div className="type-data text-muted">PEAK IN 12 h · 04:20 IST</div>
             </div>
             <hr className="rule" />
@@ -233,13 +240,16 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
               ))}
             </div>
             <hr className="rule" />
-            <div className={entryClass(5)} style={entryStyle(5)}>
-              {LOG_LINES.map((line) => (
-                <div key={line.time} className="type-label console-frame__log">
-                  <span className="text-muted">{line.time} · </span>
-                  {line.entry}
-                </div>
-              ))}
+            <div className={`${entryClass(5)} console-frame__log-carousel-container`} style={{ ...entryStyle(5), flex: 1, minHeight: 0 }}>
+              <div className="console-frame__log-carousel">
+                {[...LOG_LINES, ...LOG_LINES].map((line, idx) => (
+                  <div key={`${line.time}-${idx}`} className="type-label console-frame__log whitespace-nowrap">
+                    <span style={{ color: 'var(--alert)' }}>{line.time}</span>
+                    <span className="text-muted"> · </span>
+                    {line.entry}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </aside>

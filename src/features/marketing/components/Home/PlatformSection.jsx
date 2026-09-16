@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 
 const supportingProducts = [
@@ -68,12 +67,9 @@ export function PlatformSection() {
               FOUNDATION AI model
             </p>
             <h3 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6">OpsUnity AI</h3>
-            <p className="text-zinc-300 text-sm md:text-xl leading-relaxed max-w-3xl mb-12">
+            <p className="text-zinc-300 text-sm md:text-xl leading-relaxed max-w-3xl mb-4">
               The sovereign foundation. Agent swarms, quant engines, mathematical models, and language models with no token limits and no external calls. Every JSPARK product runs on it.
             </p>
-            <a href="#opsunity-ai" className="relative inline-flex items-center justify-center px-8 py-4 bg-[#FF5722]/10 hover:bg-[#FF5722]/20 text-white transition-colors duration-300 rounded-lg border border-[#FF5722]/50">
-              <span className="relative z-10 text-[11px] font-bold tracking-[0.15em] uppercase whitespace-nowrap">Explore OpsUnity AI</span>
-            </a>
           </motion.div>
 
           {/* Supporting Products Grid */}
@@ -87,12 +83,9 @@ export function PlatformSection() {
                 <p className="text-zinc-400 text-[9px] font-bold tracking-[0.3em] uppercase mb-4 relative z-10">SUPPORTING PRODUCT</p>
                 <h3 className="text-3xl font-black tracking-tighter text-white mb-2 relative z-10">{product.name}</h3>
                 <p className="text-[#FF5722] font-mono text-[9px] tracking-widest uppercase mb-6 relative z-10">{product.tag}</p>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-12 relative z-10 flex-grow">
+                <p className="text-zinc-400 text-sm leading-relaxed relative z-10 flex-grow">
                   {product.description}
                 </p>
-                <a href={`#${product.id}`} className="relative inline-flex self-start items-center justify-center px-6 py-3 bg-zinc-900/50 hover:bg-zinc-800/80 text-zinc-300 hover:text-white transition-colors duration-300 rounded border border-zinc-700 z-10">
-                  <span className="relative z-10 text-[10px] font-bold tracking-[0.15em] uppercase">{product.buttonText}</span>
-                </a>
               </motion.div>
             ))}
           </div>

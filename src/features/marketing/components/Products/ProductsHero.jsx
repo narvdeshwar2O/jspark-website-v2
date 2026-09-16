@@ -13,11 +13,7 @@ export function ProductsHero() {
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
-  const anchorLinks = [
-  { label: "OpsUnity AI", href: "#opsunity-ai" },
-  { label: "OpsVision", href: "#opsvision" },
-  { label: "OpsUnity Hydra", href: "#opsunity-hydra" },
-  { label: "OpsMind", href: "#opsmind" }];
+
 
 
   return (
@@ -45,17 +41,7 @@ export function ProductsHero() {
           Three products on one sovereign foundation. Each runs air-gapped, unmetered, and inside your walls.
         </motion.p>
 
-        <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-4">
-          {anchorLinks.map((link) =>
-          <a
-            key={link.href}
-            href={link.href}
-            className="text-zinc-400 hover:text-white border border-zinc-800 hover:border-[#FF5722]/50 bg-[#050505] hover:bg-[#0A0A0A] px-6 py-3 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300">
 
-              {link.label}
-            </a>
-          )}
-        </motion.div>
       </motion.div>
     </section>);
 

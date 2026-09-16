@@ -34,13 +34,13 @@ export default function Hero() {
               AIR-GAPPED BY DESIGN. SOVEREIGN BY DEFAULT.
             </p>
             <h1 className="type-display" style={{ fontSize: 'clamp(42px, 5vw, 84px)', lineHeight: '1.05' }}>
-              The Sovereign AI<br/>
-              Operating System for<br/>
-              Missions That Can't Fail
+              JSPARK.AI
             </h1>
           </div>
           <p className="type-body-lg hero__tagline" style={{ maxWidth: '800px', marginTop: '2rem' }}>
-            One AI operating system, running entirely inside your walls, on your hardware, with nothing leaving and nothing metered. It sees floods and landslides hours before they strike. It runs the world's largest emergency response and crime records systems in real time. It turns every sensor, every record, every signal you own into a decision made before the moment passes.
+            The Sovereign AI
+              Operating System for
+              Missions That Can't Fail
           </p>
         </div>
       </div>

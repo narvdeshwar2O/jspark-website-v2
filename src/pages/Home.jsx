@@ -1,6 +1,6 @@
 import Hydra from '../features/hydra/Hydra'
 import { CONSOLE_HOLD } from '../features/hydra/data/hydraTimings'
-import { ProductPanels } from '../features/marketing/components/Products/ProductPanels'
+import { HomeProductPanels } from '../features/marketing/components/Home/HomeProductPanels'
 import { NumbersSection } from '../features/marketing/components/Home/NumbersSection'
 import { IntelligenceInfrastructure } from '../features/marketing/components/Home/IntelligenceInfrastructure'
 import { PlatformSection } from '../features/marketing/components/Home/PlatformSection'
@@ -21,7 +21,7 @@ export default function Home() {
 
       {/* V2 Sections */}
       <div className="relative z-10 bg-[#0B0C10] shadow-[0_-20px_50px_rgba(0,0,0,0.9)]">
-        <ProductPanels />
+        <HomeProductPanels />
         <NumbersSection />
         <IntelligenceInfrastructure />
         <PlatformSection />
