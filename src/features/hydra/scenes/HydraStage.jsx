@@ -42,7 +42,7 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
       isSeeking = false
       // If the target time moved further while we were decoding, seek again immediately
       if (Math.abs(video.currentTime - targetTime) >= 0.01) {
-        requestAnimationFrame(updateVideo)
+        window.requestAnimationFrame(updateVideo)
       }
     }
 
@@ -52,7 +52,7 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
       if (Number.isNaN(video.duration) || video.duration === 0) return
       // Scrub video time based on scroll progress (0 to 1)
       targetTime = p * video.duration
-      requestAnimationFrame(updateVideo)
+      window.requestAnimationFrame(updateVideo)
     }
 
     const unsubscribe = hydraProgress.subscribe(applyProgress)

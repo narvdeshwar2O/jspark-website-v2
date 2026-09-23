@@ -24,7 +24,7 @@ czm_material czm_getMaterial(czm_materialInput materialInput) {
 
 export async function createRadars(viewer, terrainProvider, getExaggeration) {
   const { scene } = viewer
-  const t0 = performance.now()
+  const t0 = window.performance.now()
 
   // clamp to terrain: true heights; the models exaggerate with the terrain
   const cartos = RADAR_STATIONS.map((s) => Cesium.Cartographic.fromDegrees(s.lon, s.lat))
@@ -42,7 +42,7 @@ export async function createRadars(viewer, terrainProvider, getExaggeration) {
     // No enableVerticalExaggeration either: measured, it left the towers at
     // true height while the terrain rendered at 1.4x, burying them ~900m
     // below the surface. The exaggerated position is ours, in apply().
-    // eslint-disable-next-line no-await-in-loop
+     
     const model = await Cesium.Model.fromGltfAsync({
       url: RADAR_MODEL,
       show: false,
@@ -51,7 +51,7 @@ export async function createRadars(viewer, terrainProvider, getExaggeration) {
     })
     if (viewer.isDestroyed()) return null
     scene.primitives.add(model)
-    // eslint-disable-next-line no-await-in-loop
+     
     await modelReady(model)
     if (viewer.isDestroyed()) return null
     const hasAnimations = playAnimations(model)
@@ -183,7 +183,7 @@ export async function createRadars(viewer, terrainProvider, getExaggeration) {
 
   return {
     units,
-    readyMs: performance.now() - t0,
+    readyMs: window.performance.now() - t0,
     update,
     tick,
     pixelWidth,

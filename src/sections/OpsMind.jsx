@@ -3,7 +3,7 @@ import Label from '../shared/ui/Label'
 import Button from '../shared/ui/Button'
 import useReducedMotion from '../shared/hooks/useReducedMotion'
 import useRevealOnEnter from '../shared/hooks/useRevealOnEnter'
-import '..\shared\design\sections.css'
+import '../shared/design/sections.css'
 
 export default function OpsMind() {
   const sectionRef = useRef(null)

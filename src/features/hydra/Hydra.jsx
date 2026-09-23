@@ -74,9 +74,10 @@ export default function Hydra() {
   // Cleanup: restore canvas to its original parent before unmount if it was moved to a portal
   // This prevents React from throwing "NotFoundError: Failed to execute 'removeChild'" on route changes
   useLayoutEffect(() => {
+    const currentEls = els.current;
     return () => {
-      if (canvasHomeRef.current && els.current.canvas) {
-        const c = els.current.canvas;
+      if (canvasHomeRef.current && currentEls.canvas) {
+        const c = currentEls.canvas;
         c.style.position = '';
         c.style.zIndex = '';
         c.style.top = '';
@@ -92,7 +93,8 @@ export default function Hydra() {
   }, []);
 
   const registerEl = (key) => (node) => {
-    els.current[key] = node
+    // eslint-disable-next-line react-hooks/refs
+    if(els.current)els.current[key]=node
   }
 
   const onProgress = (p) => {
@@ -281,7 +283,7 @@ export default function Hydra() {
   // the still, await a real render pass (scene.postRender) and one frame,
   // then hide the still. No timeouts, no transitions; a reversal bumps the
   // sequence token and the stale hide never runs.
-  const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve))
+  const nextFrame = () => new Promise((resolve) => window.requestAnimationFrame(resolve))
   const ensureCapture = () => {
     if (cachedCapture) {
       // setState bails on the identical string, so this is a cheap no-op
@@ -297,7 +299,7 @@ export default function Hydra() {
             cachedCapture = cap
             setStill(cap.url)
             // warm the decoded bitmap so the swap's decode resolves at once
-            const im = new Image()
+            const im = new window.Image()
             im.src = cap.url
             im.decode().catch(() => {})
           }
@@ -434,6 +436,7 @@ export default function Hydra() {
       window.removeEventListener('scroll', fallback)
       unsubscribe()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const scene = sceneIdx + 1
@@ -485,7 +488,7 @@ export default function Hydra() {
                 if (cap && !stillModeRef.current) {
                   cachedCapture = cap
                   setStill(cap.url)
-                  const im = new Image()
+                  const im = new window.Image()
                   im.src = cap.url
                   im.decode().catch(() => {})
                 }

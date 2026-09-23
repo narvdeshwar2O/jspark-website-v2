@@ -4,7 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
-  { ignores: ['dist', 'node_modules'] },
+  { ignores: ['dist', 'node_modules', 'tools'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
@@ -23,7 +23,10 @@ export default [
         clearTimeout: 'readonly',
         setInterval: 'readonly',
         clearInterval: 'readonly',
-        URL: 'readonly'
+        URL: 'readonly',
+        requestAnimationFrame: 'readonly',
+        Image: 'readonly',
+        performance: 'readonly'
       }
     },
     settings: { react: { version: '18.3' } },

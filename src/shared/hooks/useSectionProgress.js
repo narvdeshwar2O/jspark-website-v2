@@ -13,14 +13,17 @@ import { gsap } from '../../features/hydra/animations/scrollSetup'
 // callbacks. Latching to once per session is the caller's responsibility.
 export default function useSectionProgress(sectionRef, { pin = true, distance, onUpdate, latches, onLeave, onEnterBack }) {
   const onUpdateRef = useRef(onUpdate)
-  onUpdateRef.current = onUpdate
   const latchesRef = useRef(latches)
-  latchesRef.current = latches
   const onLeaveRef = useRef(onLeave)
-  onLeaveRef.current = onLeave
   const onEnterBackRef = useRef(onEnterBack)
-  onEnterBackRef.current = onEnterBack
   const prevPRef = useRef(0)
+
+  useLayoutEffect(() => {
+    onUpdateRef.current = onUpdate
+    latchesRef.current = latches
+    onLeaveRef.current = onLeave
+    onEnterBackRef.current = onEnterBack
+  })
 
   useLayoutEffect(() => {
     const dispatch = (p) => {
