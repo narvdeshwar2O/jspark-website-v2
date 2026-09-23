@@ -33,17 +33,17 @@ export function HeroLoader({ opacity, scale, blur, bootContainer, bootItem }) {
           <div className="absolute bottom-8 left-8 w-6 h-6 border-b-[1px] border-l-[1px] border-zinc-600"></div>
           <div className="absolute bottom-8 right-8 w-6 h-6 border-b-[1px] border-r-[1px] border-zinc-600"></div>
 
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 w-4 h-[1px] bg-zinc-600"></div>
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 h-2 w-[1px] bg-zinc-600 translate-y-[1px]"></div>
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 w-4 h-px bg-zinc-600"></div>
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 h-2 w-px bg-zinc-600 translate-y-[1px]"></div>
 
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-4 h-[1px] bg-zinc-600"></div>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 h-2 w-[1px] bg-zinc-600 -translate-y-[7px]"></div>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-4 h-px bg-zinc-600"></div>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 h-2 w-px bg-zinc-600 -translate-y-[7px]"></div>
 
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-[1px] bg-zinc-600"></div>
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 w-2 h-[1px] bg-zinc-600 translate-x-[1px]"></div>
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-px bg-zinc-600"></div>
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 w-2 h-px bg-zinc-600 translate-x-[1px]"></div>
 
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-[1px] bg-zinc-600"></div>
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-[1px] bg-zinc-600 -translate-x-[7px]"></div>
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-px bg-zinc-600"></div>
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-px bg-zinc-600 -translate-x-[7px]"></div>
         </motion.div>
 
         <motion.div

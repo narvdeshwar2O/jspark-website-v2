@@ -69,7 +69,7 @@ export function ProductPanels() {
             {/* Copy Side */}
             <motion.div variants={item} className="flex-1 flex flex-col justify-center p-10 lg:p-14 relative z-10 bg-gradient-to-br from-[#0B0C10] to-[#050505]">
               <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-6 flex items-center gap-4">
-                <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+                <span className="w-8 h-px bg-[#FF5722]"></span>
                 {product.eyebrow}
               </p>
               <h3 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-8 leading-[1.05] text-white">
@@ -103,7 +103,7 @@ export function ProductPanels() {
                 <div className="absolute inset-4 rounded-full border border-zinc-800/50 border-t-[#FF5722]/50 animate-[spin_12s_linear_infinite]"></div>
                 <div className="absolute inset-8 rounded-full border border-zinc-800/50 border-b-[#FF5722]/50 animate-[spin_8s_linear_infinite_reverse]"></div>
 
-                <div className="w-24 h-[1px] bg-[#FF5722]/50 relative z-10 group-hover:w-32 transition-all duration-700">
+                <div className="w-24 h-px bg-[#FF5722]/50 relative z-10 group-hover:w-32 transition-all duration-700">
                   <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] animate-ping"></div>
                   <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] shadow-[0_0_10px_#FF5722]"></div>
                 </div>

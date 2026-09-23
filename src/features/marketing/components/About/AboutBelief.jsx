@@ -20,7 +20,7 @@ export function AboutBelief() {
           <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start" variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
             <motion.div variants={fadeUp}>
               <p className="text-[#FF5722] text-[10px] font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3 font-mono">
-                <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+                <span className="w-8 h-px bg-[#FF5722]"></span>
                 BELIEF
               </p>
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">What We Believe</h2>
@@ -42,7 +42,7 @@ export function AboutBelief() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
           <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
             <motion.p variants={fadeUp} className="text-[#FF5722] text-[10px] font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3 font-mono">
-              <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+              <span className="w-8 h-px bg-[#FF5722]"></span>
               TRACK RECORD
             </motion.p>
             <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-10">What We Have Built</motion.h2>

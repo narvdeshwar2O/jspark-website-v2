@@ -63,7 +63,7 @@ export function PlatformSection() {
 
             <div className="absolute -right-32 -bottom-32 w-96 h-96 bg-[#FF5722]/20 rounded-full blur-[100px] pointer-events-none"></div>
             <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+              <span className="w-8 h-px bg-[#FF5722]"></span>
               FOUNDATION AI model
             </p>
             <h3 className="text-3xl md:text-6xl font-black tracking-tighter text-white mb-6">OpsUnity AI</h3>
@@ -79,7 +79,7 @@ export function PlatformSection() {
                 key={product.id}
                 variants={item}
                 className="relative p-10 border border-zinc-800 bg-[#050505] hover:bg-[#0A0A0A] transition-colors group flex flex-col rounded-2xl overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[400px] transition-all duration-1000 ease-out z-0"></div>
+                <div className="absolute top-0 left-0 w-full h-px bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[400px] transition-all duration-1000 ease-out z-0"></div>
                 <p className="text-zinc-400 text-[9px] font-bold tracking-[0.3em] uppercase mb-4 relative z-10">SUPPORTING PRODUCT</p>
                 <h3 className="text-3xl font-black tracking-tighter text-white mb-2 relative z-10">{product.name}</h3>
                 <p className="text-[#FF5722] font-mono text-[9px] tracking-widest uppercase mb-6 relative z-10">{product.tag}</p>

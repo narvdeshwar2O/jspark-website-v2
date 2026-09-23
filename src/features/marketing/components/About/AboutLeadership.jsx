@@ -37,7 +37,7 @@ export function AboutLeadership() {
 
         <div className="mb-16">
           <p className="text-[#FF5722] text-[10px] font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3 font-mono">
-            <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+            <span className="w-8 h-px bg-[#FF5722]"></span>
             LEADERSHIP
           </p>
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">
@@ -58,7 +58,7 @@ export function AboutLeadership() {
             variants={item}
             className="group relative border border-zinc-800 hover:border-[#FF5722]/30 bg-[#050505] p-10 overflow-hidden transition-colors duration-300 flex flex-col">
 
-              <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[500px] transition-all duration-1000 ease-out"></div>
+              <div className="absolute top-0 left-0 w-full h-px bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[500px] transition-all duration-1000 ease-out"></div>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8">
                 <div className="w-24 h-24 shrink-0 rounded-full overflow-hidden border border-zinc-800 group-hover:border-[#FF5722]/50 transition-colors bg-zinc-900">

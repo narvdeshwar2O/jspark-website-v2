@@ -29,7 +29,7 @@ export function CaseStudyMinorsGrid({ data }) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 border-b border-zinc-800 pb-8">
           <div>
             <p className="text-[#FF5722] text-[10px] font-mono tracking-[0.4em] uppercase mb-4 flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+              <span className="w-8 h-px bg-[#FF5722]"></span>
               ADDITIONAL DEPLOYMENTS
             </p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white uppercase">
@@ -58,7 +58,7 @@ export function CaseStudyMinorsGrid({ data }) {
               <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-zinc-700 group-hover:border-[#FF5722] transition-colors"></div>
 
               {/* Hover scanline */}
-              <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722]/30 -translate-y-[100px] group-hover:translate-y-[500px] transition-transform duration-1000 ease-in-out"></div>
+              <div className="absolute top-0 left-0 w-full h-px bg-[#FF5722]/30 -translate-y-[100px] group-hover:translate-y-[500px] transition-transform duration-1000 ease-in-out"></div>
 
               <div className="mb-6 flex-1">
                 <p className="text-zinc-400 font-mono text-[9px] tracking-[0.2em] uppercase mb-2">TARGET // {study.num}</p>

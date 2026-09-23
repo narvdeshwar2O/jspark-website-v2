@@ -54,7 +54,7 @@ export function CaseStudyMajor({ data }) {
               </motion.p>
 
               <motion.div variants={item} className="bg-[#000000] border border-zinc-800 p-6 relative group overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722]/50 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <div className="absolute top-0 left-0 w-full h-px bg-[#FF5722]/50 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 <p className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase mb-4 border-b border-zinc-900 pb-2">Verified Metrics</p>
                 <div className="flex flex-col gap-4">
                   {data.numbers.split(" · ").map((stat, i) =>

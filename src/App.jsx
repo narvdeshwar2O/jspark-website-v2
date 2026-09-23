@@ -13,6 +13,16 @@ const Industries = lazy(() => import('./pages/Industries'))
 const CaseStudies = lazy(() => import('./pages/CaseStudies'))
 const Contact = lazy(() => import('./pages/Contact'))
 
+const routes = [
+  { path: "/", element: <Home /> },
+  { path: "/about", element: <About /> },
+  { path: "/products", element: <Products /> },
+  { path: "/products/:id", element: <ProductDetail /> },
+  { path: "/industries", element: <Industries /> },
+  { path: "/case-studies", element: <CaseStudies /> },
+  { path: "/contact", element: <Contact /> },
+];
+
 // Subtle loader for code-split route transitions
 const RouteLoader = () => (
   <div className="w-full min-h-screen bg-[#050505] flex flex-col items-center justify-center">
@@ -36,21 +46,28 @@ const PageTransition = ({ children }) => (
 )
 
 function AnimatedRoutes() {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+    <AnimatePresence
+      mode="wait"
+      onExitComplete={() => window.scrollTo(0, 0)}
+    >
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
-        <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
-        <Route path="/products/:id" element={<PageTransition><ProductDetail /></PageTransition>} />
-        <Route path="/industries" element={<PageTransition><Industries /></PageTransition>} />
-        <Route path="/case-studies" element={<PageTransition><CaseStudies /></PageTransition>} />
-        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        {routes.map(({ path, element }) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <PageTransition>
+                {element}
+              </PageTransition>
+            }
+          />
+        ))}
       </Routes>
     </AnimatePresence>
-  )
+  );
 }
 
 export default function App() {
@@ -59,7 +76,7 @@ export default function App() {
       <main className="bg-black text-white font-sans selection:bg-[#FF5722] selection:text-white">
         <Navbar />
         <LoadGate />
-        
+
         <Suspense fallback={<RouteLoader />}>
           <AnimatedRoutes />
         </Suspense>

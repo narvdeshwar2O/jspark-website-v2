@@ -73,13 +73,13 @@ export function Navbar() {
             to="/contact"
             className="hidden md:flex relative group items-center justify-center px-8 py-2.5 bg-[#FF5722]/10 text-white hover:bg-[#FF5722]/20 transition-colors duration-300">
             {/* Horizontal Borders */}
-            <div className="absolute top-0 left-0 right-0 h-[1px] bg-[#FF5722]/60"></div>
-            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#FF5722]/60"></div>
+            <div className="absolute top-0 left-0 right-0 h-px bg-[#FF5722]/60"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-[#FF5722]/60"></div>
             {/* Vertical Corner Brackets */}
-            <div className="absolute top-0 left-0 w-[1px] h-1.5 bg-[#FF5722]/60"></div>
-            <div className="absolute top-0 right-0 w-[1px] h-1.5 bg-[#FF5722]/60"></div>
-            <div className="absolute bottom-0 left-0 w-[1px] h-1.5 bg-[#FF5722]/60"></div>
-            <div className="absolute bottom-0 right-0 w-[1px] h-1.5 bg-[#FF5722]/60"></div>
+            <div className="absolute top-0 left-0 w-px h-1.5 bg-[#FF5722]/60"></div>
+            <div className="absolute top-0 right-0 w-px h-1.5 bg-[#FF5722]/60"></div>
+            <div className="absolute bottom-0 left-0 w-px h-1.5 bg-[#FF5722]/60"></div>
+            <div className="absolute bottom-0 right-0 w-px h-1.5 bg-[#FF5722]/60"></div>
             <span className="relative z-10 text-[10px] font-bold tracking-[0.15em] uppercase">
               CONTACT
             </span>
@@ -157,12 +157,12 @@ export function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="relative group flex items-center justify-center w-full py-4 bg-[#FF5722]/10 text-white transition-colors duration-300"
                 >
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-[#FF5722]/60"></div>
-                  <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#FF5722]/60"></div>
-                  <div className="absolute top-0 left-0 w-[1px] h-3 bg-[#FF5722]/60"></div>
-                  <div className="absolute top-0 right-0 w-[1px] h-3 bg-[#FF5722]/60"></div>
-                  <div className="absolute bottom-0 left-0 w-[1px] h-3 bg-[#FF5722]/60"></div>
-                  <div className="absolute bottom-0 right-0 w-[1px] h-3 bg-[#FF5722]/60"></div>
+                  <div className="absolute top-0 left-0 right-0 h-px bg-[#FF5722]/60"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-[#FF5722]/60"></div>
+                  <div className="absolute top-0 left-0 w-px h-3 bg-[#FF5722]/60"></div>
+                  <div className="absolute top-0 right-0 w-px h-3 bg-[#FF5722]/60"></div>
+                  <div className="absolute bottom-0 left-0 w-px h-3 bg-[#FF5722]/60"></div>
+                  <div className="absolute bottom-0 right-0 w-px h-3 bg-[#FF5722]/60"></div>
                   <span className="relative z-10 text-[10px] font-bold tracking-[0.15em] uppercase text-[#FF5722]">
                     CONTACT COMMAND
                   </span>

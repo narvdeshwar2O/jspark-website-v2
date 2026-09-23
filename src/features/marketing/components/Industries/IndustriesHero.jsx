@@ -22,11 +22,11 @@ export function IndustriesHero() {
         variants={container}
         initial="hidden"
         animate="show">
-        
+
         <motion.p variants={item} className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-6 flex items-center gap-3 font-mono">
-          <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+          <span className="w-8 h-px bg-[#FF5722]"></span>
           INDUSTRIES
-          <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+          <span className="w-8 h-px bg-[#FF5722]"></span>
         </motion.p>
 
         <motion.h1 variants={item} className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-8 leading-tight">

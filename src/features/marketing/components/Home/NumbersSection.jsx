@@ -59,7 +59,7 @@ function StatCard({ stat, itemVariants }) {
       </div>
 
       {/* Data Stream Hover Effect */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[250px] transition-all duration-[1.5s] ease-in-out z-0"></div>
+      <div className="absolute top-0 left-0 w-full h-px bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[250px] transition-all duration-[1.5s] ease-in-out z-0"></div>
 
       <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl whitespace-nowrap font-black tracking-tighter text-white mb-6 group-hover:text-[#FF5722] group-hover:drop-shadow-[0_0_15px_rgba(255,87,34,0.3)] transition-all duration-300 relative z-10 flex">
         <ScrambleText text={stat.value} isHovered={isHovered} />
@@ -99,9 +99,9 @@ export function NumbersSection() {
 
         <div className="mb-20 flex flex-col items-center text-center">
           <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center justify-center gap-3">
-            <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+            <span className="w-8 h-px bg-[#FF5722]"></span>
             PROVEN AT SCALE
-            <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+            <span className="w-8 h-px bg-[#FF5722]"></span>
           </p>
           <h3 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase leading-[1.1]">
             Numbers That Run on <span className="text-zinc-600">JSPARK AI</span>
@@ -128,10 +128,10 @@ export function NumbersSection() {
           {/* Global Connecting Lines Overlay (Hidden on Mobile) */}
           <div className="pointer-events-none absolute inset-0 z-20 hidden lg:block mix-blend-screen">
             {/* Horizontal Line separating rows */}
-            <div className="absolute top-1/2 left-[-5%] right-[-5%] h-[1px] bg-gradient-to-r from-transparent via-[#FF5722]/30 to-transparent"></div>
+            <div className="absolute top-1/2 left-[-5%] right-[-5%] h-px bg-gradient-to-r from-transparent via-[#FF5722]/30 to-transparent"></div>
             {/* Vertical Lines separating columns */}
-            <div className="absolute top-[-5%] bottom-[-5%] left-[33.33%] w-[1px] bg-gradient-to-b from-transparent via-[#FF5722]/30 to-transparent"></div>
-            <div className="absolute top-[-5%] bottom-[-5%] left-[66.66%] w-[1px] bg-gradient-to-b from-transparent via-[#FF5722]/30 to-transparent"></div>
+            <div className="absolute top-[-5%] bottom-[-5%] left-[33.33%] w-px bg-gradient-to-b from-transparent via-[#FF5722]/30 to-transparent"></div>
+            <div className="absolute top-[-5%] bottom-[-5%] left-[66.66%] w-px bg-gradient-to-b from-transparent via-[#FF5722]/30 to-transparent"></div>
 
             {/* Intersection Glowing Nodes */}
             <div className="absolute top-1/2 left-[33.33%] w-2 h-2 -ml-1 -mt-1 bg-[#FF5722] rounded-full shadow-[0_0_10px_#FF5722]"></div>
@@ -139,12 +139,12 @@ export function NumbersSection() {
 
             {/* Crosshairs at intersections */}
             <div className="absolute top-1/2 left-[33.33%] w-6 h-6 -ml-3 -mt-3">
-              <div className="absolute top-1/2 left-0 w-full h-[1px] bg-[#FF5722]/50"></div>
-              <div className="absolute top-0 left-1/2 w-[1px] h-full bg-[#FF5722]/50"></div>
+              <div className="absolute top-1/2 left-0 w-full h-px bg-[#FF5722]/50"></div>
+              <div className="absolute top-0 left-1/2 w-px h-full bg-[#FF5722]/50"></div>
             </div>
             <div className="absolute top-1/2 left-[66.66%] w-6 h-6 -ml-3 -mt-3">
-              <div className="absolute top-1/2 left-0 w-full h-[1px] bg-[#FF5722]/50"></div>
-              <div className="absolute top-0 left-1/2 w-[1px] h-full bg-[#FF5722]/50"></div>
+              <div className="absolute top-1/2 left-0 w-full h-px bg-[#FF5722]/50"></div>
+              <div className="absolute top-0 left-1/2 w-px h-full bg-[#FF5722]/50"></div>
             </div>
           </div>
 

@@ -27,7 +27,7 @@ export default function ProductDetail() {
 
   return (
     <div className="bg-[#000000] min-h-screen w-full relative selection:bg-[#FF5722] selection:text-white pb-32 font-sans overflow-hidden">
-      
+
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none z-0 flex items-center justify-center">
         <div className="w-[1000px] h-[1000px] bg-[#FF5722]/5 rounded-full blur-[150px] opacity-50"></div>
@@ -35,7 +35,7 @@ export default function ProductDetail() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-32">
-        
+
         {/* Navigation & Breadcrumb */}
         <motion.div initial="hidden" animate="show" variants={fadeUp} className="mb-16">
           <Link to="/products" className="group inline-flex items-center gap-2 text-zinc-500 hover:text-[#FF5722] font-mono text-xs tracking-widest uppercase transition-colors">
@@ -46,15 +46,15 @@ export default function ProductDetail() {
         {/* Hero Section */}
         <motion.div initial="hidden" animate="show" variants={stagger} className="flex flex-col items-center text-center mb-24 relative">
           <motion.p variants={fadeUp} className="text-[#FF5722] font-mono text-xs tracking-[0.3em] uppercase mb-6 flex items-center gap-4 justify-center">
-            <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+            <span className="w-8 h-px bg-[#FF5722]"></span>
             {product.eyebrow}
-            <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+            <span className="w-8 h-px bg-[#FF5722]"></span>
           </motion.p>
-          
+
           <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-[6rem] font-black tracking-tighter text-white mb-8 leading-[0.95]">
             {product.name}
           </motion.h1>
-          
+
           <motion.p variants={fadeUp} className="text-zinc-400 text-lg md:text-2xl leading-relaxed max-w-4xl mx-auto font-light">
             {product.body}
           </motion.p>
@@ -63,10 +63,10 @@ export default function ProductDetail() {
         {/* Massive Visual / Radar Feed */}
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }} className="w-full aspect-video md:aspect-[21/9] bg-[#050505] border border-zinc-800 rounded-3xl relative overflow-hidden mb-24 shadow-2xl group">
           <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 group-hover:opacity-40 transition-opacity duration-1000"></div>
-          
+
           {/* Scanning line effect */}
           <div className="absolute top-0 left-0 w-full h-[15%] bg-gradient-to-b from-transparent via-[#FF5722]/20 to-transparent -translate-y-full group-hover:animate-[scan_4s_ease-in-out_infinite]"></div>
-          
+
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <div className="w-32 h-32 rounded-full border-[0.5px] border-[#FF5722]/30 flex items-center justify-center relative">
               <div className="w-24 h-24 rounded-full border-[0.5px] border-[#FF5722]/20 animate-[spin_10s_linear_infinite] border-t-[#FF5722]"></div>
@@ -75,7 +75,7 @@ export default function ProductDetail() {
             </div>
             <p className="mt-6 font-mono text-[10px] text-zinc-500 tracking-[0.3em] uppercase">Tactical Feed Active</p>
           </div>
-          
+
           {/* Tactical corners */}
           <div className="absolute top-6 left-6 w-4 h-4 border-t border-l border-zinc-600"></div>
           <div className="absolute top-6 right-6 w-4 h-4 border-t border-r border-zinc-600"></div>
@@ -105,12 +105,12 @@ export default function ProductDetail() {
               <p className="text-zinc-400">Advanced features powering {product.name}</p>
             </div>
           </div>
-          
-          <motion.div 
-            initial="hidden" 
-            whileInView="show" 
-            viewport={{ once: true, margin: "-100px" }} 
-            variants={stagger} 
+
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
             className={`grid gap-6 ${product.whatItDoes.length === 5 || product.whatItDoes.length === 4 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}
           >
             {product.whatItDoes.map((feature, i) => {
@@ -120,11 +120,11 @@ export default function ProductDetail() {
               if (total === 6 && (i === 0 || i === 3)) spanClass = "md:col-span-2 lg:col-span-2";
 
               return (
-                <motion.div 
-                  variants={fadeUp} 
+                <motion.div
+                  variants={fadeUp}
                   whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                  key={i} 
+                  key={i}
                   className={`p-8 bg-[#0B0C10] border border-zinc-900 rounded-2xl flex flex-col justify-between hover:border-[#FF5722]/30 transition-colors relative overflow-hidden group ${spanClass}`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#FF5722]/0 to-transparent group-hover:from-[#FF5722]/10 transition-colors duration-500"></div>

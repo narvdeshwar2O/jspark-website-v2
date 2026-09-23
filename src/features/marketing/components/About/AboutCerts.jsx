@@ -29,7 +29,7 @@ export function AboutCerts() {
 
         <div className="mb-16">
           <p className="text-[#FF5722] text-[10px] font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3 font-mono">
-            <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+            <span className="w-8 h-px bg-[#FF5722]"></span>
             CERTIFIED
           </p>
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">Certifications and Recognitions</h2>

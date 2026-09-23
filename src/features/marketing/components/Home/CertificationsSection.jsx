@@ -28,7 +28,7 @@ export function CertificationsSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-20">
           <div>
             <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+              <span className="w-8 h-px bg-[#FF5722]"></span>
               CERTIFIED FOR THE WORLD
             </p>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase leading-[1.1]">

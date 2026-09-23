@@ -30,7 +30,7 @@ export function AboutHero() {
         animate="show">
 
         <motion.p variants={item} className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-6 flex items-center gap-3 font-mono">
-          <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+          <span className="w-8 h-px bg-[#FF5722]"></span>
           WHO WE ARE
         </motion.p>
 

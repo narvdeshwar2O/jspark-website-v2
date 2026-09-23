@@ -25,7 +25,7 @@ export function AboutPillars() {
 
         <div className="mb-16">
           <p className="text-[#FF5722] text-[10px] font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3 font-mono">
-            <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+            <span className="w-8 h-px bg-[#FF5722]"></span>
             FOUNDATION
           </p>
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">Four Founding Pillars</h2>
@@ -37,15 +37,15 @@ export function AboutPillars() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}>
-          
+
           {pillars.map((p) =>
           <motion.div
             key={p.num}
             variants={item}
             className="group relative border border-zinc-800 hover:border-[#FF5722]/30 bg-[#000000] p-8 overflow-hidden transition-colors duration-300">
-            
+
               {/* Expanding top accent */}
-              <div className="absolute top-0 left-0 h-[1px] w-0 bg-[#FF5722] group-hover:w-full transition-all duration-500 ease-out"></div>
+              <div className="absolute top-0 left-0 h-px w-0 bg-[#FF5722] group-hover:w-full transition-all duration-500 ease-out"></div>
 
               <div className="flex items-start gap-6">
                 <span className="text-[#FF5722] font-mono text-xs tracking-widest shrink-0 mt-1">{p.num}</span>

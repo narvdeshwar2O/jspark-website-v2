@@ -49,7 +49,7 @@ export function DeployedSection() {
 
         <div className="mb-20">
           <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3">
-            <span className="w-8 h-[1px] bg-[#FF5722]"></span>
+            <span className="w-8 h-px bg-[#FF5722]"></span>
             DEPLOYED WHERE FAILURE IS NOT AN OPTION
           </p>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white uppercase leading-[1.1]">
@@ -75,7 +75,7 @@ export function DeployedSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#FF5722]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
               {/* Decorative Tech Accents */}
-              <div className="absolute top-0 right-10 w-20 h-[1px] bg-gradient-to-r from-transparent via-[#FF5722]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <div className="absolute top-0 right-10 w-20 h-px bg-gradient-to-r from-transparent via-[#FF5722]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-10 border-b border-zinc-800/50 pb-4">

@@ -35,7 +35,7 @@ export function CaseStudyMinor({ data }) {
           {/* Left Col: Info */}
           <div className="flex flex-col justify-center">
             <motion.p variants={item} className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3 font-mono">
-              Case Study {data.num} <span className="w-8 h-[1px] bg-[#FF5722]"></span> {data.client}
+              Case Study {data.num} <span className="w-8 h-px bg-[#FF5722]"></span> {data.client}
             </motion.p>
             <motion.h2 variants={item} className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-6 leading-tight">
               {data.headline}
@@ -53,7 +53,7 @@ export function CaseStudyMinor({ data }) {
           {/* Right Col: Numbers */}
           <div className="flex lg:justify-end">
             <motion.div variants={item} className="bg-[#0A0A0A] border border-zinc-800 p-8 w-full lg:w-4/5 relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-[1px] bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[200px] transition-all duration-700 ease-out"></div>
+              <div className="absolute top-0 left-0 w-full h-px bg-[#FF5722] opacity-0 group-hover:opacity-100 group-hover:translate-y-[200px] transition-all duration-700 ease-out"></div>
 
               <p className="text-[#FF5722] font-mono text-[10px] tracking-widest uppercase mb-4">Measured Impact</p>
               <div className="space-y-4">
