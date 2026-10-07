@@ -59,7 +59,7 @@ export function CaseStudyMajor({ data }) {
                 <div className="flex flex-col gap-4">
                   {data.numbers.split(", ").map((stat, i) =>
                   <div key={i} className="flex items-start gap-3">
-                      <span className="text-[#FF5722] font-mono mt-0.5">â¯</span>
+                      <span className="text-[#FF5722] font-mono mt-0.5">❯</span>
                       <span className="text-white font-mono text-sm leading-tight">{stat}</span>
                     </div>
                   )}
@@ -93,7 +93,7 @@ export function CaseStudyMajor({ data }) {
               <ul className="space-y-3 mb-6">
                 {data.afterList.map((pt, i) =>
                 <li key={i} className="text-zinc-300 text-sm leading-relaxed flex items-start gap-3 font-mono">
-                    <span className="text-zinc-300 mt-0.5">â””â”€</span>
+                    <span className="text-zinc-500 mt-0.5">└─</span>
                     {pt}
                   </li>
                 )}
@@ -122,3 +122,4 @@ export function CaseStudyMajor({ data }) {
     </section>);
 
 }
+

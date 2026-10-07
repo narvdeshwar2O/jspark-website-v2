@@ -72,7 +72,7 @@ export function CaseStudyMinorsGrid({ data }) {
                 <div className="flex flex-col gap-2">
                   {study.numbers.split(" Â· ").map((stat, i) =>
                 <div key={i} className="flex items-start gap-2">
-                      <span className="text-[#FF5722] font-mono text-xs">â””â”€</span>
+                      <span className="text-[#FF5722] font-mono text-xs">❯</span>
                       <span className="text-zinc-300 font-mono text-[10px] uppercase leading-tight">{stat}</span>
                     </div>
                 )}
