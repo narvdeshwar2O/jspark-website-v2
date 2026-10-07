@@ -2,17 +2,6 @@
 
 import { motion } from "framer-motion";
 
-
-
-
-
-
-
-
-
-
-
-
 export function IndustryBlock({ data }) {
   const container = {
     hidden: { opacity: 0 },
@@ -24,72 +13,67 @@ export function IndustryBlock({ data }) {
   };
 
   return (
-    <section id={data.id} className="relative w-full min-h-screen flex items-center justify-center overflow-hidden py-32 border-t border-zinc-900">
+    <motion.div
+      id={data.id}
+      className="flex flex-col w-full h-full p-8 md:p-10 bg-black/60 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.8)] relative overflow-hidden group hover:border-zinc-700 transition-colors duration-500"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-50px" }}
+    >
+      {/* Decorative subtle gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#FF5722]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-      {/* Grid Overlay */}
-      <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] opacity-10 pointer-events-none"></div>
+      {/* Main Info */}
+      <div className="flex flex-col gap-8 flex-grow relative z-10">
+        <motion.div variants={item}>
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-white mb-6 leading-tight drop-shadow-lg">
+            {data.title}
+          </h2>
 
-      <div className="mx-auto px-6 md:px-12 lg:px-24 w-full relative z-10 flex">
-        {/* Content Panel */}
-        <motion.div
-          className="w-full lg:w-[95%] mx-auto p-10 md:p-16 bg-black/60 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_0_50px_rgba(0,0,0,0.8)]"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {/* Main Info */}
-          <div className="flex flex-col gap-10">
-            <motion.div variants={item}>
-              <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6 leading-tight drop-shadow-lg">
-                {data.title}
-              </h2>
-
-              <div className="mb-6">
-                <span className="inline-block bg-[#FF5722]/20 border border-[#FF5722] text-[#FF5722] text-xs font-mono tracking-widest uppercase px-4 py-2 rounded-sm font-bold shadow-[0_0_15px_rgba(255,87,34,0.15)]">
-                  Powered by: {data.products}
-                </span>
-              </div>
-
-              <p className="text-zinc-200 text-lg md:text-xl leading-relaxed font-light drop-shadow-sm">
-                {data.body}
-              </p>
-            </motion.div>
-
-            {/* Details list (if available) */}
-            {data.whatYouGet && data.whatYouGet.length > 0 &&
-            <motion.div variants={item} className="mb-2">
-              <h3 className="text-white font-bold text-xl mb-5 flex items-center gap-3">
-                <span className="w-2 h-2 bg-[#FF5722] rounded-full shadow-[0_0_10px_#FF5722]"></span> Core Capabilities
-              </h3>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
-                {data.whatYouGet.map((pt, i) =>
-                  <li key={i} className="text-zinc-100 text-base leading-relaxed pl-4 border-l-2 border-[#FF5722]/60">{pt}</li>
-                )}
-              </ul>
-            </motion.div>
-            }
-
-            {(data.proof || data.configurations) &&
-            <motion.div variants={item} className="p-8 border border-white/10 bg-white/5 rounded-2xl mt-2 backdrop-blur-sm shadow-inner">
-                {data.proof &&
-                <div className="mb-6 last:mb-0">
-                  <p className="text-zinc-400 font-mono text-[10px] tracking-widest uppercase mb-2 font-semibold">Deployed Proof</p>
-                  <p className="text-white font-mono text-sm leading-relaxed">{data.proof}</p>
-                </div>
-                }
-                {data.configurations &&
-                <div className="last:mb-0">
-                  <p className="text-zinc-400 font-mono text-[10px] tracking-widest uppercase mb-2 font-semibold mt-4">Configurations</p>
-                  <p className="text-white font-mono text-sm leading-relaxed">{data.configurations}</p>
-                </div>
-                }
-              </motion.div>
-            }
+          <div className="mb-6">
+            <span className="inline-block bg-[#FF5722]/10 border border-[#FF5722]/50 text-[#FF5722] text-[10px] md:text-xs font-mono tracking-widest uppercase px-3 py-1.5 rounded-sm font-bold shadow-[0_0_15px_rgba(255,87,34,0.1)]">
+              Powered by: {data.products}
+            </span>
           </div>
-        </motion.div>
-      </div>
-    </section>
-  );
 
+          <p className="text-zinc-300 text-base md:text-lg leading-relaxed font-light drop-shadow-sm">
+            {data.body}
+          </p>
+        </motion.div>
+
+        {/* Details list */}
+        {data.whatYouGet && data.whatYouGet.length > 0 &&
+        <motion.div variants={item} className="mb-2">
+          <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-3">
+            <span className="w-1.5 h-1.5 bg-[#FF5722] rounded-full shadow-[0_0_8px_#FF5722]"></span> Core Capabilities
+          </h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
+            {data.whatYouGet.map((pt, i) =>
+              <li key={i} className="text-zinc-200 text-sm md:text-base leading-relaxed pl-3 border-l-2 border-[#FF5722]/50">{pt}</li>
+            )}
+          </ul>
+        </motion.div>
+        }
+
+        {/* Bottom Proof & Configs */}
+        {(data.proof || data.configurations) &&
+        <motion.div variants={item} className="mt-auto p-6 border border-white/5 bg-white/5 rounded-xl backdrop-blur-sm shadow-inner flex flex-col gap-4">
+            {data.proof &&
+            <div>
+              <p className="text-zinc-500 font-mono text-[10px] tracking-widest uppercase mb-1.5 font-bold">Deployed Proof</p>
+              <p className="text-zinc-100 font-mono text-xs md:text-sm leading-relaxed">{data.proof}</p>
+            </div>
+            }
+            {data.configurations &&
+            <div>
+              <p className="text-zinc-500 font-mono text-[10px] tracking-widest uppercase mb-1.5 font-bold">Configurations</p>
+              <p className="text-zinc-100 font-mono text-xs md:text-sm leading-relaxed">{data.configurations}</p>
+            </div>
+            }
+          </motion.div>
+        }
+      </div>
+    </motion.div>
+  );
 }

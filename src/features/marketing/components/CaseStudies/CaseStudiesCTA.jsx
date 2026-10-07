@@ -29,7 +29,7 @@ export function CaseStudiesCTA() {
           </motion.h2>
 
           <motion.p variants={item} className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-2xl mb-12">
-            Every deployment above started with one demonstration on the client&apos;s own data. Yours can too.
+            Every deployment above started with one demonstration on the client&apos;s own data. Your&apos;s can too.
           </motion.p>
 
           <motion.div variants={item}>

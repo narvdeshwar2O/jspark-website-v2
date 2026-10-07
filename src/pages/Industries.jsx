@@ -32,6 +32,16 @@ const industryData = [
     proof: "3 Million+ rivers mapped, IMD verified.",
     configurations: "On-premises, air-gapped.",
     reverse: false
+  },
+  {
+    id: "critical-infrastructure",
+    title: "Critical Infrastructure & Energy Systems",
+    products: "OPSVISION, OPSMIND",
+    body: "OpsVision and OpsMind for power, water, transport, and telecom.",
+    whatYouGet: ["Outage forecasting", "Demand balancing", "Archive digitization"],
+    proof: "Continuous sovereign watch.",
+    configurations: "Bare-metal deploy, localized clusters.",
+    reverse: true
   }
 ]
 
@@ -39,9 +49,13 @@ export default function Industries() {
   return (
     <div className="bg-[#0B0C10] relative z-10 w-full min-h-screen">
       <IndustriesHero />
-      {industryData.map(data => (
-        <IndustryBlock key={data.id} data={data} />
-      ))}
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 py-12 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+          {industryData.map(data => (
+            <IndustryBlock key={data.id} data={data} />
+          ))}
+        </div>
+      </div>
       <IndustriesCTA />
     </div>
   )

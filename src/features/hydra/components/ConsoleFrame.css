@@ -81,14 +81,14 @@
 .console-frame__figures {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 8px 0;
+  gap: 6px;
+  padding: 4px 0;
 }
 
 .console-frame__figures > div {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 12px;
+  padding: 6px 8px;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
@@ -252,3 +252,14 @@
     transform: none;
   }
 }
+
+.console-frame__sidebar-inner {
+  overflow-y: auto;
+  pointer-events: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.console-frame__sidebar-inner::-webkit-scrollbar {
+  display: none;
+}
+.console-frame__figures .ds-readout { gap: 2px !important; }

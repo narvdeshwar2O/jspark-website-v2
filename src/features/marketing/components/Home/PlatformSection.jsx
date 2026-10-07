@@ -6,7 +6,7 @@ const supportingProducts = [
   {
     id: "hydra",
     name: "OpsUnity Hydra",
-    tag: "AI Hydrology Model",
+    tag: "Sovereign AI Hydrology Model",
     description: "Forecasts rainfall, floods, flash floods, and rainfall-induced landslides at basin level, hours before impact. Mapped over 3 million rivers and streams.",
     buttonText: "Explore Hydra"
   },
