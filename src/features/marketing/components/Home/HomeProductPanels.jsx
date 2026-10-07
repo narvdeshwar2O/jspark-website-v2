@@ -1,3 +1,4 @@
+﻿import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { detailedProducts } from "../../data/products";
 
@@ -45,9 +46,9 @@ export function HomeProductPanels() {
                 )}
               </div>
 
-              <a href={`/products/${product.id}`} className="inline-flex self-start items-center justify-center px-6 py-3 bg-zinc-900 border border-zinc-800 text-white font-mono text-[10px] tracking-[0.2em] uppercase hover:bg-[#FF5722]/20 hover:border-[#FF5722]/50 transition-colors">
-                Deep Dive {product.id.split('-').pop()} →
-              </a>
+              <Link to={`/products/${product.id}`} className="inline-flex self-start items-center justify-center px-6 py-3 bg-zinc-900 border border-zinc-800 text-white font-mono text-[10px] tracking-[0.2em] uppercase hover:bg-[#FF5722]/20 hover:border-[#FF5722]/50 transition-colors">
+                Deep Dive {product.id.split('-').pop()} â†’
+              </Link>
 
             </motion.div>
 
