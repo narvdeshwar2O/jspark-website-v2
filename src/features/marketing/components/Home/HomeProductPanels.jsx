@@ -47,25 +47,25 @@ export function HomeProductPanels() {
               </div>
 
               <Link to={`/products/${product.id}`} className="inline-flex self-start items-center justify-center px-6 py-3 bg-zinc-900 border border-zinc-800 text-white font-mono text-[10px] tracking-[0.2em] uppercase hover:bg-[#FF5722]/20 hover:border-[#FF5722]/50 transition-colors">
-                Deep Dive {product.id.split('-').pop()} â†’
+                Deep Dive {product.id.split('-').pop()}
               </Link>
 
             </motion.div>
 
             {/* Image Placeholder Side */}
             <motion.div variants={item} className="flex-[1.2] w-full relative aspect-video border border-zinc-800 bg-[#0B0C10] overflow-hidden group rounded-2xl">
-              
+
               {['opsunity-hydra', 'opsvision', 'opsunity-ai', 'opsmind'].includes(product.id) ? (
-                <video 
+                <video
                   src={
-                    product.id === 'opsunity-hydra' ? '/assets/opshydra_gif.mp4' : 
-                    product.id === 'opsvision' ? '/assets/opsvision.mp4' : 
-                    product.id === 'opsmind' ? '/assets/opsmind.mp4' : 
+                    product.id === 'opsunity-hydra' ? '/assets/opshydra_gif.mp4' :
+                    product.id === 'opsvision' ? '/assets/opsvision.mp4' :
+                    product.id === 'opsmind' ? '/assets/opsmind.mp4' :
                     '/assets/opsunity.mp4'
                   }
-                  autoPlay 
-                  loop 
-                  muted 
+                  autoPlay
+                  loop
+                  muted
                   playsInline
                   className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                 />
