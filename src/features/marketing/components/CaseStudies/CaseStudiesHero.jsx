@@ -43,7 +43,7 @@ export function CaseStudiesHero() {
             Measured results from air-gapped deployments across India, the Gulf, and Europe. No theoretical limits. Only live operational metrics.
           </motion.p>
           <motion.div variants={item} className="text-right">
-            <p className="text-zinc-600 text-[10px] font-mono tracking-widest uppercase mb-1">SYSTEM STATUS</p>
+            <p className="text-zinc-400 text-[10px] font-mono tracking-widest uppercase mb-1">SYSTEM STATUS</p>
             <p className="text-[#FF5722] text-sm font-mono tracking-widest uppercase">ALL NODES ACTIVE</p>
           </motion.div>
         </div>

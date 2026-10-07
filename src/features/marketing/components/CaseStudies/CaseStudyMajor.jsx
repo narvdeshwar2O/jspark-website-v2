@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 
@@ -38,7 +38,7 @@ export function CaseStudyMajor({ data }) {
             <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }}>
 
               <div className="flex items-center justify-between border-b border-zinc-800 pb-4 mb-8">
-                <span className="text-zinc-600 font-mono text-[10px] tracking-[0.2em] uppercase">TARGET // {data.num}</span>
+                <span className="text-zinc-300 font-mono text-[10px] tracking-[0.2em] uppercase">TARGET // {data.num}</span>
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-[#FF5722] rounded-full animate-ping absolute"></span>
                   <span className="w-1.5 h-1.5 bg-[#FF5722] rounded-full relative"></span>
@@ -55,11 +55,11 @@ export function CaseStudyMajor({ data }) {
 
               <motion.div variants={item} className="bg-[#000000] border border-zinc-800 p-6 relative group overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-px bg-[#FF5722]/50 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                <p className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase mb-4 border-b border-zinc-900 pb-2">Verified Metrics</p>
+                <p className="text-zinc-300 font-mono text-[9px] tracking-widest uppercase mb-4 border-b border-zinc-900 pb-2">Verified Metrics</p>
                 <div className="flex flex-col gap-4">
-                  {data.numbers.split(" · ").map((stat, i) =>
+                  {data.numbers.split(", ").map((stat, i) =>
                   <div key={i} className="flex items-start gap-3">
-                      <span className="text-[#FF5722] font-mono mt-0.5">❯</span>
+                      <span className="text-[#FF5722] font-mono mt-0.5">â¯</span>
                       <span className="text-white font-mono text-sm leading-tight">{stat}</span>
                     </div>
                   )}
@@ -77,8 +77,8 @@ export function CaseStudyMajor({ data }) {
 
             {/* Terminal Block: Before */}
             <motion.div variants={item} initial="hidden" whileInView="show" viewport={{ once: true }} className="border-l border-zinc-800 pl-6">
-              <p className="text-zinc-600 font-mono text-[10px] tracking-widest uppercase mb-3">[ SYSTEM_STATE :: BEFORE ]</p>
-              <p className="text-zinc-400 text-base leading-relaxed">{data.before}</p>
+              <p className="text-zinc-300 font-mono text-[10px] tracking-widest uppercase mb-3">[ SYSTEM_STATE :: BEFORE ]</p>
+              <p className="text-zinc-300 text-base leading-relaxed">{data.before}</p>
             </motion.div>
 
             {/* Terminal Block: Action */}
@@ -89,11 +89,11 @@ export function CaseStudyMajor({ data }) {
 
             {/* Terminal Block: After */}
             <motion.div variants={item} initial="hidden" whileInView="show" viewport={{ once: true }} className="border-l border-zinc-800 pl-6">
-              <p className="text-zinc-600 font-mono text-[10px] tracking-widest uppercase mb-3">[ SYSTEM_STATE :: OPTIMISED ]</p>
+              <p className="text-zinc-300 font-mono text-[10px] tracking-widest uppercase mb-3">[ SYSTEM_STATE :: OPTIMISED ]</p>
               <ul className="space-y-3 mb-6">
                 {data.afterList.map((pt, i) =>
                 <li key={i} className="text-zinc-300 text-sm leading-relaxed flex items-start gap-3 font-mono">
-                    <span className="text-zinc-600 mt-0.5">└─</span>
+                    <span className="text-zinc-300 mt-0.5">â””â”€</span>
                     {pt}
                   </li>
                 )}
@@ -105,10 +105,10 @@ export function CaseStudyMajor({ data }) {
 
             {data.modules &&
             <motion.div variants={item} initial="hidden" whileInView="show" viewport={{ once: true }} className="pt-8 border-t border-zinc-900">
-                <p className="text-zinc-600 font-mono text-[9px] tracking-widest uppercase mb-4">ACTIVE MODULES</p>
+                <p className="text-zinc-300 font-mono text-[9px] tracking-widest uppercase mb-4">ACTIVE MODULES</p>
                 <div className="flex flex-wrap gap-2">
-                  {data.modules.split(" · ").map((mod, i) =>
-                <span key={i} className="border border-zinc-800 text-zinc-400 font-mono text-[9px] tracking-widest px-3 py-1.5 uppercase bg-[#000000]">
+                  {data.modules.split(", ").map((mod, i) =>
+                <span key={i} className="border border-zinc-700 text-zinc-300 font-mono text-[9px] tracking-widest px-3 py-1.5 uppercase bg-white/5">
                       {mod}
                     </span>
                 )}

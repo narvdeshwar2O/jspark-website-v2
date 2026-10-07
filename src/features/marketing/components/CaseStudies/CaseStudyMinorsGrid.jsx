@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 
@@ -36,7 +36,7 @@ export function CaseStudyMinorsGrid({ data }) {
               Global Operations Log
             </h2>
           </div>
-          <div className="text-zinc-600 font-mono text-[10px] tracking-[0.2em] uppercase text-right hidden md:block">
+          <div className="text-zinc-400 font-mono text-[10px] tracking-[0.2em] uppercase text-right hidden md:block">
             <p>QUERY_MATCH: {data.length} RECORDS</p>
             <p>STATUS: VERIFIED</p>
           </div>
@@ -68,11 +68,11 @@ export function CaseStudyMinorsGrid({ data }) {
               </div>
 
               <div className="pt-6 border-t border-zinc-800/50 mt-auto">
-                <p className="text-zinc-600 font-mono text-[9px] tracking-widest uppercase mb-3">IMPACT METRICS</p>
+                <p className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase mb-3">IMPACT METRICS</p>
                 <div className="flex flex-col gap-2">
-                  {study.numbers.split(" · ").map((stat, i) =>
+                  {study.numbers.split(" Â· ").map((stat, i) =>
                 <div key={i} className="flex items-start gap-2">
-                      <span className="text-[#FF5722] font-mono text-xs">└─</span>
+                      <span className="text-[#FF5722] font-mono text-xs">â””â”€</span>
                       <span className="text-zinc-300 font-mono text-[10px] uppercase leading-tight">{stat}</span>
                     </div>
                 )}
