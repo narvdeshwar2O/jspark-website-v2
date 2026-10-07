@@ -42,9 +42,9 @@ export function PlatformSection() {
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] pointer-events-none"></div>
 
       <div className="max-w-[1500px] mx-auto px-6 md:px-12 lg:px-24 relative z-10">
-        <div className="mb-20">
+        <div className="mb-3">
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-6 uppercase leading-[1.1]">
-            One Platform. <br className="hidden md:block" />
+            One Platform. {" "}
             <span className="text-[#FF5722]">Every Mission.</span>
           </h2>
         </div>

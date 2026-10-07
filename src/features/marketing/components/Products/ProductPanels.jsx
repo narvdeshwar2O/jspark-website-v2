@@ -9,7 +9,8 @@ const products = [
     headline: "The State Sees the Flood Before the River Does",
     body: "Hydra forecasts rainfall, floods, flash floods, and rainfall-induced landslides at basin level, hours before impact.",
     numbers: ["3M+ rivers mapped", "6 hours+ advance warning", "4 hazards, one model", "IMD verified"],
-    imageFirst: false
+    imageFirst: false,
+    video: "/assets/opshydra_gif.mp4"
   },
   {
     id: "opsvision",
@@ -17,7 +18,8 @@ const products = [
     headline: "The Unit Is Already There When the Call Comes In",
     body: "One living model of your entire operation, every asset, event, signal, and record fused into a single intelligence picture.",
     numbers: ["24 Cr citizens protected", "1.34 Cr offender records", "23% to 4% misrouted calls", "46% faster response"],
-    imageFirst: true
+    imageFirst: true,
+    video: "/assets/opsmind.mp4"
   },
   {
     id: "opsmind",
@@ -25,7 +27,8 @@ const products = [
     headline: "Reads What Machines Cannot",
     body: "It understands engineering drawings too complex for OCR, schematics only a veteran engineer could parse, and archives nobody alive remembers.",
     numbers: ["90% Faster processing", "Conversational Query", "Contextual Awareness", "100% Source Traced"],
-    imageFirst: false
+    imageFirst: false,
+    video: "/assets/opsmind.mp4"
   },
   {
     id: "opsunity-ai",
@@ -33,7 +36,8 @@ const products = [
     headline: "The Sovereign AI Operating System",
     body: "The AI operating system that powers every JSPARK product.",
     numbers: ["Zero external calls", "Unlimited queries", "72 Hours to mission-ready", "Hardware Agnostic"],
-    imageFirst: true
+    imageFirst: true,
+    video: "/assets/opsunity.mp4"
   }
 ];
 
@@ -95,19 +99,32 @@ export function ProductPanels() {
 
             {/* Visual Side */}
             <motion.div variants={item} className="flex-1 w-full relative min-h-[400px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-zinc-900 bg-[#000000] overflow-hidden flex items-center justify-center">
-              <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 group-hover:opacity-30 transition-opacity duration-700"></div>
+              {product.video ? (
+                <video
+                  src={product.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                />
+              ) : (
+                <>
+                  <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 group-hover:opacity-30 transition-opacity duration-700"></div>
 
-              {/* Data rings animation */}
-              <div className="relative w-64 h-64 flex items-center justify-center">
-                <div className="absolute inset-0 rounded-full border border-zinc-800/50 group-hover:border-[#FF5722]/30 transition-colors duration-700"></div>
-                <div className="absolute inset-4 rounded-full border border-zinc-800/50 border-t-[#FF5722]/50 animate-[spin_12s_linear_infinite]"></div>
-                <div className="absolute inset-8 rounded-full border border-zinc-800/50 border-b-[#FF5722]/50 animate-[spin_8s_linear_infinite_reverse]"></div>
+                  {/* Data rings animation */}
+                  <div className="relative w-64 h-64 flex items-center justify-center">
+                    <div className="absolute inset-0 rounded-full border border-zinc-800/50 group-hover:border-[#FF5722]/30 transition-colors duration-700"></div>
+                    <div className="absolute inset-4 rounded-full border border-zinc-800/50 border-t-[#FF5722]/50 animate-[spin_12s_linear_infinite]"></div>
+                    <div className="absolute inset-8 rounded-full border border-zinc-800/50 border-b-[#FF5722]/50 animate-[spin_8s_linear_infinite_reverse]"></div>
 
-                <div className="w-24 h-px bg-[#FF5722]/50 relative z-10 group-hover:w-32 transition-all duration-700">
-                  <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] animate-ping"></div>
-                  <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] shadow-[0_0_10px_#FF5722]"></div>
-                </div>
-              </div>
+                    <div className="w-24 h-px bg-[#FF5722]/50 relative z-10 group-hover:w-32 transition-all duration-700">
+                      <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] animate-ping"></div>
+                      <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] shadow-[0_0_10px_#FF5722]"></div>
+                    </div>
+                  </div>
+                </>
+              )}
 
               <div className="absolute bottom-8 right-8 text-right">
                 <p className="font-mono text-[9px] text-zinc-500 tracking-[0.3em] uppercase mb-1">Status</p>

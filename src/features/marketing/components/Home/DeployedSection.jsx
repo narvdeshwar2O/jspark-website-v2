@@ -7,7 +7,7 @@ const cases = [
   id: "01",
   client: "Uttar Pradesh 112",
   logo: "/assets/up112-logo.png",
-  headline: "Emergency Response That Predicts, Not Reacts",
+  headline: "World Largest Emergency Response System",
   tag: "HOMELAND SECURITY",
   stats: [
   { value: "46%", label: "Faster response" },
@@ -15,13 +15,17 @@ const cases = [
   { value: "71%", label: "Fewer complaints" },
   { value: "75%", label: "Ops overhead down" }],
 
-  body: "UP 112 is the world's largest emergency response system: 75 districts, 24 crore citizens, thousands of Police Response Vehicles. OpsVision placed response vehicles before the call came in and corrected every misrouted call at intake.",
+  body: (
+    <>
+      <span className="text-white font-semibold">UP 112</span> is the <span className="text-white font-medium">world's largest emergency response system</span>: 75 districts, 24 crore citizens, thousands of Police Response Vehicles. <span className="text-[#FF5722] font-bold drop-shadow-[0_0_8px_rgba(255,87,34,0.4)]">OpsVision</span> placed response vehicles <span className="text-white font-medium">before the call came in</span> and corrected every misrouted call at intake.
+    </>
+  ),
 },
 {
   id: "02",
   client: "National Crime Records Bureau",
   logo: "/assets/ncrb-logo.png",
-  headline: "From 10 Hours to 5 Seconds",
+  headline: "World Largest Crime data for NAFIS",
   tag: "CRIME INTELLIGENCE",
   stats: [
   { value: "5 sec", label: "Report generation" },
@@ -29,7 +33,7 @@ const cases = [
   { value: "36", label: "States & UTs, one view" },
   { value: "3,850", label: "Operators self-served" }],
 
-  body: "The world's largest crime database. A status report took 8–10 hours to generate. OpsVision sits inside NAFIS as the single national dashboard — every fingerprint transaction, filterable to any state, district, and date range. Answered on demand.",
+  body: (<>The <span className="text-white font-medium">world's largest crime database</span>. A status report took <span className="text-zinc-500 line-through mr-1">8-10 hours</span> to generate. <span className="text-[#FF5722] font-bold drop-shadow-[0_0_8px_rgba(255,87,34,0.4)]">OpsVision</span> sits inside <span className="text-white font-semibold">NAFIS</span> as the <span className="text-white font-medium">single national dashboard</span> &mdash; every fingerprint transaction, filterable to any state, district, and date range. <span className="text-white font-semibold">Answered on demand.</span></>),
 }];
 
 
@@ -79,20 +83,21 @@ export function DeployedSection() {
 
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-10 border-b border-zinc-800/50 pb-4">
-                  <span className="text-[#FF5722] font-mono text-xs tracking-widest">{c.id} &#47;&#47;</span>
-                  <span className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase bg-zinc-900/50 px-3 py-1 rounded-full border border-zinc-800/50">{c.tag}</span>
+                  <span className="text-[#FF5722] font-mono text-xs font-bold tracking-widest">{c.id} &#47;&#47;</span>
+                  <span className="text-white font-mono text-[10px] font-bold tracking-widest uppercase bg-[#FF5722] px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(255,87,34,0.4)]">{c.tag}</span>
                 </div>
 
-                {c.logo && (
-                  <div className="mb-8 inline-flex items-center justify-center p-3 md:p-4 rounded-xl border border-white/10 bg-white shadow-lg group-hover:shadow-[#FF5722]/20 transition-shadow duration-500">
-                    <img src={c.logo} alt={`${c.client} logo`} className="h-12 md:h-16 w-auto object-contain" />
-                  </div>
-                )}
-
-                <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-6 leading-tight group-hover:text-zinc-200 transition-colors duration-300">
-                  {c.headline}
-                </h3>
-                <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-12 max-w-lg">
+                <div className="flex flex-row items-center gap-4 md:gap-6 mb-8">
+                  {c.logo && (
+                    <div className="shrink-0 inline-flex items-center justify-center p-3 md:p-4 rounded-xl border border-white/10 bg-white shadow-lg group-hover:shadow-[#FF5722]/20 transition-shadow duration-500">
+                      <img src={c.logo} alt={`${c.client} logo`} className="h-10 md:h-12 w-auto object-contain" />
+                    </div>
+                  )}
+                  <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white leading-tight group-hover:text-zinc-100 transition-colors duration-300 drop-shadow-md">
+                    {c.headline}
+                  </h3>
+                </div>
+                <p className="text-zinc-200 text-sm md:text-base leading-relaxed mb-12 max-w-lg drop-shadow-sm font-light">
                   {c.body}
                 </p>
 
@@ -102,8 +107,8 @@ export function DeployedSection() {
                     <div key={i} className="rounded-xl bg-[#050505]/40 border border-zinc-800/60 hover:border-zinc-700 p-5 transition-colors group/stat relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-t from-[#FF5722]/5 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300"></div>
                       <div className="relative z-10">
-                        <div className="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover/stat:text-[#FF5722] transition-colors duration-300">{s.value}</div>
-                        <div className="text-zinc-400 text-[10px] font-mono uppercase tracking-widest mt-2">{s.label}</div>
+                        <div className="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover/stat:text-[#FF5722] transition-colors duration-300 drop-shadow-sm">{s.value}</div>
+                        <div className="text-zinc-300 text-[10px] font-mono uppercase tracking-widest mt-2">{s.label}</div>
                       </div>
                     </div>
                   )}
@@ -117,3 +122,4 @@ export function DeployedSection() {
     </section>);
 
 }
+

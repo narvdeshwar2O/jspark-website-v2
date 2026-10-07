@@ -1,6 +1,7 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import Lenis from 'lenis'
 import LoadGate from './shared/ui/LoadGate'
 import { Navbar } from './shared/ui/Navbar'
 import { Footer } from './shared/ui/Footer'
@@ -12,6 +13,7 @@ const ProductDetail = lazy(() => import('./pages/ProductDetail'))
 const Industries = lazy(() => import('./pages/Industries'))
 const CaseStudies = lazy(() => import('./pages/CaseStudies'))
 const Contact = lazy(() => import('./pages/Contact'))
+const Apply = lazy(() => import('./pages/Apply'))
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -21,7 +23,31 @@ const routes = [
   { path: "/industries", element: <Industries /> },
   { path: "/case-studies", element: <CaseStudies /> },
   { path: "/contact", element: <Contact /> },
+  { path: "/apply", element: <Apply /> },
 ];
+
+function SmoothScroll({ children }) {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      syncTouch: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  return children;
+}
 
 // Subtle loader for code-split route transitions
 const RouteLoader = () => (
@@ -73,16 +99,18 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <main className="bg-black text-white font-sans selection:bg-[#FF5722] selection:text-white">
-        <Navbar />
-        <LoadGate />
+      <SmoothScroll>
+        <main className="bg-black text-white font-sans selection:bg-[#FF5722] selection:text-white">
+          <Navbar />
+          <LoadGate />
 
-        <Suspense fallback={<RouteLoader />}>
-          <AnimatedRoutes />
-        </Suspense>
+          <Suspense fallback={<RouteLoader />}>
+            <AnimatedRoutes />
+          </Suspense>
 
-        <Footer />
-      </main>
+          <Footer />
+        </main>
+      </SmoothScroll>
     </BrowserRouter>
   )
 }

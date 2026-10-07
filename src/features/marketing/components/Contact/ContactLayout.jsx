@@ -1,8 +1,59 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
+import * as EmailValidator from "email-validator";
 
 export function ContactLayout() {
+  const [formData, setFormData] = useState({
+    name: "",
+    org: "",
+    email: "",
+    phone: "",
+    operation: "Homeland Security",
+    message: ""
+  });
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    
+    // Restrict phone field to valid telephone characters
+    if (name === "phone") {
+      const sanitized = value.replace(/[^\d+()\s-]/g, "");
+      setFormData(prev => ({ ...prev, [name]: sanitized }));
+      if (errors.phone) setErrors(prev => ({ ...prev, phone: null }));
+      return;
+    }
+
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors(prev => ({ ...prev, [name]: null }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const newErrors = {};
+    if (!EmailValidator.validate(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+
+    // Optional phone validation: basic length check
+    const phoneDigits = formData.phone.replace(/\D/g, "");
+    if (phoneDigits.length > 0 && phoneDigits.length < 5) {
+      newErrors.phone = "Phone number is too short.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    const subject = encodeURIComponent(`Demonstration Request: ${formData.operation} - ${formData.org}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nOrganisation: ${formData.org}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nOperation: ${formData.operation}\n\nMessage:\n${formData.message}`);
+    window.location.href = `mailto:sales@jspark.in?subject=${subject}&body=${body}`;
+  };
+
   const container = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.1 } }
@@ -30,32 +81,38 @@ export function ContactLayout() {
               <div className="absolute top-0 left-0 w-full h-[2px] bg-[#FF5722]"></div>
               <h2 className="text-3xl font-black text-white mb-8">Request a Demonstration</h2>
 
-              <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Name</label>
-                    <input type="text" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
+                    <input required name="name" value={formData.name} onChange={handleChange} type="text" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Organisation</label>
-                    <input type="text" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
+                    <input required name="org" value={formData.org} onChange={handleChange} type="text" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
-                    <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Official Email</label>
-                    <input type="email" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
+                    <div className="flex justify-between">
+                      <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Official Email</label>
+                      {errors.email && <span className="text-red-500 font-mono text-[9px]">{errors.email}</span>}
+                    </div>
+                    <input required name="email" value={formData.email} onChange={handleChange} type="email" className={`bg-[#050505] border ${errors.email ? 'border-red-500/50 focus:border-red-500' : 'border-zinc-800 focus:border-[#FF5722]'} text-white px-4 py-3 outline-none transition-colors font-mono text-sm`} />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Phone</label>
-                    <input type="tel" className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm" />
+                    <div className="flex justify-between">
+                      <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Phone</label>
+                      {errors.phone && <span className="text-red-500 font-mono text-[9px]">{errors.phone}</span>}
+                    </div>
+                    <input required name="phone" value={formData.phone} onChange={handleChange} type="tel" className={`bg-[#050505] border ${errors.phone ? 'border-red-500/50 focus:border-red-500' : 'border-zinc-800 focus:border-[#FF5722]'} text-white px-4 py-3 outline-none transition-colors font-mono text-sm`} />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
                   <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Which operation do you want to see understood?</label>
-                  <select className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm appearance-none">
+                  <select name="operation" value={formData.operation} onChange={handleChange} className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm appearance-none">
                     <option>Homeland Security</option>
                     <option>Disaster Management</option>
                     <option>Critical Infrastructure and Energy</option>
@@ -67,7 +124,7 @@ export function ContactLayout() {
 
                 <div className="flex flex-col gap-2">
                   <label className="text-zinc-400 font-mono text-[9px] tracking-widest uppercase">Message</label>
-                  <textarea rows={4} className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm resize-none"></textarea>
+                  <textarea required name="message" value={formData.message} onChange={handleChange} rows={4} className="bg-[#050505] border border-zinc-800 focus:border-[#FF5722] text-white px-4 py-3 outline-none transition-colors font-mono text-sm resize-none"></textarea>
                 </div>
 
                 <button type="submit" className="mt-4 bg-[#FF5722] hover:bg-[#E64A19] text-white font-bold font-mono tracking-widest text-[11px] uppercase py-4 transition-colors">

@@ -15,7 +15,7 @@ export default function OpsMind() {
       <div className="section__inner product__grid">
         <div className="product__media">
           <div className="product__render" data-reveal>
-            <span className="scene-note">[Product render · 16:9 · .webp]</span>
+            <video src="/assets/opsmind.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
           </div>
           <div className="diagram-ph" data-reveal>
             <span className="scene-note">[Diagram · signals in → reasoning → decisions out]</span>

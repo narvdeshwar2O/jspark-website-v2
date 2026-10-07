@@ -53,20 +53,39 @@ export function HomeProductPanels() {
 
             {/* Image Placeholder Side */}
             <motion.div variants={item} className="flex-[1.2] w-full relative aspect-video border border-zinc-800 bg-[#0B0C10] overflow-hidden group rounded-2xl">
-              <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
+              
+              {['opsunity-hydra', 'opsvision', 'opsunity-ai', 'opsmind'].includes(product.id) ? (
+                <video 
+                  src={
+                    product.id === 'opsunity-hydra' ? '/assets/opshydra_gif.mp4' : 
+                    product.id === 'opsvision' ? '/assets/opsvision.mp4' : 
+                    product.id === 'opsmind' ? '/assets/opsmind.mp4' : 
+                    '/assets/opsunity.mp4'
+                  }
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                />
+              ) : (
+                <>
+                  <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
 
-              {/* Data rings animation */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-48 h-48 flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full border border-zinc-800/50 group-hover:border-[#FF5722]/30 transition-colors duration-700"></div>
-                  <div className="absolute inset-4 rounded-full border border-zinc-800/50 border-t-[#FF5722]/50 animate-[spin_12s_linear_infinite]"></div>
+                  {/* Data rings animation */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative w-48 h-48 flex items-center justify-center">
+                      <div className="absolute inset-0 rounded-full border border-zinc-800/50 group-hover:border-[#FF5722]/30 transition-colors duration-700"></div>
+                      <div className="absolute inset-4 rounded-full border border-zinc-800/50 border-t-[#FF5722]/50 animate-[spin_12s_linear_infinite]"></div>
 
-                  <div className="w-16 h-px bg-[#FF5722]/50 relative z-10 group-hover:w-24 transition-all duration-700">
-                    <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] animate-ping"></div>
-                    <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] shadow-[0_0_10px_#FF5722]"></div>
+                      <div className="w-16 h-px bg-[#FF5722]/50 relative z-10 group-hover:w-24 transition-all duration-700">
+                        <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] animate-ping"></div>
+                        <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF5722] shadow-[0_0_10px_#FF5722]"></div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </>
+              )}
 
             </motion.div>
           </motion.div>
@@ -75,3 +94,7 @@ export function HomeProductPanels() {
     </section>
   );
 }
+
+
+
+

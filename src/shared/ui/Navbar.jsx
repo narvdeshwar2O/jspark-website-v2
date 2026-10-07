@@ -37,13 +37,14 @@ export function Navbar() {
       }>
 
       {/* Main Command Bar */}
-      <div className="w-full bg-[#050505]/95 backdrop-blur-md border border-zinc-800 py-3 px-4 md:px-6 flex items-center justify-between shadow-2xl relative z-20">
+      <div className="w-full bg-[#050505]/95 backdrop-blur-5xl border border-zinc-800 py-3 px-4 md:px-6 flex items-center justify-between shadow-2xl relative z-20">
 
         {/* Left: Brand & Status */}
         <div className="flex items-center gap-6">
           <Link to="/" className="font-sans font-black tracking-tighter text-lg md:text-xl uppercase text-white flex items-center gap-3">
-            <div className="w-2 h-2 bg-[#FF5722] animate-pulse"></div>
-            JSPARK AI
+            {/* <div className="w-2 h-2 bg-[#FF5722] animate-pulse"></div>
+            JSPARK AI */}
+            <img src="/assets/logo.png" alt="JSPARK AI Logo" className="w-42 h-10"/>
           </Link>
         </div>
 

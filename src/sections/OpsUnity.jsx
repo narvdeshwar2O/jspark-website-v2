@@ -21,13 +21,10 @@ export default function OpsUnity() {
         <h2 className="type-h2" data-reveal>
           One operating layer.
         </h2>
-        <div className="diagram-ph opsunity__diagram" data-reveal>
-          <span className="scene-note">
-            [Diagram · Hydra, OpsVision, OpsMind as three nodes converging into one. The products are one system]
-          </span>
-        </div>
+        <div className="diagram-ph opsunity__diagram" data-reveal><video src="/assets/opsunity.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" /></div>
         <Button data-reveal>SEE OPSUNITY →</Button>
       </div>
     </section>
   )
 }
+

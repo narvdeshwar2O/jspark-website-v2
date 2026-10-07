@@ -33,7 +33,7 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
     const updateVideo = () => {
       // Don't seek if we are currently seeking or already at the right time
       if (isSeeking || Math.abs(video.currentTime - targetTime) < 0.01) return
-      
+
       isSeeking = true
       video.currentTime = targetTime
     }
@@ -56,7 +56,7 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
     }
 
     const unsubscribe = hydraProgress.subscribe(applyProgress)
-    
+
     // Apply progress immediately when metadata loads (duration is known)
     const onLoadedMetadata = () => {
       applyProgress(hydraProgress.value)
@@ -77,11 +77,11 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
   return (
     <div className="stage" ref={registerEl('stage')} aria-hidden="true">
       <div className="stage__canvas" ref={registerEl('canvas')}>
-        <video 
+        <video
           ref={videoRef}
-          src="/assets/video.mp4" 
-          muted 
-          playsInline 
+          src="/assets/1.mp4"
+          muted
+          playsInline
           preload="auto"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />

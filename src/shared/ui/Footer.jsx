@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
-    <footer id="site-footer" className="relative w-full min-h-dvh md:h-dvh bg-[#000000] border-t border-zinc-900 font-sans flex flex-col overflow-hidden">
+    <footer id="site-footer" className="relative w-full min-h-dvh bg-[#000000] border-t border-zinc-900 font-sans flex flex-col overflow-hidden">
 
       {/* Top content */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 pt-20 pb-12 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -103,24 +103,23 @@ export function Footer() {
       </div>
 
       {/* Massive brand name - fills width securely without cropping */}
-      <div className="flex-1 flex flex-col justify-end overflow-hidden select-none pb-4 sm:pb-8">
+      <div className="flex-1 flex flex-col justify-end select-none pb-4 sm:pb-8 w-full max-w-full">
         <p
           className="font-black uppercase leading-none hover:text-white transition-colors duration-700 w-full px-2 whitespace-nowrap cursor-default text-center"
-          style={{ fontSize: "clamp(4rem, min(18vw, 28dvh), 22rem)" }}>
+          style={{ fontSize: "clamp(2.5rem, 11.5vw, 16rem)" }}>
           JSPARK AI
         </p>
       </div>
 
-      {/* Legal bottom bar — sits above the letters */}
+      {/* Legal bottom bar sits above the letters */}
       <div className="border-t border-zinc-900/60 w-full">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-zinc-400 text-[10px] font-mono tracking-widest">
-            © {new Date().getFullYear()} JSPARK AI Private Limited · CIN U62099UP2024PTC214091
+            &copy; {new Date().getFullYear()} JSPARK AI Private Limited &middot; CIN U62099UP2024PTC214091
           </p>
-          <p className="text-zinc-400 text-[10px] font-mono tracking-widest">India · GCC · Europe</p>
+          <p className="text-zinc-400 text-[10px] font-mono tracking-widest">India &middot; GCC &middot; Europe</p>
         </div>
       </div>
 
     </footer>);
-
 }

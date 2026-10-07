@@ -60,28 +60,6 @@ export default function ProductDetail() {
           </motion.p>
         </motion.div>
 
-        {/* Massive Visual / Radar Feed */}
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }} className="w-full aspect-video md:aspect-[21/9] bg-[#050505] border border-zinc-800 rounded-3xl relative overflow-hidden mb-24 shadow-2xl group">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 group-hover:opacity-40 transition-opacity duration-1000"></div>
-
-          {/* Scanning line effect */}
-          <div className="absolute top-0 left-0 w-full h-[15%] bg-gradient-to-b from-transparent via-[#FF5722]/20 to-transparent -translate-y-full group-hover:animate-[scan_4s_ease-in-out_infinite]"></div>
-
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <div className="w-32 h-32 rounded-full border-[0.5px] border-[#FF5722]/30 flex items-center justify-center relative">
-              <div className="w-24 h-24 rounded-full border-[0.5px] border-[#FF5722]/20 animate-[spin_10s_linear_infinite] border-t-[#FF5722]"></div>
-              <div className="absolute w-2 h-2 bg-[#FF5722] rounded-full animate-ping"></div>
-              <div className="absolute w-2 h-2 bg-[#FF5722] rounded-full"></div>
-            </div>
-            <p className="mt-6 font-mono text-[10px] text-zinc-500 tracking-[0.3em] uppercase">Tactical Feed Active</p>
-          </div>
-
-          {/* Tactical corners */}
-          <div className="absolute top-6 left-6 w-4 h-4 border-t border-l border-zinc-600"></div>
-          <div className="absolute top-6 right-6 w-4 h-4 border-t border-r border-zinc-600"></div>
-          <div className="absolute bottom-6 left-6 w-4 h-4 border-b border-l border-zinc-600"></div>
-          <div className="absolute bottom-6 right-6 w-4 h-4 border-b border-r border-zinc-600"></div>
-        </motion.div>
 
         {/* Stats Section */}
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={stagger} className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-32">
@@ -143,20 +121,34 @@ export default function ProductDetail() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-32">
-          {/* Target Sectors */}
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
+        <div className="flex flex-col gap-24 mb-32">
+          {/* Target Sectors Bento Grid */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={stagger}>
             <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-10">Target Sectors</h3>
-            <div className="flex flex-col gap-4">
-              {product.builtFor.map((sector, i) => (
-                <motion.div variants={fadeUp} key={i} className="p-6 bg-[#050505] border border-zinc-900 rounded-xl hover:border-zinc-700 transition-colors flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[#FF5722] rounded-full mt-2 shrink-0"></div>
-                  <div>
-                    <h4 className="text-white font-bold text-lg mb-2">{sector.title}</h4>
-                    {sector.desc && <p className="text-zinc-500 text-sm leading-relaxed">{sector.desc}</p>}
-                  </div>
-                </motion.div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {product.builtFor.map((sector, i) => {
+                const total = product.builtFor.length;
+                let spanClass = "col-span-1";
+                if (total === 4 && (i === 0 || i === 3)) spanClass = "md:col-span-2 lg:col-span-2";
+                if (total === 3 && i === 2) spanClass = "md:col-span-2 lg:col-span-3";
+                if (total === 5 && i === 0) spanClass = "md:col-span-2 lg:col-span-2";
+
+                return (
+                  <motion.div 
+                    variants={fadeUp} 
+                    key={i} 
+                    whileHover={{ y: -4, scale: 1.01 }}
+                    className={`p-8 bg-[#0B0C10] border border-zinc-900 rounded-2xl hover:border-[#FF5722]/30 hover:shadow-[0_0_20px_rgba(255,87,34,0.1)] transition-all flex flex-col relative overflow-hidden group ${spanClass}`}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF5722]/0 to-transparent group-hover:from-[#FF5722]/5 transition-colors duration-500"></div>
+                    <div className="w-2 h-2 bg-[#FF5722] rounded-full mb-4 shrink-0 shadow-[0_0_10px_#FF5722]"></div>
+                    <div className="relative z-10">
+                      <h4 className="text-white font-bold text-xl mb-3 group-hover:text-[#FF5722] transition-colors">{sector.title}</h4>
+                      {sector.desc && <p className="text-zinc-500 text-sm leading-relaxed">{sector.desc}</p>}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -164,7 +156,7 @@ export default function ProductDetail() {
           {product.howItWorks && (
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
               <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-10">Operational Flow</h3>
-              <div className="relative border-l border-zinc-800 ml-4 pl-10 flex flex-col gap-12">
+              <div className="relative border-l border-zinc-800 ml-4 pl-10 flex flex-col gap-12 max-w-3xl">
                 {product.howItWorks.map((step, i) => (
                   <motion.div variants={fadeUp} key={i} className="relative">
                     <div className="absolute -left-[57px] top-0 w-8 h-8 bg-[#000000] border-2 border-[#FF5722] rounded-full flex items-center justify-center font-mono text-[10px] text-[#FF5722] font-bold shadow-[0_0_15px_rgba(255,87,34,0.3)]">
@@ -186,9 +178,9 @@ export default function ProductDetail() {
           <p className="text-zinc-300 max-w-2xl mx-auto mb-10 relative z-10 text-lg">
             Integrate sovereign, air-gapped intelligence into your operational workflow today.
           </p>
-          <button className="relative z-10 inline-flex items-center justify-center px-8 py-4 bg-[#FF5722] hover:bg-[#E64A19] text-white font-mono text-[11px] tracking-[0.2em] uppercase font-bold transition-all shadow-[0_0_20px_rgba(255,87,34,0.4)] hover:shadow-[0_0_30px_rgba(255,87,34,0.6)] rounded">
-            Request Capability Brief
-          </button>
+          <a href="/apply" className="relative z-10 inline-flex items-center justify-center px-8 py-4 bg-[#FF5722] hover:bg-[#E64A19] text-white font-mono text-[11px] tracking-[0.2em] uppercase font-bold transition-all shadow-[0_0_20px_rgba(255,87,34,0.4)] hover:shadow-[0_0_30px_rgba(255,87,34,0.6)] rounded">
+            Apply
+          </a>
         </motion.div>
       </div>
     </div>
