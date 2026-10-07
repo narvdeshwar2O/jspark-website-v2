@@ -188,13 +188,19 @@
 
 .hydra__panel {
   position: absolute;
-  right: calc(clamp(20px, 3vw, 40px) + 64px); /* keeps panel clear of right-hand progress rail */
+  right: var(--gutter);
   bottom: var(--space-64);
   z-index: 6;
   opacity: 0;
   overflow: hidden; /* the Scene 08 migration squeezes it to the 40px strip */
   will-change: transform, opacity;
   transform: translateZ(0);
+}
+
+@media (min-width: 768px) {
+  .hydra__panel {
+    right: calc(clamp(20px, 3vw, 40px) + 64px); /* keeps panel clear of right-hand progress rail */
+  }
 }
 
 /* ---- Command Center (Scene 09, pinned horizontal scroll) ---- */

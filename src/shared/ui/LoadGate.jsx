@@ -34,6 +34,13 @@ export default function LoadGate() {
       loadProgress.report('fonts', 1)
     }
 
+    // If the user lands on a page other than Home (e.g. /products), the 3D HydraStage 
+    // never mounts, so prefly and objects would never report, causing a 15-second hang.
+    if (window.location.pathname !== '/') {
+      loadProgress.report('prefly', 1)
+      loadProgress.report('objects', 1)
+    }
+
     // Safety fallback: maximum 15.0s cap so the user is never stuck by external network delays
     // This has been extended to ensure 3D models (satellite, radar) have enough time to strictly pre-load.
     const safetyReleaseTimer = setTimeout(() => {
@@ -52,7 +59,9 @@ export default function LoadGate() {
   // the release sequence must start exactly once: setPhase('fading') would
   // otherwise re-run this effect and its cleanup would cancel the timer
   const reducedRef = useRef(reduced)
-  reducedRef.current = reduced
+  useEffect(() => {
+    reducedRef.current = reduced
+  }, [reduced])
   const startedRef = useRef(false)
   useEffect(() => {
     if (!state.complete || startedRef.current) return undefined
@@ -66,8 +75,8 @@ export default function LoadGate() {
     // was instant (?prefly=0 on a warm cache), so the gate is testable
     let raf2 = 0
     let fadeTimer = 0
-    const raf1 = requestAnimationFrame(() => {
-      raf2 = requestAnimationFrame(() => {
+    const raf1 = window.requestAnimationFrame(() => {
+      raf2 = window.requestAnimationFrame(() => {
         if (reducedRef.current) {
           release()
         } else {
@@ -77,8 +86,8 @@ export default function LoadGate() {
       })
     })
     return () => {
-      cancelAnimationFrame(raf1)
-      cancelAnimationFrame(raf2)
+      window.cancelAnimationFrame(raf1)
+      window.cancelAnimationFrame(raf2)
       clearTimeout(fadeTimer)
     }
   }, [state.complete])

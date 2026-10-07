@@ -1,8 +1,5 @@
-import { useEffect, useRef } from 'react'
 import DataReadout from '../../../shared/ui/DataReadout'
-import Label from '../../../shared/ui/Label'
 import StatusLine from '../../../shared/ui/StatusLine'
-import { hydraProgress } from '../animations/hydraProgress'
 import './DataPanel.css'
 
 // Bottom-right stage panel: up to three readouts and one status line.

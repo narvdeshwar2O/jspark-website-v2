@@ -3,7 +3,7 @@ import Label from '../shared/ui/Label'
 import Button from '../shared/ui/Button'
 import useReducedMotion from '../shared/hooks/useReducedMotion'
 import useRevealOnEnter from '../shared/hooks/useRevealOnEnter'
-import '..\shared\design\sections.css'
+import '../shared/design/sections.css'
 
 export default function OpsVision() {
   const sectionRef = useRef(null)
@@ -28,9 +28,7 @@ export default function OpsVision() {
           <Button data-reveal>SEE OPSVISION →</Button>
         </div>
         <div className="product__media">
-          <div className="product__render" data-reveal>
-            <span className="scene-note">[Product render · 16:9 · .webp]</span>
-          </div>
+          <div className="product__render" data-reveal><video src="/assets/opsvision.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" /></div>
           <div className="diagram-ph" data-reveal>
             <span className="scene-note">
               [Diagram · cameras / sensors / satellite feeds converging into one view · 1px lines · 90° and 45° only]
@@ -41,3 +39,4 @@ export default function OpsVision() {
     </section>
   )
 }
+

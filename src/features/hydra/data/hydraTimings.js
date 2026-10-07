@@ -2,18 +2,11 @@
 // this module is the one place the code reads them from. Change SCENES.md
 // first, then update this file to match.
 
-// Dynamically adjust scroll duration based on internet speed so tiles load perfectly
-let scrollDist = 3600
-if (typeof navigator !== 'undefined' && navigator.connection && navigator.connection.downlink) {
-  const speed = navigator.connection.downlink
-  // If slower than 2 Mbps, require 3x more scrolling (10800px)
-  if (speed < 2.0) scrollDist = 10800
-  // If slower than 5 Mbps, require 2x more scrolling (7200px)
-  else if (speed < 5.0) scrollDist = 7200
-  // If slower than 10 Mbps, require slightly more scrolling (5400px)
-  else if (speed < 10.0) scrollDist = 5400
-}
-export const STAGE_SCROLL = scrollDist
+// Since we replaced the heavy 3D tiles with a lightweight 30-second video,
+// we no longer need to calculate internet speed.
+// 9000px is a long, comfortable distance that gives the 30-second video
+// plenty of scroll-room to play out smoothly.
+export const STAGE_SCROLL = 9000
 
 // viewport heights the console layer holds fixed past the Hydra unpin
 // before releasing to scroll away with the page; the Feeds pin replaces
@@ -22,13 +15,11 @@ export const CONSOLE_HOLD = 1
 
 export const SCENES = [
   { id: '01', from: 0.0, to: 0.16 },
-  { id: '02', from: 0.16, to: 0.34 },
-  { id: '03', from: 0.34, to: 0.5 },
-  { id: '04', from: 0.5, to: 0.62 },
-  { id: '05', from: 0.62, to: 0.73 },
-  { id: '06', from: 0.73, to: 0.84 },
-  { id: '07', from: 0.84, to: 0.95 },
-  { id: '08', from: 0.95, to: 1 },
+  { id: '02', from: 0.16, to: 0.33 },
+  { id: '03', from: 0.33, to: 0.5 },
+  { id: '04', from: 0.5, to: 0.66 },
+  { id: '05', from: 0.66, to: 0.83 },
+  { id: '06', from: 0.83, to: 1.0 },
 ]
 
 export const BEATS = {

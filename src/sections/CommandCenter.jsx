@@ -4,7 +4,7 @@ import DataPanel from '../features/hydra/components/DataPanel'
 import StatusLine from '../shared/ui/StatusLine'
 import useReducedMotion from '../shared/hooks/useReducedMotion'
 import { gsap } from '../features/hydra/animations/scrollSetup'
-import '..\shared\design\sections.css'
+import '../shared/design/sections.css'
 
 // Pinned horizontal scroll: four panels advance sideways with scrub: 1.
 // Reduced motion: no pin, the panels stack vertically. The grey frames

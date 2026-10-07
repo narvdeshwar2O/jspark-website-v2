@@ -1,3 +1,4 @@
+/* eslint-env browser, node */
 // Regression guard for the Hydra stage. Loads the site fresh (?prefly=0)
 // per viewport, scrubs to canonical checkpoints, asserts machine-checkable
 // facts, and prints a pass/fail table with saved frames in

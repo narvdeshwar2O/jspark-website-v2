@@ -6,3 +6,4 @@ tools/verify-frames-output/
 *.log
 .DS_Store
 Thumbs.db
+.*

@@ -1,7 +1,7 @@
-import { CaseStudiesHero } from '../features/marketing/components/CaseStudiesHero'
-import { CaseStudiesCTA } from '../features/marketing/components/CaseStudiesCTA'
-import { CaseStudyMajor } from '../features/marketing/components/CaseStudyMajor'
-import { CaseStudyMinorsGrid } from '../features/marketing/components/CaseStudyMinorsGrid'
+import { CaseStudiesHero } from '../features/marketing/components/CaseStudies/CaseStudiesHero'
+import { CaseStudiesCTA } from '../features/marketing/components/CaseStudies/CaseStudiesCTA'
+import { CaseStudyMajor } from '../features/marketing/components/CaseStudies/CaseStudyMajor'
+import { CaseStudyMinorsGrid } from '../features/marketing/components/CaseStudies/CaseStudyMinorsGrid'
 
 const majorData = {
   id: "emergency-response",

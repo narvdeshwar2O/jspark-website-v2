@@ -1,6 +1,6 @@
-import { ContactHero } from '../features/marketing/components/ContactHero'
-import { ContactLayout } from '../features/marketing/components/ContactLayout'
-import { ContactTrustStrip } from '../features/marketing/components/ContactTrustStrip'
+import { ContactHero } from '../features/marketing/components/Contact/ContactHero'
+import { ContactLayout } from '../features/marketing/components/Contact/ContactLayout'
+import { ContactTrustStrip } from '../features/marketing/components/Contact/ContactTrustStrip'
 
 export default function Contact() {
   return (

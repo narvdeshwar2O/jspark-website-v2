@@ -34,7 +34,6 @@ const LEADER_THRESHOLD = 8
 const PRIORITY = { town: 0, gauge: 1, sensor: 2, upstream: 3 }
 const rankOf = (station) => (station.town ? PRIORITY.town : PRIORITY[station.kind])
 
-const intersects = (a, b) => a[0] < b[2] && a[2] > b[0] && a[1] < b[3] && a[3] > b[1]
 const overlapArea = (a, b) =>
   Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])) * Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1]))
 
@@ -197,7 +196,6 @@ export async function createGroundStations(viewer, svg, terrainProvider, getExag
         for (const other of obstacles) o += overlapArea(r, other)
         if (o === 0) {
           chosen = ci
-          chosenOverlap = 0
           break
         }
         if (o < chosenOverlap) {

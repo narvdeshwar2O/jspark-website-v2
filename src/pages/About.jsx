@@ -1,9 +1,9 @@
-import { AboutHero } from '../features/marketing/components/AboutHero'
-import { AboutPillars } from '../features/marketing/components/AboutPillars'
-import { AboutBelief } from '../features/marketing/components/AboutBelief'
-import { AboutLeadership } from '../features/marketing/components/AboutLeadership'
-import { AboutCerts } from '../features/marketing/components/AboutCerts'
-import { AboutCTA } from '../features/marketing/components/AboutCTA'
+import { AboutHero } from '../features/marketing/components/About/AboutHero'
+import { AboutPillars } from '../features/marketing/components/About/AboutPillars'
+import { AboutBelief } from '../features/marketing/components/About/AboutBelief'
+import { AboutLeadership } from '../features/marketing/components/About/AboutLeadership'
+import { AboutCerts } from '../features/marketing/components/About/AboutCerts'
+import { AboutCTA } from '../features/marketing/components/About/AboutCTA'
 
 export default function About() {
   return (

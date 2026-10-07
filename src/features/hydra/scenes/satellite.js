@@ -78,7 +78,7 @@ function coneSideGeometry(segments) {
 export async function createSatellite(viewer, terrainProvider, getExaggeration, svg) {
   const { scene } = viewer
   const sat = BEATS.satellite
-  const t0 = performance.now()
+  const t0 = window.performance.now()
 
   // WP3 camera frame
   const wp3 = cameraAt(BEATS.camera.wp3)
@@ -227,7 +227,6 @@ export async function createSatellite(viewer, terrainProvider, getExaggeration, 
   svg.appendChild(svgGroup)
 
   let idleYaw = 0
-  let lastP = -1
   let lastAlpha = -1
 
   const setConeAlpha = (alpha) => {
@@ -252,7 +251,6 @@ export async function createSatellite(viewer, terrainProvider, getExaggeration, 
   }
 
   const update = (p) => {
-    lastP = p
     const exitEnd = sat.out + EXIT_LENGTH
     const visible = p >= sat.in && p < exitEnd
     model.show = visible
@@ -375,7 +373,7 @@ export async function createSatellite(viewer, terrainProvider, getExaggeration, 
     model,
     hasAnimations,
     scale,
-    readyMs: performance.now() - t0,
+    readyMs: window.performance.now() - t0,
     update,
     tick,
     pixelWidthNow,
