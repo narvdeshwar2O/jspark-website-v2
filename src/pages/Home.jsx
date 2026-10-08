@@ -1,5 +1,6 @@
 import Hydra from '../features/hydra/Hydra'
 import { CONSOLE_HOLD } from '../features/hydra/data/hydraTimings'
+import OpsVision from '../features/opsvision/OpsVision'
 import { HomeProductPanels } from '../features/marketing/components/Home/HomeProductPanels'
 import { NumbersSection } from '../features/marketing/components/Home/NumbersSection'
 import { IntelligenceInfrastructure } from '../features/marketing/components/Home/IntelligenceInfrastructure'
@@ -15,17 +16,23 @@ export default function Home() {
       {/* Primary Hero Section: The 3D Map + Overlaid text from V2 */}
       <Hero />
       <Hydra />
-      
+
       {/* Spacer for the console pin */}
       <div aria-hidden="true" style={{ height: `${CONSOLE_HOLD * 100}vh` }} />
 
+      {/* Second Hero Section: OpsVision Scrollytelling Stage */}
+      <OpsVision />
+
       {/* V2 Sections */}
       <div className="relative z-10 bg-[#0B0C10] shadow-[0_-20px_50px_rgba(0,0,0,0.9)]">
+        <DeployedSection />
         <HomeProductPanels />
+
         <NumbersSection />
+
         <IntelligenceInfrastructure />
         <PlatformSection />
-        <DeployedSection />
+
         <CertificationsSection />
         <ClosingCTA />
       </div>

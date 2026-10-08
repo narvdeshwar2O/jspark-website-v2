@@ -37,10 +37,9 @@ export default function Hero() {
               JSPARK.AI
             </h1>
           </div>
-          <p className="type-body-lg hero__tagline" style={{ maxWidth: '800px', marginTop: '2rem', fontSize: 'clamp(18px, 4vw, 24px)' }}>
-            The Sovereign AI
-              Operating System for
-              Missions That Can't Fail
+          <p className="font-sans text-xl sm:text-2xl md:text-3xl text-zinc-300 font-light tracking-tight max-w-2xl mx-auto leading-relaxed mt-6">
+            <span className="text-white font-medium">The Sovereign AI Operating System</span>{' '}
+            <span className="text-zinc-400">for Missions That Can&apos;t Fail.</span>
           </p>
         </div>
       </div>

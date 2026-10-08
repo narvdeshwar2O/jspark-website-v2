@@ -1,6 +1,13 @@
 import './ProgressRail.css'
 
-const DEFAULT_SCENES = ['01', '02', '03', '04', '05', '06']
+const DEFAULT_SCENES = [
+  '01 Orbit',
+  '02 Rainfall',
+  '03 Terrain',
+  '04 Satellite',
+  '05 Ground',
+  '06 Warning',
+]
 
 // The tick is positioned imperatively at scroll rate through tickRef;
 // activeIndex highlights the current scene number. rootRef exposes the rail

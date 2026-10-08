@@ -14,12 +14,12 @@ export const STAGE_SCROLL = 9000
 export const CONSOLE_HOLD = 1
 
 export const SCENES = [
-  { id: '01', from: 0.0, to: 0.16 },
-  { id: '02', from: 0.16, to: 0.33 },
-  { id: '03', from: 0.33, to: 0.5 },
-  { id: '04', from: 0.5, to: 0.66 },
-  { id: '05', from: 0.66, to: 0.83 },
-  { id: '06', from: 0.83, to: 1.0 },
+  { id: '01', label: '01 Orbit', from: 0.0, to: 0.16 },
+  { id: '02', label: '02 Rainfall', from: 0.16, to: 0.23 },
+  { id: '03', label: '03 Terrain', from: 0.23, to: 0.30 },
+  { id: '04', label: '04 Satellite', from: 0.30, to: 0.37 },
+  { id: '05', label: '05 Ground', from: 0.37, to: 0.62 },
+  { id: '06', label: '06 Warning', from: 0.62, to: 1.0 },
 ]
 
 export const BEATS = {
@@ -28,8 +28,8 @@ export const BEATS = {
   exposureRampEnd: 0.08, // Scene 00 transition: exposure 15% to 100%
   labels: [
     { text: '01 / OBSERVE', at: 0.14 },
-    { text: '02 / SENSE', at: 0.45 },
-    { text: '03 / PREDICT', at: 0.74 },
+    { text: '02 / SENSE', at: 0.35 },
+    { text: '03 / PREDICT', at: 0.65 },
   ],
   grid: { in: 0.2, out: 0.3 }, // Scene 02 graticule
   terrainExaggeration: { at: 0.34, value: 1.4 }, // 1.0 before Scene 03 so Earth and India stay true
@@ -45,20 +45,30 @@ export const BEATS = {
     wp5From: 0.84, // Scene 07 travels downstream with the water
     wp5: 0.95, // arrives framed on Chamoli; the reveal freezes here
   },
-  h1Rainfall: { in: 0.18, out: 0.3 },
-  h1Terrain: { in: 0.36, out: 0.48 },
-  h1Listen: { in: 0.42, out: 0.48 },
-  satellite: { in: 0.5, entered: 0.53, out: 0.62 }, // exit runs 0.62 to 0.65
-  sweep: { from: 0.53, to: 0.6 }, // scan cone sweeps the catchment, mouth to head
-  panelIn: 0.5,
-  radar: { start: 0.62, stagger: 0.02 },
-  h1Ground: { in: 0.63, out: 0.71 },
-  rain: { from: 0.73, to: 0.84 },
-  rainFx: { rampTo: 0.8, fadeOut: 0.84, gone: 0.86 }, // density full by 0.80, layer gone by 0.86
-  flood: { from: 0.84, to: 0.95 },
-  floodLead: 0.04, // the prediction extent samples the morph at p + this
-  riverIn: 0.62, // river line and Chamoli marker appear with the radars
-  h1Fourteen: { in: 0.86, out: 0.94, outEnd: 0.955 }, // gone by the reveal frame
+  // Video-synchronized headline plates (29s video: ~5s cloud, ~7s terrain, ~9s satellite, ~11s radar)
+  plates: {
+    p02: { topIn: 0.165, btmIn: 0.185, out: 0.225 }, // 5.0s (p ≈ 0.17)
+    p03: { topIn: 0.235, btmIn: 0.255, out: 0.295 }, // 7.0s (p ≈ 0.24)
+    p04: { topIn: 0.305, btmIn: 0.325, out: 0.365 }, // 9.0s (p ≈ 0.31)
+    p05: { topIn: 0.375, btmIn: 0.395, out: 0.460 }, // 11.0s (p ≈ 0.38)
+    p06: { topIn: 0.485, btmIn: 0.510, out: 0.600 }, // ~14.5s (p ≈ 0.50)
+    p07: { topIn: 0.640, btmIn: 0.665, out: 0.760 }, // ~19.0s (p ≈ 0.65)
+    p08: { topIn: 0.825, btmIn: 0.850, out: 0.930, outEnd: 0.945 }, // ~24.5s (p ≈ 0.84)
+  },
+  h1Rainfall: { in: 0.165, out: 0.225 },
+  h1Terrain: { in: 0.235, out: 0.295 },
+  h1Listen: { in: 0.255, out: 0.295 },
+  satellite: { in: 0.305, entered: 0.325, out: 0.365 },
+  sweep: { from: 0.325, to: 0.365 },
+  panelIn: 0.31,
+  radar: { start: 0.375, stagger: 0.02 },
+  h1Ground: { in: 0.485, out: 0.600 },
+  rain: { from: 0.485, to: 0.65 },
+  rainFx: { rampTo: 0.55, fadeOut: 0.62, gone: 0.65 },
+  flood: { from: 0.65, to: 0.95 },
+  floodLead: 0.04,
+  riverIn: 0.375,
+  h1Fourteen: { in: 0.825, out: 0.930, outEnd: 0.945 },
   reveal: 0.95, // Scene 08 begins; stage label and panel chrome hand off here
   // Scene 08 console reveal, mirrored from SCENES.md
   console: {

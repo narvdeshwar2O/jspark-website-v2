@@ -229,17 +229,28 @@ export default function Hydra() {
       }
     }
 
-    // headline beats
-    applyReveal(e.h1Rainfall, p, BEATS.h1Rainfall.in, BEATS.h1Rainfall.out, { reduced })
-    applyReveal(e.h1Terrain, p, BEATS.h1Terrain.in, BEATS.h1Terrain.out, { reduced })
-    // 3% fade-in, not the global 6%: this beat's whole window is 6%, so a
-    // 6% fade would never reach full opacity before its own fade-out
-    applyReveal(e.h1Listen, p, BEATS.h1Listen.in, BEATS.h1Listen.out, { reduced, fadeIn: 0.03 })
-    applyReveal(e.h1Ground, p, BEATS.h1Ground.in, BEATS.h1Ground.out, { reduced })
-    applyReveal(e.h1Fourteen, p, BEATS.h1Fourteen.in, BEATS.h1Fourteen.out, {
-      reduced,
-      outEnd: BEATS.h1Fourteen.outEnd,
-    })
+    // headline beats (Steps 02 to 08: Top plate + Bottom plate pattern)
+    const { plates } = BEATS
+    applyReveal(e.plate02Top, p, plates.p02.topIn, plates.p02.out, { reduced })
+    applyReveal(e.plate02Btm, p, plates.p02.btmIn, plates.p02.out, { reduced, fadeIn: 0.03 })
+
+    applyReveal(e.plate03Top, p, plates.p03.topIn, plates.p03.out, { reduced })
+    applyReveal(e.plate03Btm, p, plates.p03.btmIn, plates.p03.out, { reduced, fadeIn: 0.03 })
+
+    applyReveal(e.plate04Top, p, plates.p04.topIn, plates.p04.out, { reduced })
+    applyReveal(e.plate04Btm, p, plates.p04.btmIn, plates.p04.out, { reduced, fadeIn: 0.03 })
+
+    applyReveal(e.plate05Top, p, plates.p05.topIn, plates.p05.out, { reduced })
+    applyReveal(e.plate05Btm, p, plates.p05.btmIn, plates.p05.out, { reduced, fadeIn: 0.03 })
+
+    applyReveal(e.plate06Top, p, plates.p06.topIn, plates.p06.out, { reduced })
+    applyReveal(e.plate06Btm, p, plates.p06.btmIn, plates.p06.out, { reduced, fadeIn: 0.03 })
+
+    applyReveal(e.plate07Top, p, plates.p07.topIn, plates.p07.out, { reduced })
+    applyReveal(e.plate07Btm, p, plates.p07.btmIn, plates.p07.out, { reduced, fadeIn: 0.03 })
+
+    applyReveal(e.plate08Top, p, plates.p08.topIn, plates.p08.out, { reduced })
+    applyReveal(e.plate08Btm, p, plates.p08.btmIn, plates.p08.out, { reduced, fadeIn: 0.03, outEnd: plates.p08.outEnd })
 
     // data panel: appears at Scene 04 (slides up 16px). It no longer fades
     // out at the reveal: it migrates into the console strip instead.
@@ -453,9 +464,9 @@ export default function Hydra() {
     status = { tone: 'alert', label: 'FLOOD WARNING' }
   } else if (scene === 5) {
     readouts = [
-      { label: 'STATIONS', value: '3' },
-      { label: 'RADIUS', value: '30', unit: 'km' },
-      { label: 'SWEEP', value: '4', unit: 's' },
+      { label: 'Doppler Radar', value: '51' },
+      { label: 'Rain Gaugue', value: '5000', unit: '' },
+      { label: 'Streams', value: '3', unit: 'M+' },
     ]
     status = { tone: 'ok', label: 'SENSOR ONLINE' }
   } else {
@@ -514,39 +525,100 @@ export default function Hydra() {
 
       <ProgressRail activeIndex={sceneIdx} tickRef={registerEl('tick')} rootRef={registerEl('rail')} />
 
+      {/* 02 Rainfall */}
       <div className="hydra__beat">
-        <div ref={registerEl('h1Rainfall')} data-beat="h1-rainfall">
+        <div ref={registerEl('plate02Top')} data-beat="02-rainfall-top">
           <Scrim>
             <h2 className="type-h1">EVERY FLOOD STARTS AS RAINFALL.</h2>
           </Scrim>
         </div>
+        <div ref={registerEl('plate02Btm')} data-beat="02-rainfall-btm">
+          <Scrim>
+            <h2 className="type-h1">WE START THERE TOO.</h2>
+          </Scrim>
+        </div>
       </div>
 
+      {/* 03 Terrain */}
       <div className="hydra__beat">
-        <div ref={registerEl('h1Terrain')} data-beat="h1-terrain">
+        <div ref={registerEl('plate03Top')} data-beat="03-terrain-top">
           <Scrim>
             <h2 className="type-h1">THE TERRAIN KNOWS.</h2>
           </Scrim>
         </div>
-        <div ref={registerEl('h1Listen')} data-beat="h1-listen">
+        <div ref={registerEl('plate03Btm')} data-beat="03-terrain-btm">
           <Scrim>
             <h2 className="type-h1">WE LISTEN.</h2>
           </Scrim>
         </div>
       </div>
 
+      {/* 04 Satellite */}
       <div className="hydra__beat">
-        <div ref={registerEl('h1Ground')} data-beat="h1-ground">
+        <div ref={registerEl('plate04Top')} data-beat="04-satellite-top">
+          <Scrim>
+            <h2 className="type-h1">ORBIT SEES THE WHOLE BASIN.</h2>
+          </Scrim>
+        </div>
+        <div ref={registerEl('plate04Btm')} data-beat="04-satellite-btm">
+          <Scrim>
+            <h2 className="type-h1">EVERY PASS.</h2>
+          </Scrim>
+        </div>
+      </div>
+
+      {/* 05 Doppler radar */}
+      <div className="hydra__beat">
+        <div ref={registerEl('plate05Top')} data-beat="05-radar-top">
+          <Scrim>
+            <h2 className="type-h1">RADAR READS THE STORM.</h2>
+          </Scrim>
+        </div>
+        <div ref={registerEl('plate05Btm')} data-beat="05-radar-btm">
+          <Scrim>
+            <h2 className="type-h1">BEFORE IT BREAKS.</h2>
+          </Scrim>
+        </div>
+      </div>
+
+      {/* 06 Rain gauge */}
+      <div className="hydra__beat">
+        <div ref={registerEl('plate06Top')} data-beat="06-gauge-top">
+          <Scrim>
+            <h2 className="type-h1">GAUGES COUNT EVERY DROP.</h2>
+          </Scrim>
+        </div>
+        <div ref={registerEl('plate06Btm')} data-beat="06-gauge-btm">
           <Scrim>
             <h2 className="type-h1">GROUND TRUTH.</h2>
           </Scrim>
         </div>
       </div>
 
+      {/* 07 Model */}
       <div className="hydra__beat">
-        <div ref={registerEl('h1Fourteen')} data-beat="h1-fourteen">
+        <div ref={registerEl('plate07Top')} data-beat="07-model-top">
           <Scrim>
-            <h2 className="type-h1">FOURTEEN HOURS EARLY.</h2>
+            <h2 className="type-h1">ONE LIVING RIVER NETWORK.</h2>
+          </Scrim>
+        </div>
+        <div ref={registerEl('plate07Btm')} data-beat="07-model-btm">
+          <Scrim>
+            <h2 className="type-h1">IT KNOWS WHERE THE WATER WILL GO.</h2>
+          </Scrim>
+        </div>
+      </div>
+
+      {/* 08 Warning */}
+      <div className="hydra__beat">
+        <div ref={registerEl('plate08Top')} data-beat="08-warning-top">
+          <Scrim>
+            <h2 className="type-h1">TWELVE HOURS EARLY.</h2>
+          </Scrim>
+        </div>
+        <div ref={registerEl('plate08Btm')} data-beat="08-warning-btm">
+          <Scrim>
+            <h2 className="type-h1">TIME TO MOVE.</h2>
           </Scrim>
         </div>
       </div>
