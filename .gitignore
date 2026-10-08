@@ -7,3 +7,4 @@ tools/verify-frames-output/
 .DS_Store
 Thumbs.db
 .*
+*_raw_backup.mp4
