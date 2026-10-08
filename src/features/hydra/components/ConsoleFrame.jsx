@@ -23,8 +23,8 @@ const layoutSize = () => [document.documentElement.clientWidth, document.documen
 const FIGURES = [
   { label: 'RAINFALL', value: '184', unit: 'mm / 6 h' },
   { label: 'EXPECTED DISCHARGE', value: '2,140', unit: 'm³/s' },
-  { label: 'RIVER LEVEL', value: '4.2', unit: 'm above baseline' },
-  { label: 'CONFIDENCE', value: '91', unit: '%' },
+  { label: 'RIVER LEVEL', value: '4.2 m', unit: 'above baseline' },
+  { label: 'CONFIDENCE', value: '91 %', unit: '' },
 ]
 const LOG_LINES = [
   { time: '14:20', entry: 'SDMA UTTARAKHAND NOTIFIED' },
@@ -185,7 +185,7 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
           <span className="type-label console-frame__title">HYDRA · ALAKNANDA BASIN · LIVE</span>
           <span className="console-frame__live" />
         </div>
-        
+
         {rect.isStacked ? (
           <div className="console-frame__divider" style={{ left: rect.x, top: rect.statusY - 1, width: rect.frameW - 2, height: 1 }} />
         ) : (
@@ -248,7 +248,7 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
               {/* Tactical Corners */}
               <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#FF5722]"></div>
               <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#FF5722]"></div>
-              
+
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-1.5 h-1.5 bg-[#FF5722] rounded-full shadow-[0_0_8px_#FF5722] animate-pulse shrink-0"></div>
                 <span className="text-[#FF5722] font-mono text-[10px] tracking-widest font-bold">FLASH FLOOD WARNING</span>

@@ -458,7 +458,7 @@ export default function Hydra() {
     status = { tone: 'caution', label: 'HEAVY RAINFALL' }
   } else if (scene >= 7) {
     readouts = [
-      { label: 'RIVER LEVEL', value: '4.2', unit: 'm above baseline' },
+      { label: 'RIVER LEVEL', value: '4.2 m', unit: 'above baseline' },
       { label: 'HOURS TO PEAK', value: '14', valueRef: registerEl('hoursVal') },
     ]
     status = { tone: 'alert', label: 'FLOOD WARNING' }
@@ -466,7 +466,7 @@ export default function Hydra() {
     readouts = [
       { label: 'Doppler Radar', value: '51' },
       { label: 'Rain Gaugue', value: '5000', unit: '' },
-      { label: 'Streams', value: '3', unit: 'M+' },
+      { label: 'Streams', value: '3M+', unit: '' },
     ]
     status = { tone: 'ok', label: 'SENSOR ONLINE' }
   } else {
