@@ -1,8 +1,6 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import OpsVisionStage from './components/OpsVisionStage'
 import OpsVisionHero from './components/OpsVisionHero'
-import ProgressRail from '../hydra/components/ProgressRail'
-import DataPanel from '../hydra/components/DataPanel'
 import useSectionProgress from '../../shared/hooks/useSectionProgress'
 import useReducedMotion from '../../shared/hooks/useReducedMotion'
 import { opsvisionProgress } from './animations/opsvisionProgress'
@@ -16,12 +14,6 @@ import {
 import '../../shared/design/sections.css'
 import './OpsVision.css'
 
-function sceneIndexAt(p) {
-  for (let i = OPSVISION_SCENES.length - 1; i >= 0; i -= 1) {
-    if (p >= OPSVISION_SCENES[i].from) return i
-  }
-  return 0
-}
 
 function railProgressAt(p) {
   const n = OPSVISION_SCENES.length
@@ -38,14 +30,10 @@ function railProgressAt(p) {
   return 100
 }
 
-const OPSVISION_RAIL_LABELS = OPSVISION_SCENES.map((s) => s.label)
-
 export default function OpsVision() {
   const sectionRef = useRef(null)
   const els = useRef({})
   const reduced = useReducedMotion()
-  const [sceneIdx, setSceneIdx] = useState(0)
-  const sceneIdxRef = useRef(0)
 
   const registerEl = (key) => (node) => {
     if (els.current) els.current[key] = node
@@ -54,17 +42,33 @@ export default function OpsVision() {
   const onProgress = (p) => {
     opsvisionProgress.set(p)
     const e = els.current
+    if (!e) return
 
-    // Scene indicator state
-    const si = sceneIndexAt(p)
-    if (si !== sceneIdxRef.current) {
-      sceneIdxRef.current = si
-      setSceneIdx(si)
+    // Video frame entrance & end transformation inside the single card:
+    // 1) Enters: zoom from 50% to 100% like a flash-light opening (p: 0 -> heroFadeEnd)
+    // 2) Stays centered taking full frame: video fills the single card
+    // 3) At the end (p: 0.85 -> 0.95): inside this SAME card, the right ontology panel slides open and video smoothly scales to the left half
+    if (e.frame) {
+      const zoomProgress = clamp01(p / OPSVISION_BEATS.heroFadeEnd)
+      const easeZoom = 1 - Math.pow(1 - zoomProgress, 2.5)
+      const initialScale = reduced ? 1 : 0.5 + 0.5 * easeZoom
+      const opacity = clamp01(p / (OPSVISION_BEATS.heroFadeEnd * 0.4))
+
+      const maskRadius = Math.round(30 + 70 * easeZoom)
+      const flashBrightness = 1 + (1 - easeZoom) * 0.6
+      const flashGlow = Math.round((1 - easeZoom) * 40)
+
+      gsap.set(e.frame, {
+        scale: initialScale,
+        opacity,
+        filter: `brightness(${flashBrightness}) drop-shadow(0 0 ${flashGlow}px rgba(255, 87, 34, ${0.4 * (1 - easeZoom)}))`,
+        clipPath: `circle(${maskRadius}% at 50% 50%)`,
+      })
     }
 
-    // Video exposure ramp
+    // Video exposure ramp: reaches full 1.0 crystal-clear visibility quickly
     if (e.canvas) {
-      const exposure = 0.2 + 0.8 * clamp01(p / OPSVISION_BEATS.exposureRampEnd)
+      const exposure = 0.85 + 0.15 * clamp01(p / OPSVISION_BEATS.exposureRampEnd)
       gsap.set(e.canvas, { opacity: exposure })
     }
 
@@ -82,22 +86,35 @@ export default function OpsVision() {
     applyReveal(e.plate04Top, p, plates.p04.topIn, plates.p04.out, { reduced })
     applyReveal(e.plate04Btm, p, plates.p04.btmIn, plates.p04.out, { reduced, fadeIn: 0.03 })
 
-    applyReveal(e.plate05Top, p, plates.p05.topIn, plates.p05.out, { reduced })
-    applyReveal(e.plate05Btm, p, plates.p05.btmIn, plates.p05.out, { reduced, fadeIn: 0.03, outEnd: plates.p05.outEnd })
+    applyReveal(e.plate05Top, p, plates.p05.topIn, 0.85, { reduced })
+    applyReveal(e.plate05Btm, p, plates.p05.btmIn, 0.85, { reduced, fadeIn: 0.03, outEnd: 0.86 })
 
-    // Data telemetry panel appears from 0.28
-    applyReveal(e.panel, p, OPSVISION_BEATS.panelIn, Infinity, { reduced, dy: 16 })
+    // Inside the single card: animate the right ontology panel expansion at the end of the video
+    if (e.panel) {
+      const endProgress = clamp01((p - 0.85) / 0.10)
+      const endEase = easePower1Out(endProgress)
+
+      gsap.set(e.panel, {
+        width: `${endEase * 440}px`,
+        maxWidth: `${endEase * 440}px`,
+        opacity: endEase,
+        borderLeftWidth: endEase > 0.05 ? '1px' : '0px',
+      })
+    }
 
     // Tick position on the vertical rail
     if (e.tick) gsap.set(e.tick, { top: `${railProgressAt(p)}%` })
 
-    // Progress rail slide-in/slide-out
+    // Progress rail slide-in/slide-out: sync entrance with video reveal (after hero fades)
     if (e.rail) {
-      const tIn = easePower1Out(clamp01(p / OPSVISION_BEATS.rail.fadeIn))
+      // Fade in comfortably between heroFadeEnd (0.08) and 0.12
+      const railInStart = OPSVISION_BEATS.heroFadeEnd * 0.8
+      const railInEnd = OPSVISION_BEATS.heroFadeEnd + 0.04
+      const tIn = easePower1Out(clamp01((p - railInStart) / (railInEnd - railInStart)))
       const outSpan = OPSVISION_BEATS.rail.outEnd - OPSVISION_BEATS.rail.outStart
       const tOut = clamp01((p - OPSVISION_BEATS.rail.outStart) / outSpan)
-      const opacity = reduced ? (p > 0 && p < OPSVISION_BEATS.rail.outEnd ? 1 : 0) : Math.min(tIn, 1 - tOut)
-      const x = reduced ? 0 : (1 - tIn) * 40 + tOut * 40
+      const opacity = reduced ? (p > railInStart && p < OPSVISION_BEATS.rail.outEnd ? 1 : 0) : Math.min(tIn, 1 - tOut)
+      const x = reduced ? 0 : (1 - tIn) * 30 + tOut * 30
       gsap.set(e.rail, {
         opacity,
         x,
@@ -112,47 +129,23 @@ export default function OpsVision() {
     onUpdate: onProgress,
   })
 
-  // Dynamic telemetry metrics based on active scene
-  let readouts = [
-    { label: 'DISTRICTS', value: '75', unit: 'statewide live' },
-    { label: 'CITIZENS', value: '24 CR+', unit: 'covered' },
-  ]
-  let status = { tone: 'ok', label: 'NETWORK SYNCHRONIZED' }
-
-  if (sceneIdx === 1) {
-    readouts = [
-      { label: 'SIGNAL INGEST', value: '100K+', unit: 'events / sec' },
-      { label: 'CORRELATION', value: '99.8', unit: '%' },
-    ]
-    status = { tone: 'ok', label: 'FUSION ENGINE ACTIVE' }
-  } else if (sceneIdx === 2) {
-    readouts = [
-      { label: 'OFFENDER DB', value: '1 CR+', unit: 'records' },
-      { label: 'MATCH SPEED', value: '< 5s', unit: 'fingerprint' },
-    ]
-    status = { tone: 'caution', label: 'CROSS-DOMAIN MATCH' }
-  } else if (sceneIdx >= 3) {
-    readouts = [
-      { label: 'DISPATCH REDUCTION', value: '46%', unit: 'response time' },
-      { label: 'MISROUTED CALLS', value: '4%', unit: 'down from 23%' },
-    ]
-    status = { tone: 'ok', label: 'UNITS DISPATCHED PRE-EMPTIVE' }
-  }
-
   return (
     <section className="section" ref={sectionRef} data-scene="opsvision">
       <OpsVisionHero />
       <OpsVisionStage registerEl={registerEl} />
 
-      <ProgressRail
+      {/* Progress rail commented out as requested */}
+      {/* <ProgressRail
         scenes={OPSVISION_RAIL_LABELS}
         activeIndex={sceneIdx}
         tickRef={registerEl('tick')}
         rootRef={registerEl('rail')}
-      />
+      /> */}
+
+
 
       {/* 01 Surveillance */}
-      <div className="opsvision__beat">
+      {/* <div className="opsvision__beat">
         <div ref={registerEl('plate01Top')} data-beat="01-surveillance-top">
           <div className="opsvision__card">
             <h2 className="type-h1">TOTAL OPERATIONAL COMPREHENSION.</h2>
@@ -163,7 +156,7 @@ export default function OpsVision() {
             <h2 className="type-h1">ONE LIVING INTELLIGENCE PICTURE.</h2>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* 02 Synthesis */}
       <div className="opsvision__beat">
@@ -180,7 +173,7 @@ export default function OpsVision() {
       </div>
 
       {/* 03 Correlation */}
-      <div className="opsvision__beat">
+      {/* <div className="opsvision__beat">
         <div ref={registerEl('plate03Top')} data-beat="03-correlation-top">
           <div className="opsvision__card">
             <h2 className="type-h1">CONNECTING SILOED DOMAINS.</h2>
@@ -191,10 +184,10 @@ export default function OpsVision() {
             <h2 className="type-h1">ACROSS 50 MILLION RECORDS.</h2>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* 04 Response */}
-      <div className="opsvision__beat">
+      {/* <div className="opsvision__beat">
         <div ref={registerEl('plate04Top')} data-beat="04-response-top">
           <div className="opsvision__card">
             <h2 className="type-h1">THE UNIT IS ALREADY THERE.</h2>
@@ -205,7 +198,7 @@ export default function OpsVision() {
             <h2 className="type-h1">BEFORE THE CALL ARRIVES.</h2>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* 05 Deployment */}
       <div className="opsvision__beat">
@@ -221,11 +214,6 @@ export default function OpsVision() {
         </div>
       </div>
 
-      <div className="opsvision__panel" ref={registerEl('panel')}>
-        <div className="hydra__panel-grid" ref={registerEl('panelGrid')}>
-          <DataPanel readouts={readouts} status={status} />
-        </div>
-      </div>
     </section>
   )
 }
