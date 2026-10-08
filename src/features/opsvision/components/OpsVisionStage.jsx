@@ -61,6 +61,8 @@ export default function OpsVisionStage({ registerEl }) {
         />
       </div>
       <div className="stage__vignette" ref={registerEl('vignette')} />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/60 via-black/20 to-black/40 z-[2]" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/70 via-transparent to-black/40 z-[2]" />
     </div>
   )
 }

@@ -1,0 +1,65 @@
+/* OpsVision Scrollytelling Custom Card & Stage Styles */
+
+.opsvision__beat {
+  position: absolute;
+  left: calc(var(--gutter) + var(--space-96));
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 680px;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opsvision__beat > div {
+  opacity: 0;
+}
+
+/* High-visibility tactical briefing card for headline plates */
+.opsvision__card {
+  display: inline-block;
+  background: rgba(5, 7, 10, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 4px solid #FF5722;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  padding: 20px 28px;
+}
+
+/* High-visibility telemetry card in bottom-right */
+.opsvision__panel {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--space-64);
+  z-index: 6;
+  opacity: 0;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+@media (min-width: 768px) {
+  .opsvision__panel {
+    right: calc(clamp(20px, 3vw, 40px) + 64px);
+  }
+}
+
+.opsvision__panel .ds-panel {
+  background: rgba(11, 15, 20, 0.92) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 87, 34, 0.45) !important;
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 87, 34, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.opsvision__panel .ds-panel:hover {
+  border-color: rgba(255, 87, 34, 0.75) !important;
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 87, 34, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}

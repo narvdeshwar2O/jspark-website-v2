@@ -3,7 +3,6 @@ import OpsVisionStage from './components/OpsVisionStage'
 import OpsVisionHero from './components/OpsVisionHero'
 import ProgressRail from '../hydra/components/ProgressRail'
 import DataPanel from '../hydra/components/DataPanel'
-import Scrim from '../../shared/ui/Scrim'
 import useSectionProgress from '../../shared/hooks/useSectionProgress'
 import useReducedMotion from '../../shared/hooks/useReducedMotion'
 import { opsvisionProgress } from './animations/opsvisionProgress'
@@ -15,6 +14,7 @@ import {
   OPSVISION_STAGE_SCROLL,
 } from './data/opsvisionTimings'
 import '../../shared/design/sections.css'
+import './OpsVision.css'
 
 function sceneIndexAt(p) {
   for (let i = OPSVISION_SCENES.length - 1; i >= 0; i -= 1) {
@@ -152,76 +152,76 @@ export default function OpsVision() {
       />
 
       {/* 01 Surveillance */}
-      <div className="hydra__beat">
+      <div className="opsvision__beat">
         <div ref={registerEl('plate01Top')} data-beat="01-surveillance-top">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">TOTAL OPERATIONAL COMPREHENSION.</h2>
-          </Scrim>
+          </div>
         </div>
         <div ref={registerEl('plate01Btm')} data-beat="01-surveillance-btm">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">ONE LIVING INTELLIGENCE PICTURE.</h2>
-          </Scrim>
+          </div>
         </div>
       </div>
 
       {/* 02 Synthesis */}
-      <div className="hydra__beat">
+      <div className="opsvision__beat">
         <div ref={registerEl('plate02Top')} data-beat="02-synthesis-top">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">EVERY ASSET. EVERY SIGNAL.</h2>
-          </Scrim>
+          </div>
         </div>
         <div ref={registerEl('plate02Btm')} data-beat="02-synthesis-btm">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">FUSED IN REAL TIME.</h2>
-          </Scrim>
+          </div>
         </div>
       </div>
 
       {/* 03 Correlation */}
-      <div className="hydra__beat">
+      <div className="opsvision__beat">
         <div ref={registerEl('plate03Top')} data-beat="03-correlation-top">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">CONNECTING SILOED DOMAINS.</h2>
-          </Scrim>
+          </div>
         </div>
         <div ref={registerEl('plate03Btm')} data-beat="03-correlation-btm">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">ACROSS 50 MILLION RECORDS.</h2>
-          </Scrim>
+          </div>
         </div>
       </div>
 
       {/* 04 Response */}
-      <div className="hydra__beat">
+      <div className="opsvision__beat">
         <div ref={registerEl('plate04Top')} data-beat="04-response-top">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">THE UNIT IS ALREADY THERE.</h2>
-          </Scrim>
+          </div>
         </div>
         <div ref={registerEl('plate04Btm')} data-beat="04-response-btm">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">BEFORE THE CALL ARRIVES.</h2>
-          </Scrim>
+          </div>
         </div>
       </div>
 
       {/* 05 Deployment */}
-      <div className="hydra__beat">
+      <div className="opsvision__beat">
         <div ref={registerEl('plate05Top')} data-beat="05-deployment-top">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">PROVEN AT NATIONAL SCALE.</h2>
-          </Scrim>
+          </div>
         </div>
         <div ref={registerEl('plate05Btm')} data-beat="05-deployment-btm">
-          <Scrim>
+          <div className="opsvision__card">
             <h2 className="type-h1">AIR-GAPPED BY DESIGN.</h2>
-          </Scrim>
+          </div>
         </div>
       </div>
 
-      <div className="hydra__panel" ref={registerEl('panel')}>
+      <div className="opsvision__panel" ref={registerEl('panel')}>
         <div className="hydra__panel-grid" ref={registerEl('panelGrid')}>
           <DataPanel readouts={readouts} status={status} />
         </div>
