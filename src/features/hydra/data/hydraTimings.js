@@ -53,7 +53,7 @@ export const BEATS = {
     p05: { topIn: 0.375, btmIn: 0.395, out: 0.460 }, // 11.0s (p ≈ 0.38)
     p06: { topIn: 0.485, btmIn: 0.510, out: 0.600 }, // ~14.5s (p ≈ 0.50)
     p07: { topIn: 0.640, btmIn: 0.665, out: 0.760 }, // ~19.0s (p ≈ 0.65)
-    p08: { topIn: 0.825, btmIn: 0.850, out: 0.930, outEnd: 0.945 }, // ~24.5s (p ≈ 0.84)
+    p08: { topIn: 0.819, btmIn: 0.821, out: 0.830, outEnd: 0.855 }, // ~24.5s (p ≈ 0.84), cleanly fades out before console at 0.95
   },
   h1Rainfall: { in: 0.165, out: 0.225 },
   h1Terrain: { in: 0.235, out: 0.295 },
@@ -68,7 +68,7 @@ export const BEATS = {
   flood: { from: 0.65, to: 0.95 },
   floodLead: 0.04,
   riverIn: 0.375,
-  h1Fourteen: { in: 0.825, out: 0.930, outEnd: 0.945 },
+  h1Fourteen: { in: 0.825, out: 0.900, outEnd: 0.925 },
   reveal: 0.95, // Scene 08 begins; stage label and panel chrome hand off here
   // Scene 08 console reveal, mirrored from SCENES.md
   console: {
