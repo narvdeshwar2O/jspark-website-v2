@@ -22,6 +22,7 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
+    { href: "/", label: "HOME" },
     { href: "/about", label: "ABOUT" },
     { href: "/products", label: "PRODUCTS" },
     { href: "/industries", label: "INDUSTRIES" },
@@ -51,7 +52,7 @@ export function Navbar() {
         {/* Center: Desktop Links */}
         <nav className="hidden md:flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase text-zinc-200">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+            const isActive = link.href === "/" ? pathname === "/" : pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
@@ -120,7 +121,7 @@ export function Navbar() {
           >
             <nav className="flex flex-col pt-2 pb-6 px-4 gap-2">
               {navLinks.map((link, i) => {
-                const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+                const isActive = link.href === "/" ? pathname === "/" : pathname === link.href || pathname.startsWith(`${link.href}/`);
                 return (
                   <motion.div
                     initial={{ x: -20, opacity: 0 }}

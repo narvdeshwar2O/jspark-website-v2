@@ -35,8 +35,8 @@ export const detailedProducts = [
     id: "opsvision",
     eyebrow: "SOVEREIGN OPERATIONAL INTELLIGENCE",
     name: "OpsVision",
-    shortBody: "Total operational comprehension. One living model that fuses every asset, event, signal, and record into a single intelligence picture.",
-    body: "Total operational comprehension. One living model that holds your entire operation at once, every asset, event, signal, and record fused into a single intelligence picture. Domain-agnostic by design: the same engine that advises police vehicle placement across 75 districts runs outage prediction for a power utility.",
+    shortBody: "OpsVision is a domain-agnostic, ontology-driven operational intelligence engine. It fuses every asset, event and signal into one living model of your operation, runs entirely within your walls, and answers in seconds.",
+    body: "OpsVision is a domain-agnostic, ontology-driven operational intelligence engine. It fuses every asset, event and signal into one living model of your operation, runs entirely within your walls, and answers in seconds. Domain-agnostic by design: the same engine that advises police vehicle placement across 75 districts runs outage prediction for a power utility.",
     whatItDoes: [
       { title: "Response and Asset Optimisation", desc: "Offender Intelligence · One fingerprint match inside NAFIS reveals repeat offender, pattern, and next incident" },
       { title: "Power and Utility Intelligence", desc: "Outages forecast, demand balanced, distribution optimised, losses closed" },

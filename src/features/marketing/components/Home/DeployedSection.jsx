@@ -17,7 +17,7 @@ const cases = [
 
   body: (
     <>
-      <span className="text-white font-semibold">UP 112</span> is the <span className="text-white font-medium">world's largest emergency response system</span>: 75 districts, 24 crore citizens, thousands of Police Response Vehicles. <span className="text-[#FF5722] font-bold drop-shadow-[0_0_8px_rgba(255,87,34,0.4)]">OpsVision</span> placed response vehicles <span className="text-white font-medium">before the call came in</span> and corrected every misrouted call at intake.
+      <span className="text-[#FF5722] font-bold drop-shadow-[0_0_8px_rgba(255,87,34,0.4)]">OpsVision</span> is the operational intelligence layer for <span className="text-white font-semibold">UP 112</span>, serving about <span className="text-white font-medium">25 crore people</span>. It cut emergency calls misrouted to the wrong district from <span className="text-zinc-500 line-through mr-1">23%</span> to <span className="text-white font-medium">4%</span>, made average response <span className="text-white font-semibold">46% faster</span>, and advises on PRV allocation from timestamped, geolocated crime patterns. With <span className="text-white font-semibold">OpsVision Ontology</span> now live, calls, vehicles, districts and events sit in one connected model that command staff can query directly.
     </>
   ),
 },
@@ -25,7 +25,7 @@ const cases = [
   id: "02",
   client: "National Crime Records Bureau",
   logo: "/assets/ncrb-logo.png",
-  headline: "World Largest Crime data for NAFIS",
+  headline: "India's Largest Crime database for Fingerprints - NAFIS",
   tag: "CRIME INTELLIGENCE",
   stats: [
   { value: "5 sec", label: "Report generation" },
@@ -33,7 +33,11 @@ const cases = [
   { value: "36", label: "States & UTs, one view" },
   { value: "3,850", label: "Operators self-served" }],
 
-  body: (<>The <span className="text-white font-medium">world's largest crime database</span>. A status report took <span className="text-zinc-500 line-through mr-1">8-10 hours</span> to generate. <span className="text-[#FF5722] font-bold drop-shadow-[0_0_8px_rgba(255,87,34,0.4)]">OpsVision</span> sits inside <span className="text-white font-semibold">NAFIS</span> as the <span className="text-white font-medium">single national dashboard</span> &mdash; every fingerprint transaction, filterable to any state, district, and date range. <span className="text-white font-semibold">Answered on demand.</span></>),
+  body: (
+    <>
+      <span className="text-[#FF5722] font-bold drop-shadow-[0_0_8px_rgba(255,87,34,0.4)]">OpsVision</span> is the operational intelligence layer inside <span className="text-white font-semibold">NAFIS</span>. It turns every fingerprint match into an offender profile, first-timer or repeat, with the criminal pattern attached, and gives <span className="text-white font-semibold">NCRB</span> a single dashboard across all NAFIS processes with reports in <span className="text-white font-medium">seconds instead of hours</span>.
+    </>
+  ),
 }];
 
 

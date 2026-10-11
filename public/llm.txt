@@ -7,12 +7,12 @@ JSPARK AI builds the intelligence infrastructure for nation-scale operations. Ou
 ## Products
 1. **OpsUnity AI (Foundation Platform)**: The sovereign foundation. Agent swarms, quant engines, mathematical models, and language models with no token limits and no external calls. Every JSPARK product runs on it.
 2. **OpsMind**: Sovereign Document Intelligence. Reads engineering drawings, schematics, and archives at the level of a domain engineer. Queried like a conversation. Every answer traced to its source.
-3. **OpsVision**: Sovereign Operational Intelligence. One living model of your entire operation, every asset, event, signal, and record fused into a single intelligence picture.
+3. **OpsVision**: Sovereign Operational Intelligence. A domain-agnostic, ontology-driven operational intelligence engine that fuses every asset, event and signal into one living model of your operation, runs entirely within your walls, and answers in seconds.
 4. **OpsUnity Hydra**: AI Hydrology Model. Forecasts rainfall, floods, flash floods, and rainfall-induced landslides at basin level, hours before impact. Mapped over 3 million rivers and streams. Verified by the India Meteorological Department.
 
 ## Real-World Deployments
-- **Uttar Pradesh 112**: The world's largest emergency response system. 75 districts, 24 crore citizens. OpsVision placed response vehicles before the call came in and corrected every misrouted call at intake (dropped from 23% to 4%). 46% faster response.
-- **National Crime Records Bureau (NCRB)**: The world's largest crime database. A status report took 8-10 hours to generate; it now takes 5 seconds. OpsVision sits inside NAFIS as the single national dashboard for over 1.34 Cr offender records.
+- **Uttar Pradesh 112**: OpsVision is the operational intelligence layer for UP 112, serving about 25 crore people across 75 districts. It cut emergency calls misrouted to the wrong district from 23% to 4%, made average response 46% faster, and advises on PRV allocation from timestamped, geolocated crime patterns. With OpsVision Ontology now live, calls, vehicles, districts and events sit in one connected model that command staff can query directly.
+- **National Crime Records Bureau (NCRB)**: India's Largest Crime database for Fingerprints - NAFIS. OpsVision is the operational intelligence layer inside NAFIS. It turns every fingerprint match into an offender profile, first-timer or repeat, with the criminal pattern attached, and gives NCRB a single dashboard across all NAFIS processes with reports in seconds instead of hours.
 
 ## Certifications & Compliance
 - ISO/IEC 42001:2023

@@ -14,7 +14,7 @@ const supportingProducts = [
     id: "opsvision",
     name: "OpsVision",
     tag: "Sovereign Operational Intelligence",
-    description: "One living model of your entire operation, every asset, event, signal, and record fused into a single intelligence picture. Placed response vehicles before the call.",
+    description: "OpsVision is a domain-agnostic, ontology-driven operational intelligence engine. It fuses every asset, event and signal into one living model of your operation, runs entirely within your walls, and answers in seconds.",
     buttonText: "Explore OpsVision"
   },
   {

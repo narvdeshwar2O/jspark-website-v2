@@ -148,17 +148,17 @@ export default function OpsVisionStage({ registerEl }) {
                 </div>
               </div>
 
-              {/* NCRB CCTNS Criminal Intelligence Box */}
+              {/* NCRB NAFIS Fingerprint Intelligence Box */}
               <div className="bg-white/[0.02] border border-white/[0.08] p-3 rounded-lg hover:border-[#FF5722]/40 transition-colors">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-mono tracking-wider text-zinc-400 uppercase font-semibold">NCRB / CCTNS</span>
-                  <span className="text-[9px] font-mono text-emerald-400 font-bold px-1 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">SYNC</span>
+                  <span className="text-[10px] font-mono tracking-wider text-zinc-400 uppercase font-semibold">NAFIS · NCRB</span>
+                  <span className="text-[9px] font-mono text-emerald-400 font-bold px-1 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">LIVE</span>
                 </div>
                 <div className="text-2xl font-black text-white font-mono leading-none tracking-tight">1 CR+</div>
-                <div className="text-[10px] font-mono text-zinc-400 mt-1">criminal dossiers</div>
+                <div className="text-[10px] font-mono text-zinc-400 mt-1">fingerprint profiles</div>
                 <div className="mt-2 pt-2 border-t border-white/[0.06] flex flex-col gap-1 text-[9px] font-mono text-zinc-500">
-                  <div className="flex justify-between"><span>MATCH TIME:</span> <span className="text-zinc-300 font-bold">&lt; 5 sec</span></div>
-                  <div className="flex justify-between"><span>THREAT INDEX:</span> <span className="text-zinc-300 font-bold">99.8%</span></div>
+                  <div className="flex justify-between"><span>MATCH SPEED:</span> <span className="text-zinc-300 font-bold">&lt; 5 sec</span></div>
+                  <div className="flex justify-between"><span>DOSSIER:</span> <span className="text-zinc-300 font-bold">REPEAT / PATTERN</span></div>
                 </div>
               </div>
 
@@ -194,7 +194,7 @@ export default function OpsVisionStage({ registerEl }) {
                 <span className="text-[9px] text-zinc-500">75/75 DIST</span>
               </div>
               <div className="truncate flex items-center justify-between">
-                <div><span className="text-[#FF5722]">14:35</span> · NCRB CCTNS DOSSIER MATCHED</div>
+                <div><span className="text-[#FF5722]">14:35</span> · NAFIS FINGERPRINT MATCHED</div>
                 <span className="text-[9px] text-emerald-400">1 CR DB</span>
               </div>
               <div className="truncate flex items-center justify-between">
