@@ -99,8 +99,10 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
 
     const applyProgress = (p) => {
       if (Number.isNaN(video.duration) || video.duration === 0) return
-      // Scrub video time based on scroll progress (0 to 1)
-      targetTime = p * video.duration
+      // The video has a fade-to-black outro in its last second (49.5s - 50.4s).
+      // Clamp effective scrub duration to 49.0s so the user ends on the crisp, vibrant scenic frame
+      const effectiveDuration = Math.min(49.0, Math.max(0, video.duration - 1.4))
+      targetTime = p * effectiveDuration
       window.requestAnimationFrame(updateVideo)
     }
 
