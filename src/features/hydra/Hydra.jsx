@@ -70,6 +70,7 @@ export default function Hydra() {
   // fixed canvas from p 0.970: home parent and slot for the restore
   const canvasFixedRef = useRef(false)
   const canvasHomeRef = useRef(null)
+  const canvasDimsRef = useRef(null)
 
   // Cleanup: restore canvas to its original parent before unmount if it was moved to a portal
   // This prevents React from throwing "NotFoundError: Failed to execute 'removeChild'" on route changes
@@ -179,9 +180,11 @@ export default function Hydra() {
           }
         }
         const target = slotTargetRef.current
-        // cover fit against the canvas's real layout size
-        const cw = e.canvas.offsetWidth
-        const chn = e.canvas.offsetHeight
+        if (!canvasDimsRef.current) {
+          canvasDimsRef.current = { w: e.canvas.offsetWidth || window.innerWidth, h: e.canvas.offsetHeight || window.innerHeight }
+        }
+        const cw = canvasDimsRef.current.w
+        const chn = canvasDimsRef.current.h
         const sf = Math.max(target.w / cw, target.h / chn)
         const scale = 1 + (sf - 1) * t
         const boxW = cw + (target.w - cw) * t
@@ -217,6 +220,7 @@ export default function Hydra() {
         consoleAppliedRef.current = false
         panelHomeRef.current = null
         slotTargetRef.current = null
+        canvasDimsRef.current = null
         // a blow-through jump from past the release straight below the
         // console window: make sure the live canvas is back
         if (stillModeRef.current) swapToLive()
@@ -420,6 +424,7 @@ export default function Hydra() {
   useEffect(() => {
     const onResize = () => {
       slotTargetRef.current = null
+      canvasDimsRef.current = null
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
