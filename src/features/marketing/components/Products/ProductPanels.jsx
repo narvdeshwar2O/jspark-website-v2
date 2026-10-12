@@ -20,7 +20,7 @@ const products = [
     body: "One living model of your entire operation, every asset, event, signal, and record fused into a single intelligence picture.",
     numbers: ["24 Cr citizens protected", "1.34 Cr offender records", "23% to 4% misrouted calls", "46% faster response"],
     imageFirst: true,
-    video: "/assets/opsmind.mp4"
+    video: "/assets/opvision.mp4"
   },
   {
     id: "opsmind",
