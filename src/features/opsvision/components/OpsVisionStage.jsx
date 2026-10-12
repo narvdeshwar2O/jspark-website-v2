@@ -81,7 +81,7 @@ export default function OpsVisionStage({ registerEl }) {
               src="/assets/opsvision_long.mp4"
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               style={{ width: '100%', height: '100%', objectFit: 'contain' }}
             />
           </div>

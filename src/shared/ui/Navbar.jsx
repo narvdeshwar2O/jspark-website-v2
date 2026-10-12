@@ -45,7 +45,14 @@ export function Navbar() {
           <Link to="/" className="font-sans font-black tracking-tighter text-lg md:text-xl uppercase text-white flex items-center gap-3">
             {/* <div className="w-2 h-2 bg-[#FF5722] animate-pulse"></div>
             JSPARK AI */}
-            <img src="/assets/logo.png" alt="JSPARK AI Logo" className="w-42 h-10"/>
+            <img
+              src="/assets/logo.webp"
+              alt="JSPARK AI Logo"
+              width="168"
+              height="40"
+              className="w-42 h-10 object-contain"
+              fetchPriority="high"
+            />
           </Link>
         </div>
 

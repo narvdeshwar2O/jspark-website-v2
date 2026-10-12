@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { detailedProducts } from "../../data/products";
 
@@ -67,6 +67,7 @@ export function HomeProductPanels() {
                   loop
                   muted
                   playsInline
+                  preload="none"
                   className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                 />
               ) : (

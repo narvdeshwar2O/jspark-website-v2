@@ -1,0 +1,25 @@
+# JSPARK AI
+
+> The Sovereign AI Operating System for missions that cannot fail. Built in India. Deployed at national scale.
+
+JSPARK AI builds sovereign intelligence infrastructure for nation-scale operations across Homeland Security, Disaster Management, Critical Infrastructure, Energy, and Defence.
+
+## Core Products
+
+- [OpsUnity AI](https://jspark.ai/products): The sovereign foundation. Agent swarms, quant engines, mathematical models, and language models with no token limits and no external calls.
+- [OpsVision](https://jspark.ai/products): Sovereign Operational Intelligence. A domain-agnostic, ontology-driven operational intelligence engine that fuses every asset, event, and signal into one living model of your operation.
+- [OpsMind](https://jspark.ai/products): Sovereign Document Intelligence. Reads engineering drawings, schematics, and archives at the level of a domain engineer.
+- [OpsUnity Hydra](https://jspark.ai/products): AI Hydrology Model. Forecasts rainfall, floods, flash floods, and rainfall-induced landslides at basin level hours before impact.
+
+## Real-World Deployments
+
+- [Uttar Pradesh 112](https://jspark.ai/case-studies): Operational intelligence layer serving 25 crore people across 75 districts. Misrouted emergency calls cut from 23% to 4%, 46% faster dispatch response.
+- [National Crime Records Bureau (NCRB) NAFIS](https://jspark.ai/case-studies): Fingerprint intelligence system turning fingerprint matches into offender profiles and pattern dossiers in seconds.
+
+## Key Links
+
+- [About JSPARK AI](https://jspark.ai/about): Company mission, leadership, and sovereign architecture.
+- [Products](https://jspark.ai/products): Detailed breakdown of OpsUnity AI, OpsVision, OpsMind, and Hydra.
+- [Industries](https://jspark.ai/industries): Homeland security, defence, power utilities, and disaster management.
+- [Case Studies](https://jspark.ai/case-studies): Verified deployments at national scale.
+- [Contact](https://jspark.ai/contact): Request a sovereign demonstration.

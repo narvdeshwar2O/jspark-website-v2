@@ -82,7 +82,7 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
           src="/assets/1.mp4"
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </div>

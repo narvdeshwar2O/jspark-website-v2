@@ -27,7 +27,14 @@ export function Footer() {
         {/* Brand */}
         <div className="lg:col-span-2 flex flex-col gap-6">
           <div className="flex items-center">
-            <img src="/assets/logo.png" alt="JSPARK AI Logo" className="h-10 w-auto" />
+            <img
+              src="/assets/logo.webp"
+              alt="JSPARK AI Logo"
+              width="168"
+              height="40"
+              className="h-10 w-auto object-contain"
+              loading="lazy"
+            />
           </div>
           <p className="text-zinc-400 text-sm leading-relaxed max-w-sm">
             The Sovereign AI Operating System for missions that cannot fail. Built in India. Deployed at national scale.

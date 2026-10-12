@@ -69,7 +69,7 @@ export function IntelligenceInfrastructure() {
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#FF5722]"></div>
-                  <h4 className="text-white font-black text-xl tracking-tight">{pillar.title}</h4>
+                  <h3 className="text-white font-black text-xl tracking-tight">{pillar.title}</h3>
                 </div>
 
                 <p className="text-[#FF5722] font-mono text-xs uppercase tracking-widest font-bold mb-4">

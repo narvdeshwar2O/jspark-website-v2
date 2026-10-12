@@ -94,7 +94,7 @@ export function DeployedSection() {
                 <div className="flex flex-row items-start gap-4 md:gap-6 mb-8 md:min-h-[144px]">
                   {c.logo && (
                     <div className="shrink-0 w-20 h-20 md:w-24 md:h-24 inline-flex items-center justify-center p-3 md:p-4 rounded-xl border border-white/10 bg-white shadow-lg group-hover:shadow-[#FF5722]/20 transition-shadow duration-500">
-                      <img src={c.logo} alt={`${c.client} logo`} className="h-10 md:h-12 w-auto object-contain" />
+                      <img src={c.logo} alt={`${c.client} logo`} width="48" height="48" loading="lazy" className="h-10 md:h-12 w-auto object-contain" />
                     </div>
                   )}
                   <h3 className="mt-2 md:mt-3 text-3xl md:text-4xl font-black tracking-tighter text-white leading-tight group-hover:text-zinc-100 transition-colors duration-300 drop-shadow-md">
