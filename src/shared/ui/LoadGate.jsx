@@ -41,11 +41,10 @@ export default function LoadGate() {
       loadProgress.report('objects', 1)
     }
 
-    // Safety fallback: maximum 15.0s cap so the user is never stuck by external network delays
-    // This has been extended to ensure 3D models (satellite, radar) have enough time to strictly pre-load.
+    // Safety fallback: maximum 8.0s cap so the user is never stuck by slow network buffering
     const safetyReleaseTimer = setTimeout(() => {
       loadProgress.finishAll()
-    }, 15000)
+    }, 8000)
 
     const unsubscribe = loadProgress.subscribe(setState)
     return () => {
