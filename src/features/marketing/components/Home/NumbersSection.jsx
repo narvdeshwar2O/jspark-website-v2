@@ -8,7 +8,7 @@ const stats = [
 { value: "1.34 Cr", label: "Fingerprint records contained within the National Automated Fingerprint Identification System (NAFIS).", tag: "SYS.02" },
 { value: "3M+", label: "Rivers and streams mapped by India's first AI hydrology model", tag: "SYS.03" },
 { value: "23% > 4%", label: "Misrouted emergency calls, corrected at intake", tag: "SYS.04" },
-{ value: "5 sec", label: "National crime report generation, down from 10 hours", tag: "SYS.05" },
+{ value: "5 sec", label: "National crime pattern generation, down from 10 hours", tag: "SYS.05" },
 
 { value: "0", label: "External calls, cloud dependencies, or token limits", tag: "SYS.06" }];
 

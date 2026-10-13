@@ -27,16 +27,16 @@ const FIGURES = [
   { label: 'CONFIDENCE', value: '91 %', unit: '' },
 ]
 const LOG_LINES = [
-  { time: '14:20', entry: 'SDMA UTTARAKHAND NOTIFIED' },
-  { time: '14:23', entry: 'SDMA ACKNOWLEDGED' },
-  { time: '14:31', entry: 'CHAMOLI DM OFFICE NOTIFIED' },
-  { time: '14:35', entry: 'NDRF BATTALION 15 MOBILIZED' },
-  { time: '14:42', entry: 'EVACUATION PROTOCOL INITIATED' },
+  { time: '14:05', entry: 'SATELLITE DATA FEEDS RECEIVED' },
+  { time: '14:12', entry: 'AWS DATABASE FEEDS INGESTED' },
+  { time: '14:18', entry: 'GROUND SENSOR TELEMETRY SYNCED' },
+  { time: '14:24', entry: 'RISK SCORE GENERATION COMPUTED' },
+  { time: '14:31', entry: 'INFORMATION DISPATCHED TO RELEVANT DEPARTMENT' },
+  { time: '14:35', entry: 'SDMA UTTARAKHAND NOTIFIED & ACKNOWLEDGED' },
+  { time: '14:40', entry: 'NDRF BATTALION 15 MOBILIZED' },
   { time: '14:45', entry: 'EARLY WARNING SIRENS ACTIVATED' },
   { time: '14:52', entry: 'DRONE SURVEILLANCE DEPLOYED' },
-  { time: '14:58', entry: 'LOCAL BROADCAST WARNINGS ISSUED' },
-  { time: '15:05', entry: 'HOSPITALS ON HIGH ALERT' },
-  { time: '15:12', entry: 'TRAFFIC DIVERSION ENFORCED' },
+  { time: '14:58', entry: 'EVACUATION PROTOCOL INITIATED' },
 ]
 
 // the console layer lives at body level, a sibling of the pinned sections:

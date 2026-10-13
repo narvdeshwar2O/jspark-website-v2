@@ -8,8 +8,8 @@ const leaders = [
   title: "CHIEF EXECUTIVE OFFICER & FOUNDER",
   linkedin: "https://www.linkedin.com/in/harishgoswamicse/",
   image: "/founder/ceo.png",
-  body: "Serial entrepreneur, two exits, 15+ years building and selling technology companies since 2009. Founded Toprankers, a Stanford Seed Programme company, USD 4M raised, 6M+ active learners, and ViDU Tech, acquired by Classplus, backed by Sequoia Capital and Tiger Global. Computer Science engineer by training, product architect by instinct. Now builds the sovereign AI operating system for the institutions that cannot fail.",
-  tags: ["2 exits", "6M+ users", "$4M raised", "Stanford Seed", "Sovereign AI architect"]
+  body: "Serial entrepreneur, two exits, 15+ years building and selling technology companies since 2009. Founded Toprankers, a Stanford Seed Programme company, 6M+ active learners, and ViDU Tech, acquired by Classplus, backed by Sequoia Capital and Tiger Global. Computer Science engineer by training, product architect by instinct. Now builds the sovereign AI operating system for the institutions that cannot fail.",
+  tags: ["2 exits", "6M+ users", "Stanford Seed", "Sovereign AI architect"]
 },
 {
   name: "Ashutosh Kukreti",

@@ -470,7 +470,7 @@ export default function Hydra() {
   } else if (scene === 5) {
     readouts = [
       { label: 'Doppler Radar', value: '51' },
-      { label: 'Rain Gaugue', value: '5000', unit: '' },
+      { label: 'Rain Gauge', value: '5000', unit: '' },
       { label: 'Streams', value: '3M+', unit: '' },
     ]
     status = { tone: 'ok', label: 'SENSOR ONLINE' }

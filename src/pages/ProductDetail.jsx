@@ -1,6 +1,7 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { detailedProducts } from '../features/marketing/data/products';
+import { OperationalPipelineVisualizer } from '../features/marketing/components/Products/OperationalPipelineVisualizer';
 import { useEffect } from 'react';
 
 export default function ProductDetail() {
@@ -152,20 +153,69 @@ export default function ProductDetail() {
             </div>
           </motion.div>
 
-          {/* Operational Flow (How it Works) */}
+          {/* Operational Flow (How it Works) with Animated Interactive Command Deck */}
           {product.howItWorks && (
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
-              <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-10">Operational Flow</h3>
-              <div className="relative border-l border-zinc-800 ml-4 pl-10 flex flex-col gap-12 max-w-3xl">
-                {product.howItWorks.map((step, i) => (
-                  <motion.div variants={fadeUp} key={i} className="relative">
-                    <div className="absolute -left-[57px] top-0 w-8 h-8 bg-[#000000] border-2 border-[#FF5722] rounded-full flex items-center justify-center font-mono text-[10px] text-[#FF5722] font-bold shadow-[0_0_15px_rgba(255,87,34,0.3)]">
-                      {i + 1}
-                    </div>
-                    <h4 className="text-xl font-bold text-white mb-2 leading-tight">{step.title}</h4>
-                    <p className="text-zinc-400 text-sm leading-relaxed">{step.desc}</p>
-                  </motion.div>
-                ))}
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="w-full">
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 border-b border-zinc-900 pb-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-2 font-mono text-[10px] text-[#FF5722] uppercase tracking-[0.25em]">
+                    <span className="w-2 h-2 rounded-full bg-[#FF5722] animate-ping" />
+                    Operational Architecture
+                  </div>
+                  <h3 className="text-3xl md:text-5xl font-black tracking-tighter text-white">
+                    Operational Flow
+                  </h3>
+                </div>
+                <p className="text-zinc-500 font-mono text-xs max-w-sm">
+                  Autonomous loop from sovereign edge ingestion to sub-second action dispatch.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+                {/* Left Column: Premium Interactive Stepper Cards (5 Columns) */}
+                <div className="lg:col-span-5 relative flex flex-col justify-between space-y-4">
+                  {/* Subtle continuous glowing track */}
+                  <div className="absolute left-[23px] top-[28px] bottom-[28px] w-[2px] bg-gradient-to-b from-[#FF5722] via-[#FF5722]/40 to-[#FF5722]/10 pointer-events-none" />
+
+                  {product.howItWorks.map((step, i) => (
+                    <motion.div
+                      variants={fadeUp}
+                      key={i}
+                      whileHover={{ x: 4 }}
+                      className="relative flex items-start gap-5 p-4 md:p-5 rounded-2xl bg-[#090B0E]/90 border border-zinc-900/90 hover:border-[#FF5722]/40 hover:bg-[#0E1117] transition-all duration-300 group shadow-lg backdrop-blur-sm"
+                    >
+                      {/* Step Circle Badge */}
+                      <div className="relative z-10 w-9 h-9 rounded-full bg-[#050608] border-2 border-[#FF5722] flex items-center justify-center font-mono text-xs text-[#FF5722] font-black shrink-0 shadow-[0_0_15px_rgba(255,87,34,0.3)] group-hover:scale-110 group-hover:bg-[#FF5722] group-hover:text-black group-hover:shadow-[0_0_25px_rgba(255,87,34,0.6)] transition-all">
+                        {i + 1}
+                      </div>
+
+                      <div className="pt-0.5 flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2 mb-1">
+                          <h4 className="text-base md:text-lg font-bold text-white tracking-tight group-hover:text-[#FF5722] transition-colors truncate">
+                            {step.title}
+                          </h4>
+                          <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest group-hover:text-[#FF5722]/70 shrink-0">
+                            PHASE 0{i + 1}
+                          </span>
+                        </div>
+                        <p className="text-zinc-400 text-xs md:text-sm leading-relaxed font-light">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Right Column: Visualizer Command Console (7 Columns) */}
+                <motion.div
+                  variants={fadeUp}
+                  className="lg:col-span-7 flex flex-col h-full"
+                >
+                  <OperationalPipelineVisualizer
+                    productId={product.id}
+                    productName={product.name}
+                  />
+                </motion.div>
               </div>
             </motion.div>
           )}

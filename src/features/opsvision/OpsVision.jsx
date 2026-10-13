@@ -45,14 +45,16 @@ export default function OpsVision() {
     if (!e) return
 
     // Video frame entrance & end transformation inside the single card:
-    // 1) Enters: zoom from 50% to 100% like a flash-light opening (p: 0 -> heroFadeEnd)
+    // 1) Enters: zoom from 50% to 100% like a flash-light opening ONLY after the hero title card fades out (p: videoInStart -> videoInEnd)
     // 2) Stays centered taking full frame: video fills the single card
     // 3) At the end (p: 0.85 -> 0.95): inside this SAME card, the right ontology panel slides open and video smoothly scales to the left half
     if (e.frame) {
-      const zoomProgress = clamp01(p / OPSVISION_BEATS.heroFadeEnd)
+      const vStart = OPSVISION_BEATS.videoInStart
+      const vEnd = OPSVISION_BEATS.videoInEnd
+      const zoomProgress = clamp01((p - vStart) / (vEnd - vStart))
       const easeZoom = 1 - Math.pow(1 - zoomProgress, 2.5)
-      const initialScale = reduced ? 1 : 0.5 + 0.5 * easeZoom
-      const opacity = clamp01(p / (OPSVISION_BEATS.heroFadeEnd * 0.4))
+      const initialScale = reduced ? 1 : 0.6 + 0.4 * easeZoom
+      const opacity = clamp01((p - vStart) / ((vEnd - vStart) * 0.4))
 
       const maskRadius = Math.round(30 + 70 * easeZoom)
       const flashBrightness = 1 + (1 - easeZoom) * 0.6
@@ -61,14 +63,15 @@ export default function OpsVision() {
       gsap.set(e.frame, {
         scale: initialScale,
         opacity,
+        visibility: opacity > 0.002 ? 'visible' : 'hidden',
         filter: `brightness(${flashBrightness}) drop-shadow(0 0 ${flashGlow}px rgba(255, 87, 34, ${0.4 * (1 - easeZoom)}))`,
         clipPath: `circle(${maskRadius}% at 50% 50%)`,
       })
     }
 
-    // Video exposure ramp: reaches full 1.0 crystal-clear visibility quickly
+    // Video exposure ramp: reaches full 1.0 crystal-clear visibility cleanly as video enters
     if (e.canvas) {
-      const exposure = 0.85 + 0.15 * clamp01(p / OPSVISION_BEATS.exposureRampEnd)
+      const exposure = 0.85 + 0.15 * clamp01((p - OPSVISION_BEATS.videoInStart) / (OPSVISION_BEATS.exposureRampEnd - OPSVISION_BEATS.videoInStart))
       gsap.set(e.canvas, { opacity: exposure })
     }
 

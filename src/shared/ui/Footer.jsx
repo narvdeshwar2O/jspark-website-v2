@@ -1,28 +1,36 @@
 const navLinks = [
-{ label: "Home", href: "/" },
-{ label: "About", href: "/about" },
-{ label: "Products", href: "/products" },
-{ label: "Industries", href: "/industries" },
-{ label: "Case Studies", href: "/case-studies" },
-{ label: "Contact", href: "/contact" }];
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Products", href: "/products" },
+  { label: "Industries", href: "/industries" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Contact", href: "/contact" },
+];
 
+const productLinks = [
+  { label: "OpsUnity Hydra", href: "/products/opsunity-hydra" },
+  { label: "OpsVision", href: "/products/opsvision" },
+  { label: "OpsMind", href: "/products/opsmind" },
+  { label: "OpsUnity AI", href: "/products/opsunity-ai" },
+];
 
 const certifications = [
-"ISO/IEC 42001:2023",
-"ISO 27001:2022",
-"ISO 9001:2015",
-"CMMI Level 3",
-"DPIIT DIPP194871"];
-
+  "ISO/IEC 42001:2023",
+  "ISO 27001:2022",
+  "ISO 9001:2015",
+  "CMMI Level 3",
+  "DPIIT DIPP194871",
+];
 
 import { Link } from 'react-router-dom';
+import { Mail, Globe, MapPin } from 'lucide-react';
 
 export function Footer() {
   return (
     <footer id="site-footer" className="relative w-full min-h-dvh bg-[#000000] border-t border-zinc-900 font-sans flex flex-col overflow-hidden">
 
       {/* Top content */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 pt-20 pb-12 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 pt-20 pb-12 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
         {/* Brand */}
         <div className="lg:col-span-2 flex flex-col gap-6">
@@ -50,11 +58,26 @@ export function Footer() {
           </Link>
         </div>
 
+        {/* Products */}
+        <div className="flex flex-col gap-4">
+          <p className="text-zinc-300 text-[9px] font-mono tracking-[0.3em] uppercase mb-2">Products</p>
+          {productLinks.map((product) => (
+            <Link
+              key={product.href}
+              to={product.href}
+              className="text-zinc-400 hover:text-white text-sm transition-colors duration-200 flex items-center gap-2 group"
+            >
+              <span className="w-0 h-px bg-[#FF5722] group-hover:w-4 transition-all duration-300"></span>
+              {product.label}
+            </Link>
+          ))}
+        </div>
+
         {/* Navigation */}
         <div className="flex flex-col gap-4">
           <p className="text-zinc-300 text-[9px] font-mono tracking-[0.3em] uppercase mb-2">Navigation</p>
           {navLinks.map((link) =>
-          <Link key={link.href} to={link.href} className="text-zinc-400 hover:text-white text-sm transition-colors duration-200 flex items-center gap-2 group">
+            <Link key={link.href} to={link.href} className="text-zinc-400 hover:text-white text-sm transition-colors duration-200 flex items-center gap-2 group">
               <span className="w-0 h-px bg-[#FF5722] group-hover:w-4 transition-all duration-300"></span>
               {link.label}
             </Link>
@@ -64,13 +87,30 @@ export function Footer() {
         {/* Contact */}
         <div className="flex flex-col gap-4">
           <p className="text-zinc-300 text-[9px] font-mono tracking-[0.3em] uppercase mb-2">Contact</p>
-          <Link to="mailto:sales@jspark.in" className="text-zinc-400 hover:text-white text-sm transition-colors font-mono">sales@jspark.in</Link>
-          <Link to="https://jspark.ai" className="text-zinc-400 hover:text-white text-sm transition-colors font-mono">jspark.ai</Link>
-          <p className="text-zinc-300 text-xs leading-relaxed pt-2">
-            A1, F-102, Sector 59<br />
-            Noida, Uttar Pradesh 201301<br />
-            India
-          </p>
+          <a
+            href="mailto:sales@jspark.in"
+            className="text-zinc-400 hover:text-white text-sm transition-colors font-mono flex items-center gap-2.5 group"
+          >
+            <Mail className="w-4 h-4 text-[#FF5722] shrink-0 transition-transform duration-200 group-hover:scale-110" />
+            <span>sales@jspark.in</span>
+          </a>
+          <a
+            href="https://jspark.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-400 hover:text-white text-sm transition-colors font-mono flex items-center gap-2.5 group"
+          >
+            <Globe className="w-4 h-4 text-[#FF5722] shrink-0 transition-transform duration-200 group-hover:scale-110" />
+            <span>jspark.ai</span>
+          </a>
+          <div className="flex items-start gap-2.5 pt-2 text-zinc-300 text-xs leading-relaxed">
+            <MapPin className="w-4 h-4 text-[#FF5722] shrink-0 mt-0.5" />
+            <span>
+              A1, F-102, Sector 59<br />
+              Noida, Uttar Pradesh 201301<br />
+              India
+            </span>
+          </div>
 
           <div className="mt-4">
             <p className="text-zinc-300 text-[9px] font-mono tracking-[0.3em] uppercase mb-4">Socials</p>

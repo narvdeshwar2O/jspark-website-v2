@@ -9,14 +9,17 @@ export default function OpsVisionHero() {
 
   useEffect(() => {
     const apply = (p) => {
-      // Smooth fade out from 0 to heroFadeEnd (0.08)
-      const opacity = 1 - clamp01(p / OPSVISION_BEATS.heroFadeEnd)
-      const scale = 1 - 0.05 * clamp01(p / OPSVISION_BEATS.heroFadeEnd)
+      // Hold full visibility until heroHoldEnd (0.05), then smoothly fade out to 0 by heroFadeEnd (0.12)
+      const holdEnd = OPSVISION_BEATS.heroHoldEnd
+      const fadeEnd = OPSVISION_BEATS.heroFadeEnd
+      const fadeProgress = clamp01((p - holdEnd) / (fadeEnd - holdEnd))
+      const opacity = 1 - fadeProgress
+      const scale = 1 - 0.05 * fadeProgress
       if (overlayRef.current) {
         gsap.set(overlayRef.current, {
           opacity,
           scale,
-          visibility: opacity > 0.005 ? 'visible' : 'hidden',
+          visibility: opacity > 0.002 ? 'visible' : 'hidden',
         })
       }
     }

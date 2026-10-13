@@ -16,7 +16,7 @@ const pillars = [
 {
   title: "Scale",
   subtitle: "Proven at national level",
-  text: "Live in the world's largest emergency response system, the world's largest crime records database, and state-level disaster management."
+  text: "Live in the world's largest emergency response system, India's largest crime records database, and state-level disaster management."
 }];
 
 
@@ -46,7 +46,7 @@ export function IntelligenceInfrastructure() {
             Intelligence Is the New Infrastructure
           </motion.h2>
           <motion.p variants={fadeUpItem} className="text-zinc-400 text-base md:text-lg leading-relaxed md:leading-loose">
-            JSPARK AI builds it sovereign. An AI operating system that runs entirely within your walls, comprehends your operation end to end, and turns data you already own into decisions made in time. No cloud. No meter. No outside dependency. Just your mission, understood.
+            JSPARK AI builds it sovereign. An AI operating system that runs entirely within your walls, comprehends your operation end to end, and turns data you already own into decisions made in time. No cloud. No meter. No outside dependency.
           </motion.p>
         </motion.div>
 

@@ -137,14 +137,14 @@ export default function OpsVisionStage({ registerEl }) {
               {/* UP 112 CAD Real-Time Dispatch Box */}
               <div className="bg-white/[0.02] border border-white/[0.08] p-3 rounded-lg hover:border-[#FF5722]/40 transition-colors">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[10px] font-mono tracking-wider text-zinc-400 uppercase font-semibold">UP 112 CAD</span>
+                  <span className="text-[10px] font-mono tracking-wider text-zinc-400 uppercase font-semibold">UP 112</span>
                   <span className="text-[9px] font-mono text-[#FF5722] font-bold px-1 py-0.5 rounded bg-[#FF5722]/10 border border-[#FF5722]/20">LIVE</span>
                 </div>
-                <div className="text-2xl font-black text-white font-mono leading-none tracking-tight">1.5 L+</div>
+                <div className="text-2xl font-black text-white font-mono leading-none tracking-tight">150 K+</div>
                 <div className="text-[10px] font-mono text-zinc-400 mt-1">daily emergency calls</div>
                 <div className="mt-2 pt-2 border-t border-white/[0.06] flex flex-col gap-1 text-[9px] font-mono text-zinc-500">
                   <div className="flex justify-between"><span>DISPATCH:</span> <span className="text-zinc-300 font-bold">&lt; 8 min</span></div>
-                  <div className="flex justify-between"><span>MDTS ACTIVE:</span> <span className="text-zinc-300 font-bold">4,800+</span></div>
+                  <div className="flex justify-between"><span>Active Telemetry:</span> <span className="text-zinc-300 font-bold">4,800+</span></div>
                 </div>
               </div>
 
@@ -154,10 +154,10 @@ export default function OpsVisionStage({ registerEl }) {
                   <span className="text-[10px] font-mono tracking-wider text-zinc-400 uppercase font-semibold">NAFIS · NCRB</span>
                   <span className="text-[9px] font-mono text-emerald-400 font-bold px-1 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">LIVE</span>
                 </div>
-                <div className="text-2xl font-black text-white font-mono leading-none tracking-tight">1 CR+</div>
+                <div className="text-2xl font-black text-white font-mono leading-none tracking-tight">10 M+</div>
                 <div className="text-[10px] font-mono text-zinc-400 mt-1">fingerprint profiles</div>
                 <div className="mt-2 pt-2 border-t border-white/[0.06] flex flex-col gap-1 text-[9px] font-mono text-zinc-500">
-                  <div className="flex justify-between"><span>MATCH SPEED:</span> <span className="text-zinc-300 font-bold">&lt; 5 sec</span></div>
+                  <div className="flex justify-between"><span>Response Time:</span> <span className="text-zinc-300 font-bold">&lt; 5 sec</span></div>
                   <div className="flex justify-between"><span>DOSSIER:</span> <span className="text-zinc-300 font-bold">REPEAT / PATTERN</span></div>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function OpsVisionStage({ registerEl }) {
               <div className="bg-white/[0.02] border border-white/[0.08] p-3 rounded-lg hover:border-[#FF5722]/40 transition-colors">
                 <div className="text-[10px] font-mono tracking-wider text-zinc-400 uppercase font-semibold">INGEST FUSION</div>
                 <div className="text-2xl font-black text-white font-mono leading-none tracking-tight mt-1">100K+</div>
-                <div className="text-[10px] font-mono text-zinc-400 mt-1">events / sec ingested</div>
+                <div className="text-[10px] font-mono text-zinc-400 mt-1">events / day ingested</div>
                 <div className="mt-2 pt-2 border-t border-white/[0.06] flex flex-col gap-1 text-[9px] font-mono text-zinc-500">
                   <div className="flex justify-between"><span>AIR-GAP AUDIT:</span> <span className="text-emerald-400 font-bold">VERIFIED</span></div>
                   <div className="flex justify-between"><span>ENCRYPTION:</span> <span className="text-zinc-300 font-bold">AES-256</span></div>
@@ -190,7 +190,7 @@ export default function OpsVisionStage({ registerEl }) {
             {/* Event Log Lines */}
             <div className="flex flex-col gap-1.5 font-mono text-[10px] text-zinc-400 py-1">
               <div className="truncate flex items-center justify-between">
-                <div><span className="text-[#FF5722]">14:31</span> · UP 112 CAD DISPATCH SYNCED</div>
+                <div><span className="text-[#FF5722]">14:31</span> · UP 112 DISPATCH SYNCED</div>
                 <span className="text-[9px] text-zinc-500">75/75 DIST</span>
               </div>
               <div className="truncate flex items-center justify-between">

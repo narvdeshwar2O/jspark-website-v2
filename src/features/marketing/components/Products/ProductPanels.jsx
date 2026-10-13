@@ -7,25 +7,25 @@ const products = [
   {
     id: "opsunity-hydra",
     eyebrow: "INDIA'S FIRST AI HYDROLOGY MODEL",
-    headline: "The State Sees the Flood Before the River Does",
-    body: "Hydra forecasts rainfall, floods, flash floods, and rainfall-induced landslides at basin level, hours before impact.",
-    numbers: ["3M+ rivers mapped", "6 hours+ advance warning", "4 hazards, one model", "IMD verified"],
+    headline: "OpsUnity Hydra",
+    body: "Hydra forecasts rainfall, floods, flash floods, and rainfall-induced landslides at basin level, hours before impact. The State Sees the Flood Before the River Does.",
+    numbers: ["3M+ streams mapped", "6 hours+ advance warning", "4 hazards, one model", "IMD verified"],
     imageFirst: false,
     video: "/assets/opshydra_gif.mp4"
   },
   {
     id: "opsvision",
     eyebrow: "SOVEREIGN OPERATIONAL INTELLIGENCE",
-    headline: "The Unit Is Already There When the Call Comes In",
+    headline: "Ops Vision",
     body: "One living model of your entire operation, every asset, event, signal, and record fused into a single intelligence picture.",
     numbers: ["24 Cr citizens protected", "1.34 Cr offender records", "23% to 4% misrouted calls", "46% faster response"],
     imageFirst: true,
-    video: "/assets/opvision.mp4"
+    video: "/assets/opsvision.mp4"
   },
   {
     id: "opsmind",
     eyebrow: "SOVEREIGN DOCUMENT INTELLIGENCE",
-    headline: "Reads What Machines Cannot",
+    headline: "Ops Mind",
     body: "It understands engineering drawings too complex for OCR, schematics only a veteran engineer could parse, and archives nobody alive remembers.",
     numbers: ["90% Faster processing", "Conversational Query", "Contextual Awareness", "100% Source Traced"],
     imageFirst: false,
@@ -34,7 +34,7 @@ const products = [
   {
     id: "opsunity-ai",
     eyebrow: "THE SOVEREIGN AI FOUNDATION LAYER",
-    headline: "The Sovereign AI Operating System",
+    headline: "Ops Unity AI",
     body: "The AI operating system that powers every JSPARK product.",
     numbers: ["Zero external calls", "Unlimited queries", "72 Hours to mission-ready", "Hardware Agnostic"],
     imageFirst: true,

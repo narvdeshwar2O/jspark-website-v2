@@ -2,11 +2,11 @@ import './ProgressRail.css'
 
 const DEFAULT_SCENES = [
   '01 Orbit',
-  '02 Rainfall',
-  '03 Terrain',
-  '04 Satellite',
-  '05 Ground',
-  '06 Warning',
+  '02 Terrain',
+  '03 Natural Disaster',
+  '04 AI/ML modeling',
+  '05 Early Warning',
+  '06 OpsUnity Hydra',
 ]
 
 // The tick is positioned imperatively at scroll rate through tickRef;

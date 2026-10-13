@@ -10,13 +10,16 @@ export const OPSVISION_SCENES = [
 ]
 
 export const OPSVISION_BEATS = {
-  heroFadeEnd: 0.08,
-  exposureRampEnd: 0.08,
+  heroHoldEnd: 0.05, // Stays at 100% full opacity and crisp visibility for initial scroll
+  heroFadeEnd: 0.12, // Cleanly fades out to 0 between 0.05 and 0.12
+  videoInStart: 0.10, // Video begins its flashlight entrance only as the hero title fades out
+  videoInEnd: 0.16,
+  exposureRampEnd: 0.14,
   rail: { fadeIn: 0.02, outStart: 0.93, outEnd: 0.95 },
   panelIn: 0.28,
 
   plates: {
-    p01: { topIn: 0.12, btmIn: 0.15, out: 0.24 },
+    p01: { topIn: 0.14, btmIn: 0.17, out: 0.24 },
     p02: { topIn: 0.28, btmIn: 0.31, out: 0.42 },
     p03: { topIn: 0.46, btmIn: 0.49, out: 0.60 },
     p04: { topIn: 0.64, btmIn: 0.67, out: 0.78 },

@@ -7,7 +7,7 @@ const cases = [
   id: "01",
   client: "Uttar Pradesh 112",
   logo: "/assets/up112-logo.png",
-  headline: "World Largest Emergency Response System",
+  headline: "World's Largest Emergency Response System",
   tag: "HOMELAND SECURITY",
   stats: [
   { value: "46%", label: "Faster response" },
@@ -28,7 +28,7 @@ const cases = [
   headline: "India's Largest Crime database for Fingerprints - NAFIS",
   tag: "CRIME INTELLIGENCE",
   stats: [
-  { value: "5 sec", label: "Report generation" },
+  { value: "5 sec", label: "Pattern Analysis" },
   { value: "1.34 Cr", label: "Records on one dashboard" },
   { value: "36", label: "States & UTs, one view" },
   { value: "3,850", label: "Operators self-served" }],
@@ -91,13 +91,13 @@ export function DeployedSection() {
                   <span className="text-white font-mono text-[10px] font-bold tracking-widest uppercase bg-[#FF5722] px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(255,87,34,0.4)]">{c.tag}</span>
                 </div>
 
-                <div className="flex flex-row items-start gap-4 md:gap-6 mb-8 md:min-h-[144px]">
+                <div className="flex flex-row items-center gap-4 md:gap-6 mb-8 md:min-h-[144px]">
                   {c.logo && (
-                    <div className="shrink-0 w-20 h-20 md:w-24 md:h-24 inline-flex items-center justify-center p-3 md:p-4 rounded-xl border border-white/10 bg-white shadow-lg group-hover:shadow-[#FF5722]/20 transition-shadow duration-500">
-                      <img src={c.logo} alt={`${c.client} logo`} width="48" height="48" loading="lazy" className="h-10 md:h-12 w-auto object-contain" />
+                    <div className="shrink-0 w-24 h-24 md:w-32 md:h-32 inline-flex items-center justify-center  rounded-2xl border border-white/20 bg-white shadow-xl group-hover:shadow-[#FF5722]/30 transition-shadow duration-500 overflow-hidden">
+                      <img src={c.logo} alt={`${c.client} logo`} width="160" height="140" loading="lazy" className="w-full h-full object-contain p-1" />
                     </div>
                   )}
-                  <h3 className="mt-2 md:mt-3 text-3xl md:text-4xl font-black tracking-tighter text-white leading-tight group-hover:text-zinc-100 transition-colors duration-300 drop-shadow-md">
+                  <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white leading-tight group-hover:text-zinc-100 transition-colors duration-300 drop-shadow-md">
                     {c.headline}
                   </h3>
                 </div>
