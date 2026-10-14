@@ -155,6 +155,17 @@
   gap: 2px;
 }
 
+@media (max-width: 768px) {
+  .hydra__beat {
+    left: var(--gutter-mobile);
+    right: var(--gutter-mobile);
+    top: clamp(110px, 15vh, 132px); /* Generous clearance below fixed floating navbar */
+    transform: none;
+    max-width: calc(100vw - 2 * var(--gutter-mobile));
+    gap: 4px;
+  }
+}
+
 .hydra__beat > div {
   opacity: 0;
 }
@@ -195,6 +206,16 @@
   overflow: hidden; /* the Scene 08 migration squeezes it to the 40px strip */
   will-change: transform, opacity;
   transform: translateZ(0);
+}
+
+@media (max-width: 768px) {
+  .hydra__panel {
+    right: var(--gutter-mobile);
+    left: var(--gutter-mobile);
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 36px);
+    width: auto;
+    max-width: calc(100vw - 2 * var(--gutter-mobile));
+  }
 }
 
 @media (min-width: 768px) {

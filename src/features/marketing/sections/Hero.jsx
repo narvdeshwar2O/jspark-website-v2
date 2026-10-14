@@ -30,16 +30,22 @@ export default function Hero() {
       <div className="hero__overlay" ref={overlayRef}>
         <div className="hero__center">
           <div className="hero__mast">
-            <p className="type-label hero__kicker" style={{ color: 'var(--alert)', marginBottom: '1rem', letterSpacing: '0.3em' }}>
-              AIR-GAPPED BY DESIGN. SOVEREIGN BY DEFAULT.
-            </p>
-            <h1 className="type-display" style={{ fontSize: 'clamp(32px, 8vw, 84px)', lineHeight: '1.05' }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-[#FF5722]/40 backdrop-blur-md shadow-[0_0_20px_rgba(255,87,34,0.25)] mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#FF5722] animate-pulse"></span>
+              <p className="type-label hero__kicker font-mono text-[10px] sm:text-xs text-[#FF5722] tracking-[0.25em] uppercase font-bold m-0">
+                AIR-GAPPED BY DESIGN · SOVEREIGN BY DEFAULT
+              </p>
+            </div>
+            <h1 
+              className="type-display font-black tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]" 
+              style={{ fontSize: 'clamp(36px, 9vw, 92px)', lineHeight: '1.02' }}
+            >
               JSPARK.AI
             </h1>
           </div>
-          <p className="font-sans text-xl sm:text-2xl md:text-3xl text-zinc-300 font-light tracking-tight max-w-2xl mx-auto leading-relaxed mt-6">
-            <span className="text-white font-medium">The Sovereign AI Operating System</span>{' '}
-            <span className="text-zinc-400">for Missions That Can&apos;t Fail.</span>
+          <p className="font-sans text-xl sm:text-2xl md:text-3xl text-zinc-100 font-normal tracking-tight max-w-2xl mx-auto leading-relaxed mt-4 drop-shadow-[0_2px_16px_rgba(0,0,0,0.9)] bg-black/30 backdrop-blur-sm px-6 py-2 rounded-2xl border border-white/5">
+            <span className="text-white font-semibold">The Sovereign AI Operating System</span>{' '}
+            <span className="text-zinc-300">for Missions That Can&apos;t Fail.</span>
           </p>
         </div>
       </div>

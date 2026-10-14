@@ -37,7 +37,7 @@ export function IndustryBlock({ data }) {
             </span>
           </div>
 
-          <p className="text-zinc-300 text-base md:text-lg leading-relaxed font-light drop-shadow-sm">
+          <p className="text-zinc-300 text-base md:text-lg leading-relaxed font-light drop-shadow-sm text-justify">
             {data.body}
           </p>
         </motion.div>

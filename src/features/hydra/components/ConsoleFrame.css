@@ -43,6 +43,16 @@
   border-bottom: 1px solid var(--line);
 }
 
+@media (max-width: 768px) {
+  .console-frame__titlebar {
+    padding: 0 10px;
+  }
+  .console-frame__title {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+}
+
 .console-frame__divider {
   position: absolute;
   width: 1px;
@@ -160,9 +170,9 @@
 
 @media (max-width: 900px) {
   .console-frame__sidebar {
-    padding: 16px;
+    padding: 10px 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    background: linear-gradient(180deg, rgba(10,10,12,0.95), rgba(5,5,5,1));
+    background: linear-gradient(180deg, rgba(10,10,12,0.98), rgba(5,5,5,1));
     backdrop-filter: blur(10px);
   }
 }
@@ -170,7 +180,7 @@
 .console-frame__sidebar-inner {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 /* the sidebar sets its mono lines tight (unitless leading, no fixed px)

@@ -52,7 +52,7 @@ export function AboutPillars() {
                 <div>
                   <h3 className="text-white font-black text-xl tracking-tight mb-1">{p.title}</h3>
                   <p className="text-[#FF5722] font-mono text-[10px] tracking-widest uppercase mb-4">{p.sub}</p>
-                  <p className="text-zinc-400 text-sm leading-relaxed">{p.body}</p>
+                  <p className="text-zinc-400 text-sm leading-relaxed text-justify">{p.body}</p>
                 </div>
               </div>
             </motion.div>

@@ -45,7 +45,7 @@ function StatCard({ stat, itemVariants }) {
       variants={itemVariants}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="bg-[#050505] p-10 flex flex-col justify-center group hover:bg-[#0A0A0A] transition-colors relative overflow-hidden z-10">
+      className="bg-[#050505] p-6 sm:p-8 md:p-10 flex flex-col justify-center group hover:bg-[#0A0A0A] transition-colors relative overflow-hidden z-10">
 
       {/* Corner Brackets */}
       <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-zinc-800 group-hover:border-[#FF5722] transition-colors duration-500"></div>
@@ -54,7 +54,7 @@ function StatCard({ stat, itemVariants }) {
       <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-zinc-800 group-hover:border-[#FF5722] transition-colors duration-500"></div>
 
       {/* Top Tag */}
-      <div className="absolute top-4 right-4 text-[8px] font-mono tracking-widest text-zinc-400 group-hover:text-[#FF5722]/50 transition-colors">
+      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[8px] font-mono tracking-widest text-zinc-400 group-hover:text-[#FF5722]/50 transition-colors">
         {stat.tag}
       </div>
 

@@ -45,7 +45,7 @@ export function IntelligenceInfrastructure() {
           <motion.h2 variants={fadeUpItem} className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-8 leading-[1.1] ">
             Intelligence Is the New Infrastructure
           </motion.h2>
-          <motion.p variants={fadeUpItem} className="text-zinc-400 text-base md:text-lg leading-relaxed md:leading-loose">
+          <motion.p variants={fadeUpItem} className="text-zinc-400 text-base md:text-lg leading-relaxed md:leading-loose text-justify">
             JSPARK AI builds it sovereign. An AI operating system that runs entirely within your walls, comprehends your operation end to end, and turns data you already own into decisions made in time. No cloud. No meter. No outside dependency.
           </motion.p>
         </motion.div>
@@ -76,7 +76,7 @@ export function IntelligenceInfrastructure() {
                   {pillar.subtitle}
                 </p>
 
-                <p className="text-zinc-400 text-sm leading-relaxed">
+                <p className="text-zinc-400 text-sm leading-relaxed text-justify">
                   {pillar.text}
                 </p>
               </div>

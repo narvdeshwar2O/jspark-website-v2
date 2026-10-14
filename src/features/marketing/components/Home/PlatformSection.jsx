@@ -67,7 +67,7 @@ export function PlatformSection() {
               FOUNDATION AI model
             </p>
             <h3 className="text-3xl md:text-6xl font-black tracking-tighter text-white mb-6">OpsUnity AI</h3>
-            <p className="text-zinc-300 text-sm md:text-xl leading-relaxed max-w-3xl mb-4">
+            <p className="text-zinc-300 text-sm md:text-xl leading-relaxed max-w-3xl mb-4 text-justify">
               The sovereign foundation. Agent swarms, quant engines, mathematical models, and language models with no token limits and no external calls. Every JSPARK product runs on it.
             </p>
           </motion.div>
@@ -83,7 +83,7 @@ export function PlatformSection() {
                 <p className="text-zinc-400 text-[9px] font-bold tracking-[0.3em] uppercase mb-4 relative z-10">SUPPORTING PRODUCT</p>
                 <h3 className="text-3xl font-black tracking-tighter text-white mb-2 relative z-10">{product.name}</h3>
                 <p className="text-[#FF5722] font-mono text-[9px] tracking-widest uppercase mb-6 relative z-10">{product.tag}</p>
-                <p className="text-zinc-400 text-sm leading-relaxed relative z-10 flex-grow">
+                <p className="text-zinc-400 text-sm leading-relaxed relative z-10 flex-grow text-justify">
                   {product.description}
                 </p>
               </motion.div>

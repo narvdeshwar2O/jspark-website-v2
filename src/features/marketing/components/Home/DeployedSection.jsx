@@ -77,7 +77,7 @@ export function DeployedSection() {
           <motion.div
             key={c.id}
             variants={item}
-            className="flex-1 relative bg-gradient-to-br from-zinc-900/50 to-zinc-950/50 rounded-2xl md:rounded-3xl p-6 md:p-14 flex flex-col justify-between group overflow-hidden min-w-0 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-700 shadow-2xl backdrop-blur-md">
+            className="flex-1 relative bg-gradient-to-br from-zinc-900/50 to-zinc-950/50 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-14 flex flex-col justify-between group overflow-hidden min-w-0 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-700 shadow-2xl backdrop-blur-md">
 
               {/* Sophisticated Hover Glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#FF5722]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
@@ -86,33 +86,33 @@ export function DeployedSection() {
               <div className="absolute top-0 right-10 w-20 h-px bg-gradient-to-r from-transparent via-[#FF5722]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
               <div className="relative z-10">
-                <div className="flex items-center justify-between mb-10 border-b border-zinc-800/50 pb-4">
+                <div className="flex items-center justify-between mb-6 md:mb-10 border-b border-zinc-800/50 pb-3 md:pb-4">
                   <span className="text-[#FF5722] font-mono text-xs font-bold tracking-widest">{c.id} &#47;&#47;</span>
-                  <span className="text-white font-mono text-[10px] font-bold tracking-widest uppercase bg-[#FF5722] px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(255,87,34,0.4)]">{c.tag}</span>
+                  <span className="text-white font-mono text-[9px] md:text-[10px] font-bold tracking-widest uppercase bg-[#FF5722] px-3 py-1 md:px-4 md:py-1.5 rounded-full shadow-[0_0_15px_rgba(255,87,34,0.4)]">{c.tag}</span>
                 </div>
 
-                <div className="flex flex-row items-center gap-4 md:gap-6 mb-8 md:min-h-[144px]">
+                <div className="flex flex-row items-center gap-3 md:gap-6 mb-5 md:mb-8 md:min-h-[144px]">
                   {c.logo && (
-                    <div className="shrink-0 w-24 h-24 md:w-32 md:h-32 inline-flex items-center justify-center  rounded-2xl border border-white/20 bg-white shadow-xl group-hover:shadow-[#FF5722]/30 transition-shadow duration-500 overflow-hidden">
+                    <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 inline-flex items-center justify-center rounded-xl md:rounded-2xl border border-white/20 bg-white shadow-xl group-hover:shadow-[#FF5722]/30 transition-shadow duration-500 overflow-hidden">
                       <img src={c.logo} alt={`${c.client} logo`} width="160" height="140" loading="lazy" className="w-full h-full object-contain p-1" />
                     </div>
                   )}
-                  <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-white leading-tight group-hover:text-zinc-100 transition-colors duration-300 drop-shadow-md">
+                  <h3 className="text-xl sm:text-2xl md:text-4xl font-black tracking-tighter text-white leading-tight group-hover:text-zinc-100 transition-colors duration-300 drop-shadow-md">
                     {c.headline}
                   </h3>
                 </div>
-                <p className="text-zinc-200 text-sm md:text-base leading-relaxed mb-12 max-w-lg drop-shadow-sm font-light">
+                <p className="text-zinc-200 text-xs sm:text-sm md:text-base leading-relaxed mb-6 md:mb-12 drop-shadow-sm font-light text-justify">
                   {c.body}
                 </p>
 
                 {/* Modern Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-2 md:mb-4">
                   {c.stats.map((s, i) =>
-                    <div key={i} className="rounded-xl bg-[#050505]/40 border border-zinc-800/60 hover:border-zinc-700 p-5 transition-colors group/stat relative overflow-hidden">
+                    <div key={i} className="rounded-xl bg-[#050505]/40 border border-zinc-800/60 hover:border-zinc-700 p-3 sm:p-5 transition-colors group/stat relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-t from-[#FF5722]/5 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300"></div>
                       <div className="relative z-10">
-                        <div className="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover/stat:text-[#FF5722] transition-colors duration-300 drop-shadow-sm">{s.value}</div>
-                        <div className="text-zinc-300 text-[10px] font-mono uppercase tracking-widest mt-2">{s.label}</div>
+                        <div className="text-lg sm:text-2xl md:text-3xl font-black tracking-tighter text-white group-hover/stat:text-[#FF5722] transition-colors duration-300 drop-shadow-sm">{s.value}</div>
+                        <div className="text-zinc-400 text-[8px] sm:text-[10px] font-mono uppercase tracking-widest mt-1 sm:mt-2 truncate">{s.label}</div>
                       </div>
                     </div>
                   )}

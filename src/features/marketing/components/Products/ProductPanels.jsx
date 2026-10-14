@@ -68,38 +68,11 @@ export function ProductPanels() {
           viewport={{ once: true, margin: "-100px" }}
           className="group relative"
         >
-          {/* Card Container */}
-          <div className={`flex flex-col ${product.imageFirst ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-0 items-stretch bg-[#050505] border border-zinc-900 rounded-3xl overflow-hidden hover:border-zinc-700 transition-colors duration-500 shadow-2xl`}>
+          {/* Card Container: on mobile/tablet (below lg), visual comes first (order-first) so video is on top */}
+          <div className={`flex flex-col ${product.imageFirst ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-0 items-stretch bg-[#050505] border border-zinc-900 rounded-2xl md:rounded-3xl overflow-hidden hover:border-zinc-700 transition-colors duration-500 shadow-2xl`}>
 
-            {/* Copy Side */}
-            <motion.div variants={item} className="flex-1 flex flex-col justify-center p-10 lg:p-14 relative z-10 bg-gradient-to-br from-[#0B0C10] to-[#050505]">
-              <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-6 flex items-center gap-4">
-                <span className="w-8 h-px bg-[#FF5722]"></span>
-                {product.eyebrow}
-              </p>
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-8 leading-[1.05] text-white">
-                {product.name || product.headline}
-              </h3>
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-10 font-light max-w-xl">
-                {product.shortBody || product.body}
-              </p>
-
-              <div className="grid grid-cols-2 gap-x-8 gap-y-6 mb-12 border-t border-zinc-900 pt-8">
-                {product.numbers.map((num, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722] mt-1.5 shrink-0"></span>
-                    <span className="text-xs md:text-sm font-medium text-zinc-300">{num}</span>
-                  </div>
-                ))}
-              </div>
-
-              <Link to={`/products/${product.id}`} className="inline-flex self-start items-center justify-center px-8 py-4 bg-zinc-900 border border-zinc-800 text-white font-mono text-[10px] tracking-[0.2em] uppercase hover:bg-[#FF5722] hover:border-[#FF5722] transition-all rounded shadow-lg group-hover:shadow-[0_0_20px_rgba(255,87,34,0.3)] hover:!shadow-[0_0_30px_rgba(255,87,34,0.6)]">
-                Deep Dive: {product.id.split('-').pop()}
-              </Link>
-            </motion.div>
-
-            {/* Visual Side */}
-            <motion.div variants={item} className="flex-1 w-full relative min-h-[400px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-zinc-900 bg-[#000000] overflow-hidden flex items-center justify-center">
+            {/* Visual Side: order-1 on mobile/tablet so it appears on top */}
+            <motion.div variants={item} className={`flex-1 w-full relative min-h-[260px] sm:min-h-[360px] lg:min-h-full border-b lg:border-b-0 ${product.imageFirst ? 'lg:border-r' : 'lg:border-l'} border-zinc-900 bg-[#000000] overflow-hidden flex items-center justify-center order-1 ${product.imageFirst ? 'lg:order-2' : 'lg:order-2'}`}>
               {product.video ? (
                 <video
                   src={product.video}
@@ -107,8 +80,9 @@ export function ProductPanels() {
                   loop
                   muted
                   playsInline
-                  preload="none"
-                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                  webkit-playsinline="true"
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
                 />
               ) : (
                 <>
@@ -128,13 +102,40 @@ export function ProductPanels() {
                 </>
               )}
 
-              <div className="absolute bottom-8 right-8 text-right">
+              <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 text-right">
                 <p className="font-mono text-[9px] text-zinc-500 tracking-[0.3em] uppercase mb-1">Status</p>
                 <p className="font-mono text-[10px] text-[#FF5722] tracking-[0.2em] uppercase">Active Simulation</p>
               </div>
 
               {/* Scanline overlay */}
               <div className="absolute top-0 left-0 w-full h-[15%] bg-gradient-to-b from-transparent via-[#FF5722]/10 to-transparent -translate-y-full group-hover:animate-[scan_3s_ease-in-out_infinite]"></div>
+            </motion.div>
+
+            {/* Copy Side: order-2 on mobile/tablet so it appears below the video */}
+            <motion.div variants={item} className={`flex-1 flex flex-col justify-center p-6 sm:p-8 lg:p-14 relative z-10 bg-gradient-to-br from-[#0B0C10] to-[#050505] order-2 ${product.imageFirst ? 'lg:order-1' : 'lg:order-1'}`}>
+              <p className="text-[#FF5722] text-[9px] sm:text-[10px] md:text-xs font-bold tracking-[0.25em] md:tracking-[0.3em] uppercase mb-4 md:mb-6 flex items-center gap-3 md:gap-4">
+                <span className="w-6 md:w-8 h-px bg-[#FF5722]"></span>
+                {product.eyebrow}
+              </p>
+              <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-4 md:mb-8 leading-[1.05] text-white">
+                {product.name || product.headline}
+              </h3>
+              <p className="text-zinc-400 text-sm md:text-lg leading-relaxed mb-6 md:mb-10 font-light text-justify">
+                {product.shortBody || product.body}
+              </p>
+
+              <div className="grid grid-cols-2 gap-x-4 md:gap-x-8 gap-y-3 md:gap-y-6 mb-6 md:mb-12 border-t border-zinc-900 pt-5 md:pt-8">
+                {product.numbers.map((num, i) => (
+                  <div key={i} className="flex items-start gap-2 md:gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722] mt-1.5 shrink-0"></span>
+                    <span className="text-[11px] sm:text-xs md:text-sm font-medium text-zinc-300">{num}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link to={`/products/${product.id}`} className="inline-flex self-start items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-zinc-900 border border-zinc-800 text-white font-mono text-[9px] md:text-[10px] tracking-[0.2em] uppercase hover:bg-[#FF5722] hover:border-[#FF5722] transition-all rounded shadow-lg group-hover:shadow-[0_0_20px_rgba(255,87,34,0.3)] hover:!shadow-[0_0_30px_rgba(255,87,34,0.6)]">
+                Deep Dive: {product.id.split('-').pop()}
+              </Link>
             </motion.div>
           </div>
         </motion.div>

@@ -109,10 +109,11 @@ export default function Hydra() {
       setSceneIdx(si)
     }
 
-    // exposure: 15% at rest to 100% by 0.08 (Scene 00). The old Scene 08
-    // dim is removed: Cesium stays at full exposure, the view is a monitor.
+    // exposure: 35% at rest (higher on mobile for instant visibility) to 100% by 0.08 (Scene 00).
     if (e.canvas) {
-      const exposure = 0.15 + 0.85 * clamp01(p / BEATS.exposureRampEnd)
+      const isMobile = window.innerWidth < 640
+      const baseExposure = isMobile ? 0.45 : 0.25
+      const exposure = baseExposure + (1 - baseExposure) * clamp01(p / BEATS.exposureRampEnd)
       gsap.set(e.canvas, { opacity: exposure })
     }
 
@@ -256,9 +257,12 @@ export default function Hydra() {
     applyReveal(e.plate08Top, p, plates.p08.topIn, plates.p08.out, { reduced })
     applyReveal(e.plate08Btm, p, plates.p08.btmIn, plates.p08.out, { reduced, fadeIn: 0.03, outEnd: plates.p08.outEnd })
 
-    // data panel: appears at Scene 04 (slides up 16px). It no longer fades
-    // out at the reveal: it migrates into the console strip instead.
-    applyReveal(e.panel, p, BEATS.panelIn, Infinity, { reduced, dy: 16 })
+    // data panel: appears at Scene 04 (slides up 16px).
+    // On mobile devices, fade out before plate 07/08 to prevent overlapping with the large text plates.
+    // On desktop, it docks into the console strip at BEATS.console.shrinkFrom.
+    const isMobile = window.innerWidth < 768
+    const panelOut = isMobile ? BEATS.plates.p07.topIn - 0.02 : Infinity
+    applyReveal(e.panel, p, BEATS.panelIn, panelOut, { reduced, dy: 16 })
     if (e.rainVal) {
       const t = clamp01((p - BEATS.rain.from) / (BEATS.rain.to - BEATS.rain.from))
       e.rainVal.textContent = String(Math.round(184 * t))

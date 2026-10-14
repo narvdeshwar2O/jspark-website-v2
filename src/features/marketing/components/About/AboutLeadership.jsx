@@ -75,7 +75,7 @@ export function AboutLeadership() {
                 </div>
               </div>
 
-              <p className="text-zinc-400 text-sm leading-relaxed mb-8 flex-1">{l.body}</p>
+              <p className="text-zinc-400 text-sm leading-relaxed mb-8 flex-1 text-justify">{l.body}</p>
 
               <div className="flex flex-wrap gap-2">
                 {l.tags.map((tag) =>

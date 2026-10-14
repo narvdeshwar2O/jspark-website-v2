@@ -26,10 +26,10 @@ export function AboutBelief() {
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">What We Believe</h2>
             </motion.div>
             <motion.div variants={fadeUp} className="flex flex-col gap-6">
-              <p className="text-zinc-400 text-base leading-relaxed">
+              <p className="text-zinc-400 text-base leading-relaxed text-justify">
                 Intelligence is the new infrastructure. A nation that rents its intelligence from a foreign cloud does not own its decisions. JSPARK AI exists so that the defence establishment, the home department, the disaster authority, and the power utility can run the most capable AI in the world without a single byte leaving their command.
               </p>
-              <p className="text-zinc-400 text-base leading-relaxed">
+              <p className="text-zinc-400 text-base leading-relaxed text-justify">
                 Every system we build runs air-gapped, on your hardware, under your control. No internet. No foreign cloud. No per-query meter. No external dependency of any kind. Your data, your models, your sovereignty, permanently.
               </p>
             </motion.div>
@@ -47,10 +47,10 @@ export function AboutBelief() {
             </motion.p>
             <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-10">What We Have Built</motion.h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <motion.p variants={fadeUp} className="text-zinc-400 text-base leading-relaxed">
+              <motion.p variants={fadeUp} className="text-zinc-400 text-base leading-relaxed text-justify">
                 Founded in Noida, Uttar Pradesh, and incorporated in December 2024, JSPARK AI went from a first line of code to live inside the world&apos;s largest emergency response system and the world&apos;s largest crime records database. In the same period we built India&apos;s first AI-enabled hydrology model and had its forecast outcomes verified by the India Meteorological Department.
               </motion.p>
-              <motion.p variants={fadeUp} className="text-zinc-400 text-base leading-relaxed">
+              <motion.p variants={fadeUp} className="text-zinc-400 text-base leading-relaxed text-justify">
                 Today JSPARK AI products run across India, the Gulf, and Europe, in police command centres, national databases, state disaster authorities, smart cities, utilities, and vehicle fleets.
               </motion.p>
             </div>

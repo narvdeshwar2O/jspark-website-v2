@@ -56,7 +56,7 @@ export default function ProductDetail() {
             {product.name}
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="text-zinc-400 text-lg md:text-2xl leading-relaxed max-w-4xl mx-auto font-light">
+          <motion.p variants={fadeUp} className="text-zinc-400 text-lg md:text-2xl leading-relaxed max-w-4xl mx-auto font-light text-center">
             {product.body}
           </motion.p>
         </motion.div>
@@ -135,9 +135,9 @@ export default function ProductDetail() {
                 if (total === 5 && i === 0) spanClass = "md:col-span-2 lg:col-span-2";
 
                 return (
-                  <motion.div 
-                    variants={fadeUp} 
-                    key={i} 
+                  <motion.div
+                    variants={fadeUp}
+                    key={i}
                     whileHover={{ y: -4, scale: 1.01 }}
                     className={`p-8 bg-[#0B0C10] border border-zinc-900 rounded-2xl hover:border-[#FF5722]/30 hover:shadow-[0_0_20px_rgba(255,87,34,0.1)] transition-all flex flex-col relative overflow-hidden group ${spanClass}`}
                   >

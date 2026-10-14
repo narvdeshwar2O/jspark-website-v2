@@ -22,38 +22,10 @@ export function HomeProductPanels() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className={`flex flex-col ${product.imageFirst ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-20 items-center`}>
+          className={`flex flex-col ${product.imageFirst ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-20 items-center`}>
 
-            {/* Copy Side */}
-            <motion.div variants={item} className="flex-1 flex flex-col justify-center relative z-10 lg:py-8">
-              <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3">
-                <span className="w-8 h-px bg-[#FF5722]"></span>
-                {product.eyebrow}
-              </p>
-              <h3 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 leading-[1.1] text-white">
-                {product.name}
-              </h3>
-              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-8">
-                {product.shortBody || product.body}
-              </p>
-
-              <div className="flex flex-wrap gap-x-8 gap-y-4 mb-8 pt-6 border-t border-zinc-900 text-[10px] md:text-[11px] font-mono tracking-widest uppercase text-zinc-300">
-                {product.stats.slice(0, 2).map((stat, i) =>
-                  <div key={i} className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722]"></span>
-                    {stat.value} {stat.label.toLowerCase()}
-                  </div>
-                )}
-              </div>
-
-              <Link to={`/products/${product.id}`} className="inline-flex self-start items-center justify-center px-6 py-3 bg-zinc-900 border border-zinc-800 text-white font-mono text-[10px] tracking-[0.2em] uppercase hover:bg-[#FF5722]/20 hover:border-[#FF5722]/50 transition-colors">
-                Deep Dive {product.id.split('-').pop()}
-              </Link>
-
-            </motion.div>
-
-            {/* Image Placeholder Side */}
-            <motion.div variants={item} className="flex-[1.2] w-full relative aspect-video border border-zinc-800 bg-[#0B0C10] overflow-hidden group rounded-2xl">
+            {/* Image / Video Side: order-1 on mobile/tablet so it comes on top */}
+            <motion.div variants={item} className={`flex-[1.2] w-full relative aspect-video border border-zinc-800 bg-[#0B0C10] overflow-hidden group rounded-2xl order-1 ${product.imageFirst ? 'lg:order-2' : 'lg:order-2'}`}>
 
               {['opsunity-hydra', 'opsvision', 'opsunity-ai', 'opsmind'].includes(product.id) ? (
                 <video
@@ -88,6 +60,34 @@ export function HomeProductPanels() {
                   </div>
                 </>
               )}
+
+            </motion.div>
+
+            {/* Copy Side: order-2 on mobile/tablet so it comes below */}
+            <motion.div variants={item} className={`flex-1 flex flex-col justify-center relative z-10 lg:py-8 order-2 ${product.imageFirst ? 'lg:order-1' : 'lg:order-1'}`}>
+              <p className="text-[#FF5722] text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase mb-4 flex items-center gap-3">
+                <span className="w-8 h-px bg-[#FF5722]"></span>
+                {product.eyebrow}
+              </p>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter mb-4 md:mb-6 leading-[1.1] text-white">
+                {product.name}
+              </h3>
+              <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8 text-justify">
+                {product.shortBody || product.body}
+              </p>
+
+              <div className="flex flex-wrap gap-x-8 gap-y-4 mb-6 md:mb-8 pt-6 border-t border-zinc-900 text-[10px] md:text-[11px] font-mono tracking-widest uppercase text-zinc-300">
+                {product.stats.slice(0, 2).map((stat, i) =>
+                  <div key={i} className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722]"></span>
+                    {stat.value} {stat.label.toLowerCase()}
+                  </div>
+                )}
+              </div>
+
+              <Link to={`/products/${product.id}`} className="inline-flex self-start items-center justify-center px-6 py-3 bg-zinc-900 border border-zinc-800 text-white font-mono text-[10px] tracking-[0.2em] uppercase hover:bg-[#FF5722]/20 hover:border-[#FF5722]/50 transition-colors">
+                Deep Dive {product.id.split('-').pop()}
+              </Link>
 
             </motion.div>
           </motion.div>

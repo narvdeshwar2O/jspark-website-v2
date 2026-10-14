@@ -81,8 +81,10 @@ export default function OpsVisionStage({ registerEl }) {
               src="/assets/opsvision_long.mp4"
               muted
               playsInline
+              webkit-playsinline="true"
+              x5-playsinline="true"
               preload="metadata"
-              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              className="w-full h-full object-cover sm:object-contain"
             />
           </div>
           <div className="stage__vignette opacity-20 pointer-events-none" ref={registerEl('vignette')} />

@@ -223,19 +223,20 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
 
 
         {/* caption band: below 1000 CSS height, h2 and the button share one
-            baseline-aligned row and the body line is not rendered */}
-        <div
-          className={`console-frame__below${rect.short ? ' is-band' : ''}`}
-          style={{ left: rect.frameX, top: rect.frameY + rect.frameH + rect.gapBelow, width: rect.frameW }}
-        >
-          <div className="console-frame__band" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
-            <p className="type-h2 text-muted console-frame__h2" ref={registerEl('h2')}>
-              The flood will come. The warning can come first.
-            </p>
-
+            baseline-aligned row and the body line is not rendered. Hidden on mobile to fit the console. */}
+        {!rect.isStacked && (
+          <div
+            className={`console-frame__below${rect.short ? ' is-band' : ''}`}
+            style={{ left: rect.frameX, top: rect.frameY + rect.frameH + rect.gapBelow, width: rect.frameW }}
+          >
+            <div className="console-frame__band" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
+              <p className="type-h2 text-muted console-frame__h2" ref={registerEl('h2')}>
+                The flood will come. The warning can come first.
+              </p>
+            </div>
+            <hr className="rule console-frame__rule" ref={registerEl('ruleRow')} />
           </div>
-          <hr className="rule console-frame__rule" ref={registerEl('ruleRow')} />
-        </div>
+        )}
       </div>
 
       {sidebarMounted && (
@@ -244,28 +245,28 @@ export default function ConsoleFrame({ cascadeFired, still, hoursToPeak, onRelea
           style={{ left: rect.statusX, top: rect.statusY, width: rect.statusW, height: rect.statusH }}
         >
           <div className="console-frame__sidebar-inner" style={{ height: '100%' }}>
-            <div className={`${entryClass(0)} relative p-3 mb-1 md:p-4 md:mb-2 bg-gradient-to-br from-[#FF5722]/10 to-transparent border border-[#FF5722]/20 rounded-lg`} style={entryStyle(0)}>
+            <div className={`${entryClass(0)} relative p-2 md:p-4 mb-1 md:mb-2 bg-gradient-to-br from-[#FF5722]/10 to-transparent border border-[#FF5722]/20 rounded-lg`} style={entryStyle(0)}>
               {/* Tactical Corners */}
               <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#FF5722]"></div>
               <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#FF5722]"></div>
 
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-1">
                 <div className="w-1.5 h-1.5 bg-[#FF5722] rounded-full shadow-[0_0_8px_#FF5722] animate-pulse shrink-0"></div>
-                <span className="text-[#FF5722] font-mono text-[10px] tracking-widest font-bold">FLASH FLOOD WARNING</span>
+                <span className="text-[#FF5722] font-mono text-[9px] sm:text-[10px] tracking-widest font-bold">FLASH FLOOD WARNING</span>
               </div>
-              <div className="text-2xl lg:text-3xl font-black tracking-tighter text-white mb-1 leading-none">OpsUnity Hydra</div>
-              <div className="text-zinc-400 font-mono text-[11px] tracking-widest uppercase mt-1 md:mt-2">PEAK IN 12 h · 04:20 IST</div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tighter text-white leading-none">OpsUnity Hydra</div>
+              <div className="text-zinc-400 font-mono text-[9px] sm:text-[11px] tracking-widest uppercase mt-1">PEAK IN 12 h · 04:20 IST</div>
             </div>
             <hr className="rule" style={{ borderColor: 'rgba(255,87,34,0.1)' }} />
-            <div className="console-frame__figures mt-1 mb-1 md:mt-1 md:mt-2 md:mb-2">
+            <div className="console-frame__figures my-1">
               {FIGURES.map((figure, i) => (
                 <div key={figure.label} className={entryClass(1 + i)} style={entryStyle(1 + i)}>
                   <DataReadout size="md" label={figure.label} value={figure.value} unit={figure.unit} />
                 </div>
               ))}
             </div>
-            <hr className="rule" />
-            <div className={`${entryClass(5)} console-frame__log-carousel-container`} style={{ ...entryStyle(5), flex: 1, minHeight: 0 }}>
+            {/* Log carousel visible only on larger viewports to prevent overflow on mobile phones */}
+            <div className={`hidden sm:flex ${entryClass(5)} console-frame__log-carousel-container`} style={{ ...entryStyle(5), flex: 1, minHeight: 0 }}>
               <div className="console-frame__log-carousel">
                 {[...LOG_LINES, ...LOG_LINES].map((line, idx) => (
                   <div key={`${line.time}-${idx}`} className="type-label console-frame__log whitespace-nowrap">

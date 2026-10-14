@@ -39,24 +39,37 @@ export function consoleRect(vw, vh, typeVw = vw) {
   const body = fluidSize(16, typeVw)
   const displaySize = short ? fluidSize(56, typeVw) : fluidSize(96, typeVw)
 
-  const gutter = vw / 12
+  const isMobile = vw < 640
+  const isStacked = vw < 900
+  const gutter = isMobile ? 12 : vw / 12
   const rowW = Math.round(Math.min(vw - 2 * gutter, ROW_CAP))
   const rowX = Math.round((vw - rowW) / 2)
 
-  const titleH = Math.round(2.5 * label)
-  const stripH = Math.round(3 * data)
+  const titleH = isMobile ? 26 : Math.round(2.5 * label)
+  const stripH = isMobile ? 30 : Math.round(3 * data)
+
+  // On mobile, the fixed floating navbar sits at top: 24px and has ~50-56px height.
+  // We provide 100px navbar clearance so the titlebar ("HYDRA · ALAKNANDA BASIN · LIVE")
+  // sits comfortably below the navbar with breathing room.
+  const navbarClearance = isMobile ? 100 : 0
 
   // block budgets estimated from the tokens they are set in; the chrome
   // anchors the real text blocks to the rect edges, so drift lands in the
   // outer margins, never inside the console
-  const aboveH = Math.round(label * 1.5 + 8 + displaySize * (short ? 1.05 : 0.95))
+  const aboveH = isMobile 
+    ? 0 // On mobile stacked layout, eliminate the ghost header budget to give full breathing room
+    : Math.round(label * 1.5 + 8 + displaySize * (short ? 1.05 : 0.95))
   const buttonH = Math.round(label * 1.2 + 28)
-  const captionH = short
-    ? Math.round(Math.max(h2 * 1.2, buttonH) + 32 + 1) // one-row band plus the rule
-    : Math.round(h2 * 1.2 + 8 + body * 1.5 + 16 + buttonH + 32 + 1)
-  const m = short
-    ? { top: 24, gapAbove: 8, gapBelow: 16, bottom: 64 }
-    : { top: 16, gapAbove: 32, gapBelow: 32, bottom: 64 }
+  const captionH = isMobile
+    ? 0 // Eliminate bottom caption space on mobile to preserve height for the card
+    : short
+      ? Math.round(Math.max(h2 * 1.2, buttonH) + 32 + 1) // one-row band plus the rule
+      : Math.round(h2 * 1.2 + 8 + body * 1.5 + 16 + buttonH + 32 + 1)
+  const m = isMobile
+    ? { top: navbarClearance, gapAbove: 0, gapBelow: 0, bottom: 8 }
+    : short
+      ? { top: 24, gapAbove: 8, gapBelow: 16, bottom: 64 }
+      : { top: 16, gapAbove: 32, gapBelow: 32, bottom: 64 }
 
   // single frame: 1px border all around, title bar across the full inner
   // width, then map column, 1px divider, status column
@@ -65,14 +78,13 @@ export function consoleRect(vw, vh, typeVw = vw) {
   const innerW = rowW - 2
   const innerH = frameH - 2
   
-  const isStacked = vw < 900
   let mapW, mapH, statusW, statusH, statusX, statusY, stripW
 
   if (isStacked) {
     statusW = innerW
     statusX = rowX + 1
     mapW = innerW
-    mapH = Math.round((innerH - titleH - stripH) * 0.55) // Map gets 55% of visual area
+    mapH = Math.round((innerH - titleH - stripH) * (isMobile ? 0.38 : 0.52)) // Compact map on mobile so the status fits without clipping
     stripW = innerW
     statusY = frameY + 1 + titleH + mapH + stripH + 1
     statusH = innerH - titleH - mapH - stripH - 1

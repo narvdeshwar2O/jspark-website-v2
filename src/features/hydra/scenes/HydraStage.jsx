@@ -14,6 +14,27 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
     // Immediately mark objects as ready
     loadProgress.report('objects', 1)
 
+    // iOS WebKit requires play() call or user gesture / load() trigger
+    video.muted = true
+    video.defaultMuted = true
+    video.setAttribute('playsinline', 'true')
+    video.setAttribute('webkit-playsinline', 'true')
+    video.setAttribute('x5-playsinline', 'true')
+    video.load()
+
+    // iOS Low-power or background tab video touch-unlock
+    const unlockVideo = () => {
+      if (video.paused) {
+        video.play().then(() => {
+          video.pause()
+        }).catch(() => {})
+      }
+      window.removeEventListener('touchstart', unlockVideo)
+      window.removeEventListener('scroll', unlockVideo)
+    }
+    window.addEventListener('touchstart', unlockVideo, { passive: true })
+    window.addEventListener('scroll', unlockVideo, { passive: true })
+
     const checkBuffer = () => {
       if (!video.duration || Number.isNaN(video.duration)) return
       if (video.buffered.length === 0) return
@@ -36,24 +57,33 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
       }
     }
 
-    const onCanPlayThrough = () => {
+    const onCanPlay = () => {
+      loadProgress.report('prefly', 1)
+    }
+
+    const onLoadedData = () => {
+      checkBuffer()
       loadProgress.report('prefly', 1)
     }
 
     video.addEventListener('progress', checkBuffer)
-    video.addEventListener('loadeddata', checkBuffer)
-    video.addEventListener('canplaythrough', onCanPlayThrough)
+    video.addEventListener('loadeddata', onLoadedData)
+    video.addEventListener('loadedmetadata', onCanPlay)
+    video.addEventListener('canplay', onCanPlay)
+    video.addEventListener('canplaythrough', onCanPlay)
 
-    // Fallback timer for the video itself if network is slow
+    // Fallback timer: on iOS low power mode or slow cellular, never let LoadGate hang
     const videoFallback = setTimeout(() => {
       loadProgress.report('prefly', 1)
-    }, 6000)
+    }, 2500)
 
     return () => {
       clearTimeout(videoFallback)
       video.removeEventListener('progress', checkBuffer)
-      video.removeEventListener('loadeddata', checkBuffer)
-      video.removeEventListener('canplaythrough', onCanPlayThrough)
+      video.removeEventListener('loadeddata', onLoadedData)
+      video.removeEventListener('loadedmetadata', onCanPlay)
+      video.removeEventListener('canplay', onCanPlay)
+      video.removeEventListener('canplaythrough', onCanPlay)
     }
   }, [])
 
@@ -74,24 +104,27 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
 
     let targetTime = 0
     let isSeeking = false
+    let rafId = null
 
+    // Helper to safely seek across Safari and Chromium
     const updateVideo = () => {
-      // Don't seek if we are currently seeking or already at the right time
-      if (isSeeking || Math.abs(video.currentTime - targetTime) < 0.01) return
+      if (!video.duration || Number.isNaN(video.duration)) return
+      if (isSeeking) return
+      if (Math.abs(video.currentTime - targetTime) < 0.03) return
 
       isSeeking = true
-      if (typeof video.fastSeek === 'function') {
-        video.fastSeek(targetTime)
-      } else {
+      try {
         video.currentTime = targetTime
+      } catch {
+        isSeeking = false
       }
     }
 
     const onSeeked = () => {
       isSeeking = false
-      // If the target time moved further while we were decoding, seek again immediately
-      if (Math.abs(video.currentTime - targetTime) >= 0.01) {
-        window.requestAnimationFrame(updateVideo)
+      if (Math.abs(video.currentTime - targetTime) >= 0.03) {
+        if (rafId) window.cancelAnimationFrame(rafId)
+        rafId = window.requestAnimationFrame(updateVideo)
       }
     }
 
@@ -99,26 +132,27 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
 
     const applyProgress = (p) => {
       if (Number.isNaN(video.duration) || video.duration === 0) return
-      // The video has a fade-to-black outro in its last second (49.5s - 50.4s).
-      // Clamp effective scrub duration to 49.0s so the user ends on the crisp, vibrant scenic frame
+      // Clamp effective scrub duration to 49.0s to avoid outro fade-to-black
       const effectiveDuration = Math.min(49.0, Math.max(0, video.duration - 1.4))
       targetTime = p * effectiveDuration
-      window.requestAnimationFrame(updateVideo)
+      if (rafId) window.cancelAnimationFrame(rafId)
+      rafId = window.requestAnimationFrame(updateVideo)
     }
 
     const unsubscribe = hydraProgress.subscribe(applyProgress)
 
-    // Apply progress immediately when metadata loads (duration is known)
     const onLoadedMetadata = () => {
       applyProgress(hydraProgress.value)
     }
     video.addEventListener('loadedmetadata', onLoadedMetadata)
 
-    // Ensure video is paused so it only plays via scrubbing
+    // Ensure muted & pause on mobile
+    video.muted = true
     video.pause()
 
     return () => {
       unsubscribe()
+      if (rafId) window.cancelAnimationFrame(rafId)
       video.removeEventListener('loadedmetadata', onLoadedMetadata)
       video.removeEventListener('seeked', onSeeked)
     }
@@ -131,7 +165,10 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
           ref={videoRef}
           src="/assets/1.mp4"
           muted
+          autoPlay={false}
           playsInline
+          webkit-playsinline="true"
+          x5-playsinline="true"
           preload="auto"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />

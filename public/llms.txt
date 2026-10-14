@@ -1,25 +1,57 @@
-# JSPARK AI
+# JSPARK AI · Sovereign AI Operating System
 
 > The Sovereign AI Operating System for missions that cannot fail. Built in India. Deployed at national scale.
 
-JSPARK AI builds sovereign intelligence infrastructure for nation-scale operations across Homeland Security, Disaster Management, Critical Infrastructure, Energy, and Defence.
+JSPARK AI is an Indian deep-tech company engineering sovereign, air-gapped artificial intelligence operating systems for mission-critical infrastructure across Homeland Security, Disaster Management, Critical Infrastructure, Power Utilities, and Defence.
+
+## Company & Leadership
+
+- **Company**: JSPARK AI Private Limited
+- **Headquarters**: Noida, Uttar Pradesh, India
+- **Founders & Leadership**:
+  - **Harish Goswami** (CEO & Founder): Serial entrepreneur, 2 exits, 15+ years building and scaling deep-tech ventures (Toprankers - Stanford Seed, ViDU Tech acquired by Classplus / Sequoia / Tiger Global). Computer Science engineer and sovereign AI architect. [LinkedIn](https://www.linkedin.com/in/harishgoswamicse/)
+  - **Ashutosh Kukreti** (CTO & Founder): 18+ years carrier-grade engineering leadership across Airtel, COLT, Telstra, Wipro, and Optus. Architected national-scale telecom, network, and big data infrastructure across 3 continents. [LinkedIn](https://www.linkedin.com/in/ashutosh-kukreti-5417b918/)
+- **Contact & Inquiries**:
+  - Email: sales@jspark.in
+  - Address: Noida, Uttar Pradesh, India
+
+## Architecture & Sovereign Guarantees
+
+- **100% Air-Gapped & Sovereign**: Zero cloud dependencies, zero external telemetry leaks, zero third-party API calls (no OpenAI, AWS, Azure, or Google Cloud runtime dependencies).
+- **Unmetered Bare-Metal Execution**: Swarm agent orchestration running directly on on-premise bare-metal hardware with infinite state memory.
+- **Sub-Second Real-Time Response**: Latency under 5ms on edge clusters, processing 150,000+ daily state-wide events.
 
 ## Core Products
 
-- [OpsUnity AI](https://jspark.ai/products): The sovereign foundation. Agent swarms, quant engines, mathematical models, and language models with no token limits and no external calls.
-- [OpsVision](https://jspark.ai/products): Sovereign Operational Intelligence. A domain-agnostic, ontology-driven operational intelligence engine that fuses every asset, event, and signal into one living model of your operation.
-- [OpsMind](https://jspark.ai/products): Sovereign Document Intelligence. Reads engineering drawings, schematics, and archives at the level of a domain engineer.
-- [OpsUnity Hydra](https://jspark.ai/products): AI Hydrology Model. Forecasts rainfall, floods, flash floods, and rainfall-induced landslides at basin level hours before impact.
+- [OpsUnity AI](https://jspark.ai/products/opsunity-ai): The sovereign foundational layer. Agent swarms, quant engines, mathematical models, and language models with no token limits and no external calls.
+- [OpsVision](https://jspark.ai/products/opsvision): Sovereign Operational Intelligence. A domain-agnostic, ontology-driven operational intelligence engine that fuses every asset, event, and signal into one living model of your operation.
+- [OpsMind](https://jspark.ai/products/opsmind): Sovereign Document Intelligence. Reads complex engineering drawings, schematics, P&IDs, and archives at the level of a domain engineer with 100% page-cited accuracy and zero hallucinations.
+- [OpsUnity Hydra](https://jspark.ai/products/opsunity-hydra): AI Hydrology & Early Warning Model. Forecasts rainfall, floods, flash floods, and rainfall-induced landslides at basin level hours before impact across 3,000,000+ streams.
 
-## Real-World Deployments
+## Verified National-Scale Deployments
 
-- [Uttar Pradesh 112](https://jspark.ai/case-studies): Operational intelligence layer serving 25 crore people across 75 districts. Misrouted emergency calls cut from 23% to 4%, 46% faster dispatch response.
-- [National Crime Records Bureau (NCRB) NAFIS](https://jspark.ai/case-studies): Fingerprint intelligence system turning fingerprint matches into offender profiles and pattern dossiers in seconds.
+- **Uttar Pradesh 112 (UP Police)** (https://jspark.ai/case-studies): Operational intelligence layer serving 240M+ citizens across all 75 districts. Misrouted emergency calls reduced from 23% to 4%, dispatch response improved by 46% (avg response time reduced from ~13 min to 7:55 min). 83% reduction in repeat incidents.
+- **National Crime Records Bureau (NCRB) NAFIS** (https://jspark.ai/case-studies): Fingerprint intelligence system turning fingerprint matches into offender profiles and pattern dossiers in seconds across 36 states and union territories. 90% faster crime data processing.
+- **Power Grid Corporation of India Limited (PGCIL) / Power Utilities**: Predictive maintenance, grid asset telemetry, substation monitoring, and transmission line contingency forecasting.
+- **Karnataka Municipal Data Society (KMDS)**: Smart city command layer across 30 municipal districts unifying traffic, utilities, surveillance, and civic grievances.
+- **Namchi Smart City ICCC**: IoT-driven dynamic municipal waste routing and illegal dumping detection.
+- **Barcelona / Schneider Microgrid**: Predictive load balancing and renewable curtailment mitigation across a 12MW urban microgrid.
+- **Munich Electrification**: Medium-voltage grid EV congestion forecast providing 4-hour forward look-ahead and cell-level battery degradation telemetry.
+- **Yeti Sustainable City, Oman**: District cooling and smart water distribution neural optimization.
 
-## Key Links
+## Canonical Web Endpoints
 
-- [About JSPARK AI](https://jspark.ai/about): Company mission, leadership, and sovereign architecture.
-- [Products](https://jspark.ai/products): Detailed breakdown of OpsUnity AI, OpsVision, OpsMind, and Hydra.
-- [Industries](https://jspark.ai/industries): Homeland security, defence, power utilities, and disaster management.
-- [Case Studies](https://jspark.ai/case-studies): Verified deployments at national scale.
-- [Contact](https://jspark.ai/contact): Request a sovereign demonstration.
+- Website: https://jspark.ai/
+- About & Founders: https://jspark.ai/about
+- Products Overview: https://jspark.ai/products
+- OpsVision Deep Link: https://jspark.ai/products/opsvision
+- OpsMind Deep Link: https://jspark.ai/products/opsmind
+- OpsUnity Hydra Deep Link: https://jspark.ai/products/opsunity-hydra
+- OpsUnity AI Deep Link: https://jspark.ai/products/opsunity-ai
+- Case Studies & Deployments: https://jspark.ai/case-studies
+- Industries & Sectors: https://jspark.ai/industries
+- Contact & Inquiries: https://jspark.ai/contact
+- Sitemap XML: https://jspark.ai/sitemap.xml
+- LLM Knowledge Graph: https://jspark.ai/llms.txt
+
+

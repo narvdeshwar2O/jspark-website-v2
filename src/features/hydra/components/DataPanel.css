@@ -20,9 +20,40 @@
   justify-content: space-between;
 }
 
+@media (max-width: 768px) {
+  .ds-panel {
+    padding: 12px 14px;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .ds-panel__readouts {
+    gap: 10px 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ds-panel .ds-readout {
+    gap: 2px;
+  }
+  .ds-panel .ds-readout__label {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+  .ds-panel .ds-readout__value {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  .ds-panel .ds-readout__unit {
+    font-size: 10px;
+  }
+}
+
 @media (max-width: 400px) {
   .ds-panel {
-    padding: 16px;
-    gap: 16px;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .ds-panel .ds-readout__value {
+    font-size: 13px;
   }
 }
