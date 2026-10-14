@@ -13,7 +13,7 @@ export function CaseStudiesHero() {
   };
 
   return (
-    <section className="relative min-h-screen w-full bg-[#000000] flex flex-col justify-end px-6 md:px-12 lg:px-24 pb-24 overflow-hidden border-b border-zinc-900">
+    <section className="relative min-h-[90vh] md:min-h-screen w-full bg-[#000000] flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-32 sm:pt-40 pb-20 md:pb-24 overflow-hidden border-b border-zinc-900">
       {/* Tactical Radar Background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,87,34,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,87,34,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_20%,transparent_100%)] pointer-events-none"></div>
       
@@ -21,7 +21,7 @@ export function CaseStudiesHero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-zinc-800/30 rounded-full pointer-events-none"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-[#FF5722]/10 rounded-full pointer-events-none"></div>
 
-      <motion.div className="max-w-6xl relative z-10 w-full" variants={container} initial="hidden" animate="show">
+      <motion.div className="max-w-6xl relative z-10 w-full mt-4 sm:mt-0" variants={container} initial="hidden" animate="show">
         <div className="flex items-center gap-4 mb-8 border-b border-zinc-800 pb-4">
           <div className="flex gap-1.5">
             <span className="w-2 h-2 bg-[#FF5722] animate-pulse"></span>

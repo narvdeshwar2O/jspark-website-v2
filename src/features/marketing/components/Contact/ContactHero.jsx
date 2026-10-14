@@ -13,12 +13,12 @@ export function ContactHero() {
   };
 
   return (
-    <section className="relative min-h-screen w-full bg-[#000000] flex flex-col justify-end px-6 md:px-12 lg:px-24 pb-24 overflow-hidden border-b border-zinc-900">
+    <section className="relative min-h-[90vh] md:min-h-screen w-full bg-[#000000] flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-32 sm:pt-40 pb-20 md:pb-24 overflow-hidden border-b border-zinc-900">
       {/* Glow orb */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#FF5722]/10 rounded-full blur-[150px] pointer-events-none"></div>
 
       <motion.div
-        className="max-w-4xl relative z-10"
+        className="max-w-4xl relative z-10 mt-4 sm:mt-0"
         variants={container}
         initial="hidden"
         animate="show">
