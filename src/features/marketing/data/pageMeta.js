@@ -149,6 +149,18 @@ export const PAGE_META = {
       'Impact: National security and life-saving emergency response infrastructure.'
     ],
     schemaType: 'WebPage'
+  },
+  '/404': {
+    title: '404 · Page Not Found | JSPARK AI',
+    description: 'The requested coordinate does not exist or access has been restricted by sovereign protocol.',
+    canonical: 'https://jspark.ai/404',
+    heading: '404 · Page Not Found',
+    summary: 'The page you requested could not be located on the JSPARK AI sovereign server.',
+    highlights: [
+      'Error: 404 Not Found',
+      'Location: JSPARK AI Sovereign Gateway'
+    ],
+    schemaType: 'WebPage'
   }
 }
 
@@ -164,6 +176,6 @@ export function getPageMeta(pathname) {
     return PAGE_META[clean]
   }
 
-  // Fallback default
-  return PAGE_META['/']
+  // Fallback to 404 for unrecognized routes
+  return PAGE_META['/404'] || PAGE_META['/']
 }

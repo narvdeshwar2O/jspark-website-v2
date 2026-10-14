@@ -131,6 +131,8 @@ pages.forEach((page) => {
   let targetFile;
   if (page.path === '/') {
     targetFile = path.resolve(distDir, 'index.html');
+  } else if (page.path === '/404') {
+    targetFile = path.resolve(distDir, '404.html');
   } else {
     const pageDir = path.resolve(distDir, page.path.replace(/^\//, ''));
     if (!fs.existsSync(pageDir)) {

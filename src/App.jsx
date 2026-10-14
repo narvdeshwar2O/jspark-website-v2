@@ -15,6 +15,7 @@ const Industries = lazy(() => import('./pages/Industries'))
 const CaseStudies = lazy(() => import('./pages/CaseStudies'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Apply = lazy(() => import('./pages/Apply'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -25,6 +26,7 @@ const routes = [
   { path: "/case-studies", element: <CaseStudies /> },
   { path: "/contact", element: <Contact /> },
   { path: "/apply", element: <Apply /> },
+  { path: "*", element: <NotFound /> },
 ];
 
 function SmoothScroll({ children }) {
@@ -97,22 +99,45 @@ function AnimatedRoutes() {
   );
 }
 
+function AppLayout() {
+  const location = useLocation();
+
+  // List of valid recognized routes
+  const validRoutes = [
+    '/',
+    '/about',
+    '/products',
+    '/industries',
+    '/case-studies',
+    '/contact',
+    '/apply'
+  ];
+
+  const isKnownRoute =
+    validRoutes.includes(location.pathname) ||
+    /^\/products\/[a-zA-Z0-9_-]+$/.test(location.pathname);
+
+  return (
+    <main className="bg-black text-white font-sans selection:bg-[#FF5722] selection:text-white">
+      {isKnownRoute && <Navbar />}
+      {isKnownRoute && <LoadGate />}
+
+      <Suspense fallback={<RouteLoader />}>
+        <AnimatedRoutes />
+      </Suspense>
+
+      {isKnownRoute && <Footer />}
+    </main>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <PageMetaSync />
       <SmoothScroll>
-        <main className="bg-black text-white font-sans selection:bg-[#FF5722] selection:text-white">
-          <Navbar />
-          <LoadGate />
-
-          <Suspense fallback={<RouteLoader />}>
-            <AnimatedRoutes />
-          </Suspense>
-
-          <Footer />
-        </main>
+        <AppLayout />
       </SmoothScroll>
     </BrowserRouter>
-  )
+  );
 }
