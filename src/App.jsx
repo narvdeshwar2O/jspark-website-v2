@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import LoadGate from './shared/ui/LoadGate'
 import { Navbar } from './shared/ui/Navbar'
 import { Footer } from './shared/ui/Footer'
+import { PageMetaSync } from './shared/ui/PageMetaSync'
 
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
@@ -99,6 +100,7 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
+      <PageMetaSync />
       <SmoothScroll>
         <main className="bg-black text-white font-sans selection:bg-[#FF5722] selection:text-white">
           <Navbar />

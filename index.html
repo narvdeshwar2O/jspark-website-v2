@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#05070A" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6XG51XCJZL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6XG51XCJZL');
+    </script>
+
     <!-- Favicon & Touch Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -11,8 +22,8 @@
     <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png" />
 
     <!-- SEO Meta Tags -->
-    <title>JSPARK AI · Sovereign AI Operating System</title>
-    <meta name="description" content="The Sovereign AI Operating System for missions that cannot fail. Built in India. Deployed at national scale for Homeland Security, Disaster Management, and Critical Infrastructure." />
+    <title>JSPARK AI | Sovereign AI Operating System, Built in India</title>
+    <meta name="description" content="JSPARK AI builds a sovereign, air-gapped AI operating system for homeland security, disaster management, defence and critical infrastructure in India." />
     <meta name="keywords" content="JSPARK AI, Sovereign AI, Sovereign AI Operating System, OpsUnity AI, OpsVision, OpsMind, OpsUnity Hydra, Harish Goswami, Ashutosh Kukreti, Noida AI, Homeland Security AI, Disaster Management AI, Defense AI, UP 112, NAFIS, NCRB, PGCIL, KMDS" />
     <meta name="author" content="JSPARK AI Private Limited" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -23,8 +34,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JSPARK AI" />
     <meta property="og:url" content="https://jspark.ai/" />
-    <meta property="og:title" content="JSPARK AI · Sovereign AI Operating System" />
-    <meta property="og:description" content="The Sovereign AI Operating System for missions that cannot fail. Built in India. Deployed at national scale." />
+    <meta property="og:title" content="JSPARK AI | Sovereign AI Operating System, Built in India" />
+    <meta property="og:description" content="JSPARK AI builds a sovereign, air-gapped AI operating system for homeland security, disaster management, defence and critical infrastructure in India." />
     <meta property="og:image" content="https://jspark.ai/assets/og-image.png" />
     <meta property="og:image:secure_url" content="https://jspark.ai/assets/og-image.png" />
     <meta property="og:image:type" content="image/png" />
@@ -36,8 +47,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@jsparkai" />
     <meta name="twitter:creator" content="@jsparkai" />
-    <meta name="twitter:title" content="JSPARK AI · Sovereign AI Operating System" />
-    <meta name="twitter:description" content="The Sovereign AI Operating System for missions that cannot fail. Built in India. Deployed at national scale." />
+    <meta name="twitter:title" content="JSPARK AI | Sovereign AI Operating System, Built in India" />
+    <meta name="twitter:description" content="JSPARK AI builds a sovereign, air-gapped AI operating system for homeland security, disaster management, defence and critical infrastructure in India." />
     <meta name="twitter:image" content="https://jspark.ai/assets/og-image.png" />
     <meta name="twitter:image:alt" content="JSPARK AI - Think, Spark, Innovate" />
 
@@ -45,68 +56,70 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "JSPARK AI",
-      "legalName": "JSPARK AI Private Limited",
-      "url": "https://jspark.ai",
-      "logo": "https://jspark.ai/assets/logo.png",
-      "image": "https://jspark.ai/assets/og-image.png",
-      "description": "The Sovereign AI Operating System for missions that cannot fail. Built in India. Deployed at national scale for Homeland Security, Emergency Response, and Critical Infrastructure.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Noida",
-        "addressRegion": "Uttar Pradesh",
-        "addressCountry": "IN"
-      },
-      "founder": [
+      "@graph": [
         {
-          "@type": "Person",
-          "name": "Harish Goswami",
-          "jobTitle": "CEO & Founder",
-          "sameAs": "https://www.linkedin.com/in/harishgoswamicse/"
+          "@type": "Organization",
+          "@id": "https://jspark.ai/#organization",
+          "name": "JSPARK AI",
+          "legalName": "JSPARK AI Private Limited",
+          "url": "https://jspark.ai/",
+          "logo": "https://jspark.ai/assets/og-image.png",
+          "description": "JSPARK AI builds a sovereign, air-gapped AI operating system for homeland security, disaster management, defence and critical infrastructure.",
+          "slogan": "The operating system for operations that cannot fail.",
+          "foundingDate": "2024-12-28",
+          "founder": [
+            {
+              "@type": "Person",
+              "@id": "https://jspark.ai/about#harish-goswami",
+              "name": "Harish Goswami",
+              "jobTitle": "CEO & Founder",
+              "sameAs": "https://www.linkedin.com/in/harishgoswamicse/"
+            },
+            {
+              "@type": "Person",
+              "@id": "https://jspark.ai/about#ashutosh-kukreti",
+              "name": "Ashutosh Kukreti",
+              "jobTitle": "CTO & Founder",
+              "sameAs": "https://www.linkedin.com/in/ashutosh-kukreti-5417b918/"
+            }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Noida",
+            "addressRegion": "Uttar Pradesh",
+            "addressCountry": "IN"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "harish@jspark.in",
+            "telephone": "+91 9036126301",
+            "areaServed": "IN",
+            "availableLanguage": ["en", "hi"]
+          },
+          "knowsAbout": [
+            "Sovereign AI",
+            "Operational intelligence",
+            "Emergency response systems",
+            "Flood forecasting",
+            "Document intelligence"
+          ],
+          "sameAs": [
+            "https://x.com/jsparkai",
+            "https://www.linkedin.com/company/jsparkai/",
+            "https://www.crunchbase.com/organization/jspark-ai",
+            "https://www.youtube.com/@JSPARKAI/videos"
+          ]
         },
         {
-          "@type": "Person",
-          "name": "Ashutosh Kukreti",
-          "jobTitle": "CTO & Founder",
-          "sameAs": "https://www.linkedin.com/in/ashutosh-kukreti-5417b918/"
+          "@type": "WebSite",
+          "@id": "https://jspark.ai/#website",
+          "url": "https://jspark.ai/",
+          "name": "JSPARK AI",
+          "publisher": { "@id": "https://jspark.ai/#organization" },
+          "inLanguage": "en-IN"
         }
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/company/jsparkai/",
-        "https://x.com/jsparkai/",
-        "https://www.crunchbase.com/organization/jspark-ai",
-        "https://www.youtube.com/@JSPARKAI/videos",
-        "https://www.facebook.com/JSparkAI/",
-        "https://www.instagram.com/jspark.ai/"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "sales@jspark.in",
-        "contactType": "sales",
-        "areaServed": ["IN", "GCC", "EU"]
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "JSPARK Sovereign AI Operating System",
-      "operatingSystem": "Linux, Sovereign Air-Gapped Bare Metal, On-Premise",
-      "applicationCategory": "SecurityApplication, BusinessApplication",
-      "description": "The Sovereign AI Operating System for missions that cannot fail. Includes OpsUnity AI, OpsVision, OpsMind, and OpsUnity Hydra for Homeland Security, Disaster Management, and Critical Infrastructure.",
-      "url": "https://jspark.ai",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "JSPARK AI",
-        "url": "https://jspark.ai"
-      }
+      ]
     }
     </script>
 

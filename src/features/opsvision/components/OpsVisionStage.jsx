@@ -74,17 +74,25 @@ export default function OpsVisionStage({ registerEl }) {
             <span className="w-1.5 h-1.5 bg-[#FF5722] shadow-[0_0_8px_#FF5722] animate-pulse" />
           </div>
 
-          {/* Video Canvas */}
+          {/* Video Canvas / Mobile Diagram Image */}
           <div className="opsvision__video-canvas" ref={registerEl('canvas')}>
+            {/* Desktop / Tablet: Interactive scrubbed video */}
             <video
               ref={videoRef}
               src="/assets/opsvision_long.mp4"
+              poster="/assets/opsvision_mobile.jpg"
               muted
               playsInline
               webkit-playsinline="true"
               x5-playsinline="true"
               preload="metadata"
-              className="w-full h-full object-cover sm:object-contain"
+              className="hidden sm:block w-full h-full object-cover sm:object-contain"
+            />
+            {/* Mobile View: High-resolution clear diagram image since scrub video text is hard to read on small screens */}
+            <img
+              src="/assets/opsvision_mobile.jpg"
+              alt="OpsVision Unified Ontology Architecture"
+              className="block sm:hidden w-full h-full object-contain p-1"
             />
           </div>
           <div className="stage__vignette opacity-20 pointer-events-none" ref={registerEl('vignette')} />
