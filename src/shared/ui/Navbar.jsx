@@ -51,7 +51,7 @@ export function Navbar() {
               width="168"
               height="40"
               className="w-42 h-10 object-contain"
-              fetchPriority="high"
+              fetchpriority="high"
             />
           </Link>
         </div>

@@ -1,3 +1,4 @@
+import { LazyVideo } from '../../../../shared/ui/LazyVideo';
 "use client";
 import { Link } from 'react-router-dom';
 
@@ -74,15 +75,14 @@ export function ProductPanels() {
             {/* Visual Side: order-1 on mobile/tablet so it appears on top */}
             <motion.div variants={item} className={`flex-1 w-full relative min-h-[260px] sm:min-h-[360px] lg:min-h-full border-b lg:border-b-0 ${product.imageFirst ? 'lg:border-r' : 'lg:border-l'} border-zinc-900 bg-[#000000] overflow-hidden flex items-center justify-center order-1 ${product.imageFirst ? 'lg:order-2' : 'lg:order-2'}`}>
               {product.video ? (
-                <video
+                <LazyVideo
                   src={product.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  webkit-playsinline="true"
-                  preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                  mobileSrc={
+                    product.video ? product.video.replace('.mp4', '_mobile.mp4') : undefined
+                  }
+                  poster={product.id === 'opsvision' ? '/assets/opsvision_mobile.jpg' : undefined}
+                  objectFit="contain"
+                  className="opacity-90 group-hover:opacity-100 transition-opacity duration-700"
                 />
               ) : (
                 <>
