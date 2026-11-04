@@ -1,3 +1,4 @@
+import { LazyVideo } from '../../../../shared/ui/LazyVideo';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { detailedProducts } from "../../data/products";
@@ -28,19 +29,24 @@ export function HomeProductPanels() {
             <motion.div variants={item} className={`flex-[1.2] w-full relative aspect-video border border-zinc-800 bg-[#0B0C10] overflow-hidden group rounded-2xl order-1 ${product.imageFirst ? 'lg:order-2' : 'lg:order-2'}`}>
 
               {['opsunity-hydra', 'opsvision', 'opsunity-ai', 'opsmind'].includes(product.id) ? (
-                <video
+                <LazyVideo
                   src={
                     product.id === 'opsunity-hydra' ? '/assets/opshydra_gif.mp4' :
                     product.id === 'opsvision' ? '/assets/opsvision.mp4' :
                     product.id === 'opsmind' ? '/assets/opsmind.mp4' :
                     '/assets/opsunity.mp4'
                   }
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="none"
-                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                  mobileSrc={
+                    product.id === 'opsunity-hydra' ? '/assets/opshydra_gif_mobile.mp4' :
+                    product.id === 'opsvision' ? '/assets/opsvision_mobile.mp4' :
+                    product.id === 'opsmind' ? '/assets/opsmind_mobile.mp4' :
+                    '/assets/opsunity_mobile.mp4'
+                  }
+                  poster={
+                    product.id === 'opsvision' ? '/assets/opsvision_mobile.jpg' : undefined
+                  }
+                  objectFit="contain"
+                  className="opacity-90 group-hover:opacity-100 transition-opacity duration-700"
                 />
               ) : (
                 <>

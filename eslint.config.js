@@ -26,7 +26,9 @@ export default [
         URL: 'readonly',
         requestAnimationFrame: 'readonly',
         Image: 'readonly',
-        performance: 'readonly'
+        performance: 'readonly',
+        IntersectionObserver: 'readonly',
+        cancelAnimationFrame: 'readonly'
       }
     },
     settings: { react: { version: '18.3' } },

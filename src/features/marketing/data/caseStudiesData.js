@@ -5,8 +5,8 @@ export const detailedCaseStudies = [
     client: "Uttar Pradesh 112 (UP Police)",
     domain: "Emergency Response System",
     headline: "Reducing Emergency Response from ~13 Min to 7:55 Min Across 75 Districts",
-    product: "OpsUnity + OpsVision",
-    modules: "Vision Dashboard, Low-Code Workflow Engine, PRV Telemetry",
+    product: "OpsUnity AI + OpsVision",
+    modules: "OpsVision, Low-Code Workflow Engine, PRV Telemetry",
     summary: "OpsUnity + Vision was deployed at UP 112 (UP Police) to unify data intelligence, AI-based advisories, command, monitor district performance, and optimize response operations with low-code workflows and decision intelligence.",
     problems: [
       "Average PRV response time was ~13 minutes, varying significantly across districts.",
@@ -17,7 +17,7 @@ export const detailedCaseStudies = [
     ],
     deployedLayers: [
       {
-        layer: "Vision Dashboard",
+        layer: "OpsVision",
         function: "Performance & Command Visualization",
         description: "District benchmarking, PRV live tracking, shift intelligence, and escalation routing."
       },
@@ -42,7 +42,7 @@ export const detailedCaseStudies = [
     client: "National Crime Records Bureau (NCRB)",
     domain: "Homeland Security & Crime Intelligence",
     headline: "Unifying 10M+ Fingerprint Profiles & Accelerating Cross-State Offender Trace",
-    product: "OpsMind + OpsVision",
+    product: "OpsVision",
     modules: "Ten-Print, Chance-Print, MESA Correlator, Crime Graph",
     summary: "OpsMind + Vision Crime Intelligence Layer was deployed at NCRB to unify state-wise crime data at national scale as well as sensitive fingerprint datasets (Ten-Print, Chance-Print, and MESA) with real-time match efficiency scoring and cross-state linkage detection.",
     problems: [
@@ -84,9 +84,9 @@ export const detailedCaseStudies = [
     client: "Karnataka Municipal Data Society (KMDS)",
     domain: "Smart City & Critical Infrastructure",
     headline: "Unified Inter-Department Command Across Environmental, Traffic & Utility Grids",
-    product: "OpsSharthi ICCC Layer",
+    product: "OpsVision",
     modules: "ICCC Command Stack, Shared Data Lake, Incident Workflow Engine",
-    summary: "OpsSharthi ICCC layer was deployed across KMDS Smart Cities to unify environmental sensor data, traffic streams, utilities, surveillance, and citizen grievance systems into a single real-time operational view.",
+    summary: "OpsVision was deployed across KMDS Smart Cities to unify environmental sensor data, traffic streams, utilities, surveillance, and citizen grievance systems into a single real-time operational view.",
     problems: [
       "City systems for traffic, environment, utilities, surveillance, and grievances operated independently with no shared command layer.",
       "Incident handling was reactive—action was only taken after public complaints or escalation.",
@@ -96,7 +96,7 @@ export const detailedCaseStudies = [
     ],
     deployedLayers: [
       {
-        layer: "OpsSharthi ICCC Command Layer",
+        layer: "OpsVision",
         function: "Unified Inter-Department Control",
         description: "Integrated traffic, waste, utilities, surveillance, grievance, and emergency inputs into one command stack."
       },
@@ -126,9 +126,9 @@ export const detailedCaseStudies = [
     client: "Namchi Smart City",
     domain: "Smart Waste Management Platform",
     headline: "IoT-Driven Dynamic Routing & Real-Time Bin Telemetry",
-    product: "OpsSharthi IoT Command Platform",
+    product: "OpsVision IoT Command Platform",
     modules: "Smart Bin Telemetry, GPS Fleet Routing, Illegal Dumping Detection",
-    summary: "OpsSharthi IoT-based command and control system was deployed in Namchi Smart City with bin fullness telemetry, GPS vehicle routing, illegal dumping detection, and a unified control dashboard.",
+    summary: "OpsVision IoT-based command and control system was deployed in Namchi Smart City with bin fullness telemetry, GPS vehicle routing, illegal dumping detection, and a unified control dashboard.",
     problems: [
       "Municipal waste collection followed fixed routes regardless of actual bin fill levels, causing fuel wastage and inefficient manpower usage.",
       "No real-time visibility of bin status (overflow, uncollected waste, location mismatches).",
@@ -147,7 +147,7 @@ export const detailedCaseStudies = [
         description: "Live vehicle routing based on bin priority, geofencing, and automated collection cycles."
       },
       {
-        layer: "OpsSharthi Unified Control Dashboard",
+        layer: "OpsVision",
         function: "Real-Time Command View",
         description: "Bin status maps, route progress, fleet condition, operator logs, and incident reporting."
       }
@@ -167,9 +167,9 @@ export const detailedCaseStudies = [
     client: "Barcelona Smart City – Schneider Electric",
     domain: "Urban Infrastructure & Cross-System SCADA",
     headline: "Unified City Command Integrating SCADA, Traffic & Citizen Modules",
-    product: "OpsSharthi ICCC Layer",
+    product: "OpsVision ICCC Layer",
     modules: "ICCC Command Layer, Data & Event Integration Bus, Multi-Agency Console",
-    summary: "OpsSharthi ICCC layer was deployed in collaboration with Schneider Electric to provide a unified city command platform integrating traffic systems, surveillance inputs, utility SCADA streams, and citizen service modules.",
+    summary: "OpsVision ICCC layer was deployed in collaboration with Schneider Electric to provide a unified city command platform integrating traffic systems, surveillance inputs, utility SCADA streams, and citizen service modules.",
     problems: [
       "City systems were running in departmental silos with no unified real-time command view.",
       "Incident coordination across Police, Traffic, Utilities, and Civic Agencies required manual communication.",
@@ -177,9 +177,9 @@ export const detailedCaseStudies = [
     ],
     deployedLayers: [
       {
-        layer: "OpsSharthi ICCC Command Layer",
+        layer: "OpsVision ICCC Command Layer",
         function: "Unified City Operations",
-        description: "Single operational dashboard across traffic, utilities, surveillance, and service systems."
+        description: "OpsVision across traffic, utilities, surveillance, and service systems."
       },
       {
         layer: "Data & Event Integration Bus",
@@ -187,7 +187,7 @@ export const detailedCaseStudies = [
         description: "Standardized integration bus to break vendor and legacy system silos."
       },
       {
-        layer: "Multi-Agency Command Console",
+        layer: "OpsVision Command Console",
         function: "Joint Action & Response",
         description: "Enables coordinated joint action across civic, utility, and emergency safety teams."
       }
@@ -208,9 +208,9 @@ export const detailedCaseStudies = [
     client: "Munich Electrification Germany",
     domain: "IoT & EV Fleet Infrastructure",
     headline: "Cell-Level Battery Telemetry & Remote OTA Firmware Control",
-    product: "JSPARK Prime IoT & OTA Control Platform",
+    product: "OpsUnity AI + OpsVision",
     modules: "Cell-Level Telemetry Layer, OTA Distribution Engine, Fleet Health Dashboard",
-    summary: "JSPARK Prime IoT Telemetry and OTA Control Platform was deployed for Munich Electrification Germany to monitor EV batteries at cell level and manage firmware/software remotely across fleets.",
+    summary: "OpsVision was deployed for Munich Electrification Germany to monitor EV batteries at cell level and manage firmware/software remotely across fleets.",
     problems: [
       "No real-time visibility at cell level; diagnostics were available only at pack or module layer.",
       "Firmware updates required physical intervention, causing technician travel costs and downtime.",
@@ -219,7 +219,7 @@ export const detailedCaseStudies = [
     ],
     deployedLayers: [
       {
-        layer: "Prime IoT Telemetry Layer",
+        layer: "OpsVision IoT Telemetry Layer",
         function: "Cell-Level Health Monitoring",
         description: "Voltage, temperature, and degradation trend modeling per individual battery cell."
       },

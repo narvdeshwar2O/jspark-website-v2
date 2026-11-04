@@ -5,6 +5,7 @@ import './HydraStage.css'
 
 export default function HydraStage({ registerEl, onCaptureReady }) {
   const videoRef = useRef(null)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
   // Track video buffer progress so LoadGate holds until the hero video is sufficiently buffered (~70%)
   useEffect(() => {
@@ -110,7 +111,9 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
     const updateVideo = () => {
       if (!video.duration || Number.isNaN(video.duration)) return
       if (isSeeking) return
-      if (Math.abs(video.currentTime - targetTime) < 0.03) return
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+      const threshold = isMobile ? 0.08 : 0.03
+      if (Math.abs(video.currentTime - targetTime) < threshold) return
 
       isSeeking = true
       try {
@@ -122,7 +125,9 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
 
     const onSeeked = () => {
       isSeeking = false
-      if (Math.abs(video.currentTime - targetTime) >= 0.03) {
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+      const threshold = isMobile ? 0.08 : 0.03
+      if (Math.abs(video.currentTime - targetTime) >= threshold) {
         if (rafId) window.cancelAnimationFrame(rafId)
         rafId = window.requestAnimationFrame(updateVideo)
       }
@@ -163,14 +168,14 @@ export default function HydraStage({ registerEl, onCaptureReady }) {
       <div className="stage__canvas" ref={registerEl('canvas')}>
         <video
           ref={videoRef}
-          src="/assets/1.mp4"
+          src={isMobile ? '/assets/1_mobile.mp4' : '/assets/1.mp4'}
           muted
           autoPlay={false}
           playsInline
           webkit-playsinline="true"
           x5-playsinline="true"
           preload="auto"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          className="w-full h-full object-contain md:object-cover"
         />
       </div>
       <div className="stage__vignette" ref={registerEl('vignette')} />

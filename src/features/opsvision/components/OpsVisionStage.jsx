@@ -3,6 +3,7 @@ import { opsvisionProgress } from '../animations/opsvisionProgress'
 
 export default function OpsVisionStage({ registerEl }) {
   const videoRef = useRef(null)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
   useEffect(() => {
     const video = videoRef.current
@@ -11,16 +12,29 @@ export default function OpsVisionStage({ registerEl }) {
     let targetTime = 0
     let isSeeking = false
 
+    let rafId = null
     const updateVideo = () => {
-      if (isSeeking || Math.abs(video.currentTime - targetTime) < 0.01) return
+      if (!video.duration || Number.isNaN(video.duration)) return
+      if (isSeeking) return
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+      const threshold = isMobile ? 0.08 : 0.02
+      if (Math.abs(video.currentTime - targetTime) < threshold) return
+
       isSeeking = true
-      video.currentTime = targetTime
+      try {
+        video.currentTime = targetTime
+      } catch {
+        isSeeking = false
+      }
     }
 
     const onSeeked = () => {
       isSeeking = false
-      if (Math.abs(video.currentTime - targetTime) >= 0.01) {
-        window.requestAnimationFrame(updateVideo)
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+      const threshold = isMobile ? 0.08 : 0.02
+      if (Math.abs(video.currentTime - targetTime) >= threshold) {
+        if (rafId) window.cancelAnimationFrame(rafId)
+        rafId = window.requestAnimationFrame(updateVideo)
       }
     }
 
@@ -29,7 +43,8 @@ export default function OpsVisionStage({ registerEl }) {
     const applyProgress = (p) => {
       if (Number.isNaN(video.duration) || video.duration === 0) return
       targetTime = p * video.duration
-      window.requestAnimationFrame(updateVideo)
+      if (rafId) window.cancelAnimationFrame(rafId)
+      rafId = window.requestAnimationFrame(updateVideo)
     }
 
     const unsubscribe = opsvisionProgress.subscribe(applyProgress)
@@ -43,6 +58,7 @@ export default function OpsVisionStage({ registerEl }) {
 
     return () => {
       unsubscribe()
+      if (rafId) window.cancelAnimationFrame(rafId)
       video.removeEventListener('loadedmetadata', onLoadedMetadata)
       video.removeEventListener('seeked', onSeeked)
     }
@@ -74,25 +90,18 @@ export default function OpsVisionStage({ registerEl }) {
             <span className="w-1.5 h-1.5 bg-[#FF5722] shadow-[0_0_8px_#FF5722] animate-pulse" />
           </div>
 
-          {/* Video Canvas / Mobile Diagram Image */}
-          <div className="opsvision__video-canvas" ref={registerEl('canvas')}>
-            {/* Desktop / Tablet: Interactive scrubbed video */}
+          {/* Video Canvas: Responsive interactive scrubbed video visible on mobile & desktop */}
+          <div className="opsvision__video-canvas relative w-full h-full flex items-center justify-center bg-black/90 overflow-hidden" ref={registerEl('canvas')}>
             <video
               ref={videoRef}
-              src="/assets/opsvision_long.mp4"
+              src={isMobile ? '/assets/opsvision_long_mobile.mp4' : '/assets/opsvision_long.mp4'}
               poster="/assets/opsvision_mobile.jpg"
               muted
               playsInline
               webkit-playsinline="true"
               x5-playsinline="true"
               preload="metadata"
-              className="hidden sm:block w-full h-full object-cover sm:object-contain"
-            />
-            {/* Mobile View: High-resolution clear diagram image since scrub video text is hard to read on small screens */}
-            <img
-              src="/assets/opsvision_mobile.jpg"
-              alt="OpsVision Unified Ontology Architecture"
-              className="block sm:hidden w-full h-full object-contain p-1"
+              className="w-full h-full object-contain"
             />
           </div>
           <div className="stage__vignette opacity-20 pointer-events-none" ref={registerEl('vignette')} />
